@@ -1,0 +1,16 @@
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\Database.dll.config
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\Database.dll
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\Database.pdb
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\HtmlAgilityPack.dll
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.dll
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.pdb
+D:\DigitalEdge\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.csprojResolveAssemblyReference.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\Database.dll.config
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\Database.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\Database.pdb
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\bin\Debug\HtmlAgilityPack.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.csproj.AssemblyReference.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.csproj.Up2Date
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.pdb

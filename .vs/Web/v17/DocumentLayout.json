@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\ACM\\Login.aspx.cs",
+              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Login.aspx.cs",
+              "RelativeToolTip": "Web\\ACM\\Login.aspx.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAkwDoAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T15:54:00.177Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

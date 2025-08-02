@@ -1,0 +1,472 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TikitClient.master.cs" Inherits="Web.TikitClient" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="      X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <%--  <title>DIGITAL DMS | <% Response.Write(HttpContext.Current.Request.Url.AbsolutePath.Replace('/', ' ').Replace(".aspx", "").Replace('_', ' ')); %></title>--%>
+    <title>DIGITAL DMS </title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link href="assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/jstree/dist/themes/default/style.min.css" />
+    <link href="assets/apps/css/todo-2.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/jquery-tags-input/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/typeahead/typeahead.css">
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-summernote/summernote.css">
+    <!-- END PAGE LEVEL STYLES -->
+     <link href="assets/pages/css/invoice.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" />
+    <!-- BEGIN THEME STYLES -->
+    <link href="assets/global/css/components-rounded.css" id="style_components1" rel="stylesheet" type="text/css" />
+    <link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css" />
+    <link id="style_color1" href="assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" />
+    <link href="assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .Validation {
+            background: url("assets/admin/pages/img/error-bg.png") no-repeat scroll left top transparent;
+            font-size: 13px;
+            height: 55px;
+            left: 35%;
+            color: #fff;
+            padding: 12px 0 0 30px;
+            position: absolute;
+            top: -40px;
+            width: 260px;
+        }
+
+        .modalPopup {
+            padding: 1px;
+            background-color: #fff;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        function ConfirmMsg() {
+            if (confirm("Are you sure, you want to delete this record?")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function ConfirmMsg1() {
+            if (confirm("Are you sure, you want to Inactive this Country?")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
+    <!-- BEGIN HEADER -->
+    <form id="form1" runat="server">
+        <div class="page-header navbar navbar-fixed-top" style ="background-color :#fff ">
+            <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" CombineScripts="True">
+            </cc1:ToolkitScriptManager>
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="index.aspx">
+                        <img src="Gallery/Final_LogoNew.jpg" alt="logo" class="logo-default" style="margin-top: 10px; width: 100px; height: 50px;" />
+                    </a>
+                    <div class="menu-toggler sidebar-toggler">
+                        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                    </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN PAGE ACTIONS -->
+
+                <!-- BEGIN PAGE TOP -->
+                <div class="page-top">
+                    <!-- BEGIN HEADER SEARCH BOX -->
+                    <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+                    <%--  <div class="search-form">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+                            <span class="input-group-btn">
+                                <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                            </span>
+                        </div>
+                    </div>--%>
+                    <!-- END HEADER SEARCH BOX -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="separator hide"></li>
+
+
+
+
+                            <li class="dropdown dropdown-user dropdown-dark">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                    <asp:Label class="username username-hide-on-mobile" ID="lblUserName" runat="server"></asp:Label>
+
+                                    <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                   <%-- <asp:Image ID="imgLogin" runat="server" class="img-circle" />--%>
+                                    <%--  <img alt="" class="img-circle"  />--%>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+
+                                    <li>
+
+
+                                        <asp:LinkButton ID="btnLogOut" runat="server" OnClick ="btnLogOut_Click" ><i class="icon-key"></i> Log Out</asp:LinkButton>
+
+
+                                    </li>
+                                    <li>
+                                        <asp:LinkButton ID="pnlresponsive1" runat="server" OnClick ="pnlresponsive1_Click" ><i class ="icon-anchor  "></i> Profile</asp:LinkButton>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="separator hide"></li>
+
+
+
+
+                            <li class="dropdown dropdown-user dropdown-dark">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                    <asp:Label class="username username-hide-on-mobile" ID="lblCompanyName" runat="server"></asp:Label>
+
+                                    <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                    <%-- <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg" />--%>
+                                </a>
+                                <%-- <ul class="dropdown-menu dropdown-menu-default">
+
+                                    <li>
+
+
+                                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="btnLogOut_Click"><i class="icon-key"></i> Log Out</asp:LinkButton>
+
+                                    </li>
+                                </ul>--%>
+                            </li>
+
+                        </ul>
+
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="separator hide"></li>
+
+
+
+
+                            <li class="dropdown dropdown-user dropdown-dark">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                    <asp:Label class="username username-hide-on-mobile" ID="lblRole" runat="server"></asp:Label>
+
+                                    <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                    <%-- <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg" />--%>
+                                </a>
+                                <%--   <ul class="dropdown-menu dropdown-menu-default">
+
+                                    <li>
+
+
+                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btnLogOut_Click"><i class="icon-key"></i> Log Out</asp:LinkButton>
+
+                                    </li>
+                                </ul>--%>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END HEADER -->
+        <div class="clearfix">
+        </div>
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" runat="server" id="stringModule">
+                        <%-- <asp:ListView ID="ltsMenu" runat="server" OnItemDataBound="lstmenu_ItemDataBound">
+                            <ItemTemplate>
+                                <asp:Label ID="lblMenuHide" runat="server" Visible="false" Text=' <%# Eval("MENUID")%>'></asp:Label>
+                                <li class="start active ">
+                                    <%# GetLink(Convert.ToInt32(Eval("MENUID")))%>
+                                    
+                                    <%# Displaysubmenu(Convert.ToInt32(Eval("MENUID")))%>
+                                    <asp:ListView ID="lstsubMenu" runat="server">
+                                        
+                                        <ItemTemplate>
+                                            <li>
+                                                <a href='<%# Eval("LINK")%>'>
+                                                    <i class="icon-docs"></i><%# Eval("MENU_NAME1")%>
+                                                </a>
+
+                                            </li>
+                                        </ItemTemplate>
+                                        
+                                    </asp:ListView>
+
+                                     <%# Displaysubmenu1(Convert.ToInt32(Eval("MENUID")))%>
+
+                                </li>
+
+                            </ItemTemplate>
+                        </asp:ListView>--%>
+
+                        <li class="start active ">
+                            <a href="index.aspx">
+                                <i class="icon-home"></i>
+                                <span class="title">Home</span>
+                            </a>
+                        </li>
+
+                        <li class="last open">
+
+                            <ul class="sub-menu" style="display: block;">
+
+                                <li>
+                                    <a href="ChangPassword.aspx">
+                                        <i class="icon-user"></i>
+                                        Restore Password
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="Profile.aspx">
+                                        <i class="icon-user"></i>
+                                        My account
+                                    </a>
+                                </li>
+                                <%-- <li>
+                                    <a href="ICCATEGORY.aspx">
+                                        <i class="icon-user"></i>
+                                        ICCATEGORY 
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="ICCATSUBCAT.aspx">
+                                        <i class="icon-user"></i>
+                                       ICCATSUBCAT
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="ICSUBCATEGORY.aspx">
+                                        <i class="icon-user"></i>
+                                       ICSUBCATEGORY
+                                    </a>
+                                </li>--%>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>
+                                        Address book
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="wishlist.aspx">
+                                        <i class="icon-user"></i>
+                                       Wish list
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>
+                                       Returns
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>
+                                       Newsletter
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+
+    </form>
+
+    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+    <script type="text/javascript" src="assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script src="assets/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
+
+
+    <script src="assets/global/plugins/jstree/dist/jstree.min.js"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script src="assets/admin/pages/scripts/ui-tree.js"></script>
+    <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+    <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="assets/global/plugins/fuelux/js/spinner.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/jquery.input-ip-address-control-1.0.min.js"></script>
+    <script src="assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-tags-input/jquery.tagsinput.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/typeahead/handlebars.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+    <script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <!--Dashboad -->
+
+    <script src="assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+    <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+    <script src="assets/admin/pages/scripts/components-form-tools.js"></script>
+    <script src="assets/admin/pages/scripts/table-advanced.js"></script>
+    <script src="assets/admin/pages/scripts/table-editable.js"></script>
+    <script src="assets/admin/pages/scripts/table-editable1.js"></script>
+    <script src="assets/admin/pages/scripts/table-editable2.js"></script>
+    <script src="assets/admin/pages/scripts/table-editable3.js"></script>
+    <script src="assets/admin/pages/scripts/components-editors.js"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script src="assets/admin/pages/scripts/ui-extended-modals.js"></script>
+    <script src="assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="assets/apps/scripts/todo-2.min.js" type="text/javascript"></script>
+    
+
+
+
+
+    <link href="assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+    <!-- BEGIN GOOGLE RECAPTCHA -->
+    <script type="text/javascript">
+        var RecaptchaOptions = {
+            theme: 'custom',
+            custom_theme_widget: 'recaptcha_widget'
+        };
+    </script>
+    <%--Kamlesh Tree View--%>
+    <script>
+        jQuery(document).ready(function () {
+            // initiate layout and plugins
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            Demo.init(); // init demo features
+            TableAdvanced.init();
+            TableEditable.init();
+            TableEditable1.init();
+            TableEditable3.init();
+            TableEditable4.init();
+
+
+
+
+            ComponentsEditors.init();
+            $("#draggable").draggable({
+                handle: ".modal-header"
+            });
+            UITree.init();
+            ComponentsFormTools.init();
+
+
+        });
+    </script>
+    <%--Kamlesh Session Timeout--%>
+    <%-- <script src="assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.min.js" type="text/javascript"></script>--%>
+
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LcrK9cSAAAAALEcjG9gTRPbeA0yAVsKd8sBpFpR"></script>
+</body>
+<!-- END BODY -->
+</html>
+

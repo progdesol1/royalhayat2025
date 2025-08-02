@@ -1,0 +1,279 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CRMMaster.master.cs" Inherits="Web.CRM.CRMMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+   
+    
+    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/jquery-tags-input/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/typeahead/typeahead.css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/bootstrap-select/bootstrap-select.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/jquery-multi-select/css/multi-select.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" />
+    <link href="../assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+
+    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+    <link href="../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/admin/layout4/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="../assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        .Validation {
+            background: url("../assets/admin/pages/img/error-bg.png") no-repeat scroll left top transparent;
+            font-size: 13px;
+            height: 55px;
+            left: 35%;
+            color: #fff;
+            padding: 12px 0 0 30px;
+            position: absolute;
+            top: -40px;
+            width: 260px;
+        }
+
+        .modalPopup {
+            padding: 1px;
+            background-color: #fff;
+            border: 1px solid #000;
+        }
+
+        .gethide {
+            display: none;
+        }
+
+        .getshow {
+            display: block;
+        }
+    </style>
+     <script type="text/javascript">
+	  // disable back *******************************************
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", -1);
+        window.onunload = function () { null };
+        //*********************************************************
+		
+		
+        //JS right click and ctrl+(n,a,j) disable
+        function disableCtrlKeyCombination(e) {
+            //list all CTRL + key combinations you want to disable
+            var forbiddenKeys = new Array('a', 'n', 'j');
+
+            var key;
+            var isCtrl;
+
+            if (window.event) {
+                key = window.event.keyCode;     //IE
+                if (window.event.ctrlKey)
+                    isCtrl = true;
+                else
+                    isCtrl = false;
+            }
+            else {
+                key = e.which;     //firefox
+
+                if (e.ctrlKey)
+                    isCtrl = true;
+                else
+                    isCtrl = false;
+            }
+            //Disabling F5 key
+            if (key == 116) {
+                alert('Key  F5 has been disabled.');
+                return false;
+            }
+            //if ctrl is pressed check if other key is in forbidenKeys array
+            if (isCtrl) {
+
+                for (i = 0; i < forbiddenKeys.length; i++) {
+                    //  alert(String.fromCharCode(key));
+                    //case-insensitive comparation
+                    if (forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase()) {
+                        alert('Key combination CTRL + '
+                            + String.fromCharCode(key)
+                            + ' has been disabled.');
+                        return false;
+                    }
+                    if (key == 116) {
+                        alert('Key combination CTRL + F5 has been disabled.');
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        //Disable right mouse click Script
+
+        var message = "Right click Disabled!";
+
+        ///////////////////////////////////
+        function clickIE4() {
+            if (event.button == 2) {
+                alert(message);
+                return false;
+            }
+        }
+
+        function clickNS4(e) {
+            if (document.layers || document.getElementById && !document.all) {
+                if (e.which == 2 || e.which == 3) {
+                    alert(message);
+                    return false;
+                }
+            }
+        }
+
+        if (document.layers) {
+            document.captureEvents(Event.MOUSEDOWN);
+            document.onmousedown = clickNS4;
+        }
+
+        else if (document.all && !document.getElementById) {
+            document.onmousedown = clickIE4;
+        }
+
+        document.oncontextmenu = new Function("alert(message);return false");
+		 </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+         <asp:ScriptManager ID="toolscriptmanagerID" runat="server" AsyncPostBackTimeout="360000"></asp:ScriptManager>
+       
+
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+           
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <div class="page-head">
+                    <ol class="breadcrumb">
+                        <li><a href="index.aspx">
+                           
+                            <asp:Label ID="lblDisPro" runat="server" Text="Home"></asp:Label></a><i class="fa fa-circle"></i></li>
+                        <li><a href="#">
+                            <asp:Label ID="lblpagename" runat="server" Text=""></asp:Label></a><i class="fa fa-circle"></i></li>
+                        <li><a href="#">
+                            <asp:Label ID="lblpageid" runat="server" Text=""></asp:Label></a></li>
+                        <li> <asp:LinkButton ID="linkCheckIn"  class="dropdown-toggle" runat="server" OnClick="linkCheckIn_Click"><span class="badge badge-primary">Check In </span></asp:LinkButton></li>
+                        <li> <asp:LinkButton ID="linkCheckOut"  class="dropdown-toggle" runat="server" OnClick="linkCheckOut_Click"><span class="badge badge-primary">Check Out </span></asp:LinkButton></li>
+                        
+                    </ol>
+
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+
+            </div>
+            <!-- END CONTENT -->
+        </div>
+       <script src="../assets/toast/jquery.js"></script>
+        <script src="../assets/toast/script.js"></script>
+        <script src="../assets/toast/toastr.min.js"></script>
+         <link href="../assets/toast/toastr.min.css" rel="stylesheet" /> 
+    </form>
+     
+    <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../assets/global/plugins/fuelux/js/spinner.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js"></script>
+    <script src="../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-tags-input/jquery.tagsinput.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/typeahead/handlebars.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="../assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+    <script type="text/javascript" src="../assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="../assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="../assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+    <script src="../assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+    <script src="../assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
+    <script src="../assets/admin/pages/scripts/table-advanced.js"></script>
+    <script src="../assets/admin/pages/scripts/components-form-tools.js"></script>
+    <script src="../assets/admin/pages/scripts/table-managed.js"></script>
+    <script src="../assets/admin/pages/scripts/components-dropdowns.js"></script>
+
+    <script src="../assets/global/plugins/moment.min.js"></script>
+    <script src="../assets/global/plugins/fullcalendar/fullcalendar.min.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            Demo.init(); // init demo features 
+            ComponentsDropdowns.init();
+            ComponentsFormTools.init();
+            TableAdvanced.init();
+            TableManaged.init();
+            Index.init(); // init index page
+            Calendar.init();
+            FormEditable.init();
+            $("#draggable").draggable({
+                handle: ".modal-header"
+            });
+
+        });
+       
+    </script>
+  
+    <script type="text/javascript">
+        var RecaptchaOptions = {
+            theme: 'custom',
+            custom_theme_widget: 'recaptcha_widget'
+        };
+    </script>
+   <%-- <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6LcrK9cSAAAAALEcjG9gTRPbeA0yAVsKd8sBpFpR"></script>--%>
+</body>
+</html>

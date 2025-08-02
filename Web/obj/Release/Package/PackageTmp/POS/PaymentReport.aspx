@@ -1,0 +1,246 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/POS/POSMaster.Master" AutoEventWireup="true" CodeBehind="PaymentReport.aspx.cs" Inherits="Web.POS.PaymentReport" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script type="text/javascript">
+        function PrintPanel() {
+            var panel = document.getElementById("<%=pnlContents.ClientID %>");
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>Customer_Report</title> <style> @media all {.page-break { display: none; }} @media print { .page-break { display: block; page-break-before: always; }}</style>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+            return false;
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
+    <div class="page-content-wrapper">
+
+            <div class="tabbable-custom tabbable-noborder">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-horizontal form-row-seperated">
+                            <div class="portlet light" style="border: 1px solid #abb2c9;">
+                                <div class="portlet-title">
+                                    <div class="caption">
+
+                                        <span class="caption-subject font-green-sharp bold uppercase">Payment Report</span>
+                                    </div>
+                                    <div class="actions btn-set">
+                                        <asp:Button ID="btnPrint" runat="server" class="btn green-haze btn-circle" OnClientClick="return PrintPanel();" Text="Print" ValidationGroup="submit" />
+                                        <%--   <asp:LinkButton ID="btnCancel1" runat="server" CssClass="btn green-haze btn-circle" Text="Cancel" PostBackUrl="~/Admin/Index.aspx"></asp:LinkButton>--%>
+                                    </div>
+                                </div>
+                                <asp:Panel ID="pnlWarningMsg" runat="server" Visible="false">
+                                    <div class="alert alert-warning alert-dismissable">
+                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>
+                                        <asp:Label ID="lblWarningMsg" Font-Size="Large" Font-Bold="true" ForeColor="Black" runat="server"></asp:Label>
+                                    </div>
+                                </asp:Panel>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group" style="color: ">
+                                            <asp:Label runat="server" ID="Label8" CssClass="col-md-4 control-label" Text="Start Date"></asp:Label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="txtstartdate" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <cc1:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtstartdate" Format="MM/dd/yyyy"></cc1:CalendarExtender>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group" style="color: ">
+                                            <asp:Label runat="server" ID="Label2" CssClass="col-md-4 control-label" Text="End Date"></asp:Label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="txtEnddate" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <cc1:CalendarExtender ID="CalendarExtender4" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtEnddate" Format="MM/dd/yyyy"></cc1:CalendarExtender>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnsearch" runat="server" Text="Search" CssClass="btn btn-sm blue" OnClick="btnsearch_Click" />
+                                    </div>
+                                </div>
+                                <br />
+                                <asp:Panel ID="pnlContents" runat="server">
+                                    <br />
+                                    <table style="width: 100%" border="1" cellpadding="1" cellspacing="1">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Rpt No.</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Date</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Total</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Sold By</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Dis</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">TAX</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Pay Type</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Due</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Customer</th>
+
+                                                <th style="text-align: center; background-color: #FFB6C1; color: #ffffff;">Comments</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <asp:ListView ID="ListView1" runat="server">
+                                                <ItemTemplate>
+
+                                                    <tr>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("RptNo") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label3" runat="server" Text='<%# Eval("Date") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("Total") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("Sold by") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("Dis") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="lblcustomer" runat="server" Text='<%# Eval("TAX") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="lblTamount" runat="server" Text='<%# Eval("Pay type") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("Due") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label9" runat="server" Text='<%# Eval("Customer") %>'></asp:Label></td>
+                                                        <td style="text-align: center;">
+                                                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("Comments") %>'></asp:Label></td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                            </asp:ListView>
+                                        </tbody>
+                                           <tfoot>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: right; padding-right: 5px;">
+                                                    <asp:Label ID="Label12" runat="server" Text="Sub Total:-" Style="font-weight: bold; font-size: large"></asp:Label></td>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="lblFinalTotal" runat="server" Text=""></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: right; padding-right: 5px;">
+                                                    <asp:Label ID="Label13" runat="server" Text="Total Discount:-" Style="font-weight: bold; font-size: large"></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="lbldis" runat="server" Text=""></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: right; padding-right: 5px;">
+                                                    <asp:Label ID="Label15" runat="server" Text="Total TAX:-" Style="font-weight: bold; font-size: large"></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="lblTAX" runat="server" Text=""></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: right; padding-right: 5px;">
+                                                    <asp:Label ID="Label17" runat="server" Text="Total Sales+TAX:-" Style="font-weight: bold; font-size: large"></asp:Label></td>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="lblsata" runat="server" Text=""></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                                <td></td>
+                                                <td></td>
+
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: right; padding-right: 5px;">
+                                                    <asp:Label ID="Label19" runat="server" Text="Total Due:-" Style="font-weight: bold; font-size: large"></asp:Label></td>
+
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="lbldue" runat="server" Text=""></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                          
+                                            <tr>
+                                                <td style="text-align: right; padding-right: 5px;">
+                                                    <asp:Label ID="Label22" runat="server" Text="Daily Report For :-" Style="font-weight: bold; font-size: large"></asp:Label></td>
+                                               
+                                                <td></td>
+                                                 <td style="text-align: center;">
+                                                    <asp:Label ID="lblfromdate" runat="server" Text=""></asp:Label></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                           
+                                        </tfoot>
+                                    </table>
+                                    <br />
+                                    <br />
+                                    <br />
+                                </asp:Panel>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+    </div>
+
+
+</asp:Content>
