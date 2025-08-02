@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RAMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RAMModelStoreContainer">
+          <EntitySet Name="AdminUser" EntityType="RAMModel.Store.AdminUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OptionType" EntityType="RAMModel.Store.OptionType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ValueMaster" EntityType="RAMModel.Store.ValueMaster" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ValueMaster_OptionType" Association="RAMModel.Store.FK_ValueMaster_OptionType">
+            <End Role="OptionType" EntitySet="OptionType" />
+            <End Role="ValueMaster" EntitySet="ValueMaster" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="OptionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionText" Type="varchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ValueMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ValueText" Type="varchar" MaxLength="50" />
+          <Property Name="OptionType" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_ValueMaster_OptionType">
+          <End Role="OptionType" Type="RAMModel.Store.OptionType" Multiplicity="0..1" />
+          <End Role="ValueMaster" Type="RAMModel.Store.ValueMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ValueMaster">
+              <PropertyRef Name="OptionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RAMModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RAMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="RAMModel.AdminUser" />
+          <EntitySet Name="OptionTypes" EntityType="RAMModel.OptionType" />
+          <EntitySet Name="ValueMasters" EntityType="RAMModel.ValueMaster" />
+          <AssociationSet Name="FK_ValueMaster_OptionType" Association="RAMModel.FK_ValueMaster_OptionType">
+            <End Role="OptionType" EntitySet="OptionTypes" />
+            <End Role="ValueMaster" EntitySet="ValueMasters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmailID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="Deleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OptionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionText" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="DateTime" Type="DateTime" />
+          <NavigationProperty Name="ValueMasters" Relationship="RAMModel.FK_ValueMaster_OptionType" FromRole="OptionType" ToRole="ValueMaster" />
+        </EntityType>
+        <EntityType Name="ValueMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValueText" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OptionType" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <NavigationProperty Name="OptionType1" Relationship="RAMModel.FK_ValueMaster_OptionType" FromRole="ValueMaster" ToRole="OptionType" />
+        </EntityType>
+        <Association Name="FK_ValueMaster_OptionType">
+          <End Role="OptionType" Type="RAMModel.OptionType" Multiplicity="0..1" />
+          <End Role="ValueMaster" Type="RAMModel.ValueMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ValueMaster">
+              <PropertyRef Name="OptionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RAMModelStoreContainer" CdmEntityContainer="RAMEntities">
+          <EntitySetMapping Name="AdminUsers"><EntityTypeMapping TypeName="RAMModel.AdminUser"><MappingFragment StoreEntitySet="AdminUser">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OptionTypes"><EntityTypeMapping TypeName="RAMModel.OptionType"><MappingFragment StoreEntitySet="OptionType">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+            <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ValueMasters"><EntityTypeMapping TypeName="RAMModel.ValueMaster"><MappingFragment StoreEntitySet="ValueMaster">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ValueText" ColumnName="ValueText" />
+            <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="RAMModel.AdminUser" Width="1.5" PointX="0.75" PointY="4.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMModel.OptionType" Width="1.5" PointX="0.75" PointY="1" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMModel.ValueMaster" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166656" IsExpanded="true" />
+        <AssociationConnector Association="RAMModel.FK_ValueMaster_OptionType" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.0862939453125" />
+          <ConnectorPoint PointX="3" PointY="2.0862939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

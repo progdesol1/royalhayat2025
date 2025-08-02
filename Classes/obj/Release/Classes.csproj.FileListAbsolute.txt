@@ -1,0 +1,13 @@
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\obj\Release\Classes.csproj.AssemblyReference.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\obj\Release\Classes.csproj.CoreCompileInputs.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\Classes.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\Classes.pdb
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\Database.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\HtmlAgilityPack.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\VisualStudio.SpellChecker.Definitions.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\Database.pdb
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\Database.dll.config
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\bin\Release\VisualStudio.SpellChecker.Definitions.xml
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\obj\Release\Classes.csproj.Up2Date
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\obj\Release\Classes.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Classes\obj\Release\Classes.pdb

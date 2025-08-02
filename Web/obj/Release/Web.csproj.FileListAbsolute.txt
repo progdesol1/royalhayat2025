@@ -1,0 +1,17 @@
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Web.dll.config
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Web.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Web.pdb
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Classes.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Database.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Microsoft.ReportViewer.WebForms.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Newtonsoft.Json.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\System.Net.Http.Formatting.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Classes.pdb
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Database.pdb
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Database.dll.config
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\bin\Newtonsoft.Json.xml
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Release\Web.csproj.AssemblyReference.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Release\Web.csproj.CoreCompileInputs.cache
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Release\Web.csproj.Up2Date
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Release\Web.dll
+D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Release\Web.pdb
