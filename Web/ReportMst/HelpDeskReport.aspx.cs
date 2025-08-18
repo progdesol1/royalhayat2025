@@ -248,12 +248,12 @@ namespace Web.ReportMst
         }
         public void binddata()
         {
-            DateTime startdate = Convert.ToDateTime(txtdateFrom.Text);
-            DateTime Enddate = Convert.ToDateTime(txtdateTO.Text);
+            //DateTime startdate = Convert.ToDateTime(txtdateFrom.Text);
+            //DateTime Enddate = Convert.ToDateTime(txtdateTO.Text);
 
-            string stdate = startdate.ToString("yyyy-MM-dd");
-            string etdate = Enddate.ToString("yyyy-MM-dd");
-            DateTime end = Convert.ToDateTime(txtdateTO.Text);
+            string stdate = txtdateFrom.Text;
+            string etdate = txtdateTO.Text;
+            //DateTime end = Convert.ToDateTime(txtdateTO.Text);
             string paramStr = "";
             //validation
 

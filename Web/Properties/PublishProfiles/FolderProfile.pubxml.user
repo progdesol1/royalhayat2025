@@ -2,7 +2,7 @@
 <!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
 <Project>
   <PropertyGroup>
-    <History>False|2025-07-30T15:52:39.8852926Z||;False|2025-07-30T20:51:02.6581170+05:00||;False|2025-07-30T20:50:07.7744136+05:00||;False|2025-07-30T20:48:58.5974969+05:00||;False|2025-07-30T20:35:20.4608097+05:00||;False|2025-07-30T20:34:24.5895918+05:00||;False|2025-07-30T20:33:18.6991061+05:00||;</History>
+    <History>True|2025-08-17T17:07:40.7975765Z||;True|2025-08-03T15:44:13.7294746+05:00||;False|2025-07-30T20:52:39.8852926+05:00||;False|2025-07-30T20:51:02.6581170+05:00||;False|2025-07-30T20:50:07.7744136+05:00||;False|2025-07-30T20:48:58.5974969+05:00||;False|2025-07-30T20:35:20.4608097+05:00||;False|2025-07-30T20:34:24.5895918+05:00||;False|2025-07-30T20:33:18.6991061+05:00||;</History>
     <LastFailureDetails />
     <_PublishTargetUrl>D:\DigitalSol\royalpublish</_PublishTargetUrl>
   </PropertyGroup>
@@ -15356,10 +15356,10 @@
       <publishTime>06/02/2025 11:09:22</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>07/30/2025 20:53:09</publishTime>
+      <publishTime>08/18/2025 17:49:24</publishTime>
     </File>
     <File Include="bin/Web.pdb">
-      <publishTime>07/30/2025 20:53:09</publishTime>
+      <publishTime>08/18/2025 17:49:24</publishTime>
     </File>
     <File Include="components_jqueryui_sliders.html">
       <publishTime>11/03/2023 09:47:59</publishTime>
@@ -16427,7 +16427,7 @@
       <publishTime>11/03/2023 09:47:59</publishTime>
     </File>
     <File Include="POS/POSMaster.Master">
-      <publishTime>07/14/2025 22:41:33</publishTime>
+      <publishTime>08/03/2025 16:29:34</publishTime>
     </File>
     <File Include="POS/POSPrintRpt.aspx">
       <publishTime>11/03/2023 09:47:59</publishTime>
@@ -17231,7 +17231,7 @@
       <publishTime>11/03/2023 09:47:59</publishTime>
     </File>
     <File Include="Sales/POSIndex.aspx">
-      <publishTime>11/03/2023 09:47:59</publishTime>
+      <publishTime>08/18/2025 17:18:35</publishTime>
     </File>
     <File Include="Sales/pos_system.aspx">
       <publishTime>11/03/2023 09:47:59</publishTime>
@@ -17310,6 +17310,21 @@
     </File>
     <File Include="silentreport.aspx">
       <publishTime>11/03/2023 09:47:59</publishTime>
+    </File>
+    <File Include="Smilies/Smilies/co1.png">
+      <publishTime>05/22/2019 11:18:28</publishTime>
+    </File>
+    <File Include="Smilies/Smilies/co22.png">
+      <publishTime>05/22/2019 11:20:04</publishTime>
+    </File>
+    <File Include="Smilies/Smilies/co3.png">
+      <publishTime>05/22/2019 11:18:28</publishTime>
+    </File>
+    <File Include="Smilies/Smilies/com44.png">
+      <publishTime>05/22/2019 11:18:28</publishTime>
+    </File>
+    <File Include="Smilies/Smilies/report.png">
+      <publishTime>08/18/2025 17:21:22</publishTime>
     </File>
     <File Include="SReport1.aspx">
       <publishTime>11/03/2023 09:47:59</publishTime>

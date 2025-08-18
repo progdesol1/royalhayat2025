@@ -5597,6 +5597,11 @@
     <Content Include="Setting\AddPrinterComman.aspx" />
     <Content Include="Setting\BrandsComman.aspx" />
     <Content Include="Setting\CategoriesCommon.aspx" />
+    <Content Include="Smilies\Smilies\report.png" />
+    <Content Include="Smilies\Smilies\co1.png" />
+    <Content Include="Smilies\Smilies\co22.png" />
+    <Content Include="Smilies\Smilies\co3.png" />
+    <Content Include="Smilies\Smilies\com44.png" />
     <Content Include="SReport1.aspx" />
     <Content Include="SReport2.aspx" />
     <Content Include="silentreport.aspx" />
@@ -7819,7 +7824,6 @@
     <Folder Include="Gallery\" />
     <Folder Include="image\" />
     <Folder Include="Sales\images\" />
-    <Folder Include="Smilies\Smilies\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

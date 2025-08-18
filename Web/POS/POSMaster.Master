@@ -66,6 +66,7 @@
     <link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
+    
     <link href="../../assets/global/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME STYLES -->

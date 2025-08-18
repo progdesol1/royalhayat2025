@@ -169,7 +169,7 @@ namespace Web.ACM
                         Session["SAFirstname"] = UserList.FIRST_NAME1.ToString();
                         Response.Redirect("DemoPrvilage.aspx");
                     }
-                    if (UserList.USERDATE.Value >= DateTime.Now.Date  && UserList.ACTIVEUSER == true)
+                    if ( UserList.ACTIVEUSER == true)
                     {
                         List = List.Where(p => p.TenentID == TID && p.LocationID == 1 && p.UserID == UserList.USER_ID ).OrderBy(p => p.MENU_ORDER).ToList();
                         if (List.Count() > 0)
@@ -313,7 +313,7 @@ namespace Web.ACM
                     Classes.GlobleClass.InsertErrorLog1("USER_MST", "Login.aspx", "Login:", "LineNo:0");
                     if (Modulid == 39)
                     {
-                        Response.Redirect("DemoPOS.aspx");
+                        Response.Redirect("~/acm/DemoPOS.aspx");
                     }
                     else
                     {
@@ -519,11 +519,11 @@ namespace Web.ACM
                 GlobleClass.EncryptionHelpers.WriteLog("Login:", evantname, "USER_MST", objLiggingAction.USER_ID.ToString(), 0, auditno);
                 if (Modulid == 39)
                 {
-                    Response.Redirect("DemoPOS.aspx");
+                    Response.Redirect("~/acm/DemoPOS.aspx");
                 }
                 else
                 {
-                    Response.Redirect("DemoPOS.aspx");
+                    Response.Redirect("~/acm/DemoPOS.aspx");
                 }
 
             }

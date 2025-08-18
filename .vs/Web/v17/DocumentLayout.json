@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\reportmst\\helpdeskreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\reportmst\\helpdeskreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\reportmst\\helpdeskreport.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\reportmst\\helpdeskreport.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +31,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Login.aspx.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Login.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\ACM\\Login.aspx.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Login.aspx.cs",
-              "RelativeToolTip": "Web\\ACM\\Login.aspx.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAkwDoAAABDAAAAAAAAAA==",
+              "Title": "DayReport.aspx.cs",
+              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ReportMst\\DayReport.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\ReportMst\\DayReport.aspx.cs",
+              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ReportMst\\DayReport.aspx.cs",
+              "RelativeToolTip": "Web\\ReportMst\\DayReport.aspx.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAAAOwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T15:54:00.177Z",
+              "WhenOpened": "2025-08-18T12:45:12.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HelpDeskReport.aspx",
+              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ReportMst\\HelpDeskReport.aspx",
+              "RelativeDocumentMoniker": "Web\\ReportMst\\HelpDeskReport.aspx",
+              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ReportMst\\HelpDeskReport.aspx",
+              "RelativeToolTip": "Web\\ReportMst\\HelpDeskReport.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-08-18T12:43:42.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HelpDeskReport.aspx.cs",
+              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ReportMst\\HelpDeskReport.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\ReportMst\\HelpDeskReport.aspx.cs",
+              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ReportMst\\HelpDeskReport.aspx.cs",
+              "RelativeToolTip": "Web\\ReportMst\\HelpDeskReport.aspx.cs",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAkwPsAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T12:43:16.377Z",
               "EditorCaption": ""
             }
           ]

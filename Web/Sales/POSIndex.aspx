@@ -392,11 +392,11 @@
                         <a href="../POS/ClientTiketR.aspx?status=pending">
                             <img src="../Smilies/Smilies/co22.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        <a href="../ReportMst/HelpDeskReport.aspx">
-                           <img src="../Smilies/Smilies/co3.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <img src="../Smilies/Smilies/report.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        <a href="../ReportMst/HelpDeskExcRep.aspx">
-                           <img src="../Smilies/Smilies/com44.png" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <img src="../Smilies/Smilies/report.png" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <a href="../ReportMst/DayReport.aspx">
-                             <img src="../Smilies/Smilies/DR.png" style="height: 95px; width: 99px;" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <img src="../Smilies/Smilies/report.png" style="height: 95px; width: 99px;" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <br />
                             <br />
                             <div class="row">
