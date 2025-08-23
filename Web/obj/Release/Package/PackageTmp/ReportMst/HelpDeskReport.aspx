@@ -1,4 +1,4 @@
-﻿getcomplainname<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpDeskReport.aspx.cs" Inherits="Web.ReportMst.HelpDeskReport" %>
+﻿getFeedbackname<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpDeskReport.aspx.cs" Inherits="Web.ReportMst.HelpDeskReport" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
                         <%-- <asp:Image ID="HealtybarLogo" ImageUrl="assets/global/img/HealthBar.png" runat="server" />--%>
                     </td>
                     <td style="width: 90%;">
-                        <h2 style="text-align: center;">&nbsp;<asp:Label ID="lblHead" Style="margin-left: -100px;" Font-Bold="true" runat="server" Text="Complaint Report"></asp:Label>
+                        <h2 style="text-align: center;">&nbsp;<asp:Label ID="lblHead" Style="margin-left: -100px;" Font-Bold="true" runat="server" Text="Feedback Report"></asp:Label>
                         </h2>
                     </td>
                 </tr>
@@ -186,9 +186,9 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="color: ">
-                                                                <asp:Label runat="server" ID="Label20" class="col-md-4 control-label" Text="From Complain Type"></asp:Label>
+                                                                <asp:Label runat="server" ID="Label20" class="col-md-4 control-label" Text="From Feedback Type"></asp:Label>
                                                                 <div class="col-md-8">
-                                                                    <asp:DropDownList ID="drpcomplaintypefrom" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="drpFeedbackypefrom" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
 
 
                                                                 </div>
@@ -196,10 +196,10 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="color: ">
-                                                                <asp:Label runat="server" ID="Label21" class="col-md-4 control-label" Text="To Complain Type"></asp:Label>
+                                                                <asp:Label runat="server" ID="Label21" class="col-md-4 control-label" Text="To Feedback Type"></asp:Label>
 
                                                                 <div class="col-md-8">
-                                                                    <asp:DropDownList ID="drpcomplaintypeto" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="drpFeedbackypeto" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
 
                                                                 </div>
                                                             </div>
@@ -251,10 +251,10 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="color: ">
-                                                                <asp:Label runat="server" ID="Label29" class="col-md-4 control-label" Text="Text in complain"></asp:Label>
+                                                                <asp:Label runat="server" ID="Label29" class="col-md-4 control-label" Text="Text in Feedback"></asp:Label>
 
                                                                 <div class="col-md-8">
-                                                                    <asp:TextBox ID="txtcomplain" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtFeedback" runat="server" CssClass="form-control"></asp:TextBox>
 
                                                                 </div>
                                                             </div>
@@ -291,7 +291,7 @@
                                                     <div class="portlet-title">
                                                         <div class="caption font-dark">
                                                             <i class="icon-settings font-dark"></i>
-                                                            <span class="caption-subject bold uppercase">Complaint Report</span>
+                                                            <span class="caption-subject bold uppercase">Feedback Report</span>
                                                         </div>
                                                         <div class="tools"></div>
                                                     </div>
@@ -299,8 +299,8 @@
                                                         <table class="table table-striped table-bordered table-hover" id="sample_1">
                                                             <thead>
                                                                 <tr>
-                                                                    <th style="text-align: center; width: 1000px;"><strong>Complain Number</strong></th>
-                                                                    <th style="text-align: center; width: 1000px;""><strong>Complain Type</strong></th>
+                                                                    <th style="text-align: center; width: 1000px;"><strong>Feedback Number</strong></th>
+                                                                    <th style="text-align: center; width: 1000px;""><strong>Feedback Type</strong></th>
                                                                     <th style="text-align: center; width: 1000px;""><strong>Date</strong></th>
                                                                     <th style="text-align: center; width: 1000px;""><strong>D e p a r t m e n t</strong></th>
                                                                     <th style="text-align: center; width: 1000px;""><strong>C a t e g o r y</strong></th>
@@ -311,19 +311,19 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <asp:ListView ID="ListViewComplaint" runat="server" OnItemCommand="ListViewComplaint_ItemCommand">
+                                                                <asp:ListView ID="ListViewFeedback" runat="server" OnItemCommand="ListViewFeedback_ItemCommand">
                                                                     <ItemTemplate>
                                                                         <tr>
                                                                             <td style="text-align: center;">
                                                                                 <%--http://cfb.royalehayat.com//--%>
                                                                                 <a  href='<%# "http://cfb.royalehayat.com//POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>'  target="_blank">
-                                                                                    <asp:Label ID="lblcomno" runat="server" Text='<%# Eval("ComplaintNumber")%>'></asp:Label>
+                                                                                    <asp:Label ID="lblcomno" runat="server" Text='<%# Eval("FeedbackNumber")%>'></asp:Label>
                                                                                       <asp:Label ID="lblm7" Visible="false" runat="server" Text='<%# Eval("MasterCODE") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                             <td style="text-align: center;">
                                                                                  <a  href='<%# "http://cfb.royalehayat.com//POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>'  target="_blank">
-                                                                                    <asp:Label ID="lblcomplain" runat="server" Text='<%#getcomplainname(Convert .ToInt32( Eval("complain")))%>'></asp:Label>
+                                                                                    <asp:Label ID="lblFeedback" runat="server" Text='<%#getFeedbackname(Convert .ToInt32( Eval("Feedback")))%>'></asp:Label>
                                                                                     <asp:Label ID="lblm1" Visible="false" runat="server" Text='<%# Eval("MasterCODE") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>

@@ -97,7 +97,7 @@ namespace Web.ACM
                         }
 
                         String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Login").REFNAME1;
-                        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
 
 
                         GlobleClass.EncryptionHelpers.WriteLog("Login:", evantname, "USER_MST", Userid.ToString(), 0, auditno);
@@ -513,7 +513,7 @@ namespace Web.ACM
                 Response.Cookies.Add(aCookie);
 
                 String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Login").REFNAME1;
-                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
 
 
                 GlobleClass.EncryptionHelpers.WriteLog("Login:", evantname, "USER_MST", objLiggingAction.USER_ID.ToString(), 0, auditno);
