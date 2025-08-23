@@ -38,7 +38,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1>Complaint for <asp:Label ID="lblUser" runat="server"></asp:Label>
+                <h1>Feedback for <asp:Label ID="lblUser" runat="server"></asp:Label>
                     <small></small>
                 </h1>
                 <br />
@@ -302,12 +302,12 @@
                                                         <div class="form-group">
                                                             <div class="col-md-4" style="margin-bottom: 15px;">
                                                                 <b>
-                                                                    <asp:Label ID="Label5" runat="server" Text="Complain Type :"></asp:Label></b>
+                                                                    <asp:Label ID="Label5" runat="server" Text="Feedback Type :"></asp:Label></b>
                                                             </div>
                                                             <div class="col-md-8" style="margin-bottom: 15px;">
-                                                                <asp:DropDownList ID="drpComplainType" runat="server" class="form-control select2me" AutoPostBack="true">
+                                                                <asp:DropDownList ID="drpFeedbackype" runat="server" class="form-control select2me" AutoPostBack="true">
                                                                 </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpComplainType" ErrorMessage="Complain Type required" InitialValue="0"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpFeedbackype" ErrorMessage="Feedback Type required" InitialValue="0"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -454,7 +454,7 @@
                                                         <div class="form-group">
                                                             <div class="col-md-4" style="margin-bottom: 15px;">
                                                                 <b>
-                                                                    <asp:Label ID="Label3" runat="server" Text=" Complain Details : "></asp:Label></b>
+                                                                    <asp:Label ID="Label3" runat="server" Text=" Feedback Details : "></asp:Label></b>
                                                             </div>
                                                             <div class="col-md-8" style="margin-bottom: 15px;">
                                                                 <asp:TextBox ID="txtMessage" runat="server" placeholder="Wirte The Messaging" class="form-control todo-taskbody-taskdesc" Rows="4" TextMode="MultiLine"></asp:TextBox>

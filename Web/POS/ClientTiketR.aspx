@@ -116,7 +116,7 @@
         <div class="page-head">
             <!-- BEGIN PAGE TITLE -->
             <div class="page-title">
-                <h1>Complaint for
+                <h1>Feedback for
                     <asp:Label ID="lblUser" runat="server"></asp:Label>
                     <small></small>
                 </h1>
@@ -219,7 +219,7 @@
                                 </div>
                                 <br />
                                 <div class="todo-project-list">
-                                    <asp:TextBox ID="txtcnose" runat="server" CssClass="form-control" placeholder="Complaint No"></asp:TextBox>
+                                    <asp:TextBox ID="txtcnose" runat="server" CssClass="form-control" placeholder="Feedback No"></asp:TextBox>
                                 </div>
                                 <br />
                                 <asp:Button ID="btnoksearch" runat="server" Text="Search" CssClass="btn btn-info" OnClick="btnoksearch_Click" />
@@ -237,8 +237,8 @@
                                 <div class="todo-project-list">
                                     <asp:Label ID="lblticket" runat="server" Text="Master Code" Visible="false"></asp:Label>
                                     <asp:TextBox ID="txtticket" runat="server" Visible="false"></asp:TextBox>
-                                    <asp:Label ID="lblcomplain" runat="server" Text="Complaint Number" Visible="false"></asp:Label>
-                                    <asp:TextBox ID="txtcomplain" runat="server" Visible="false"></asp:TextBox>
+                                    <asp:Label ID="lblFeedback" runat="server" Text="Feedback Number" Visible="false"></asp:Label>
+                                    <asp:TextBox ID="txtFeedback" runat="server" Visible="false"></asp:TextBox>
                                     <asp:Button ID="btnsearch" runat="server" Text="Search" Visible="false" OnClick="btnsearch_Click" />
                                 </div>
                             </div>
@@ -348,7 +348,7 @@
                                                 <asp:Panel ID="pnlTicki" runat="server">
                                                <ul class="nav nav-tabs" id="profileTabs" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="education-tab" data-bs-toggle="tab" data-bs-target="#education" type="button" role="tab">COMPLAINT DATA</button>
+                                                    <button class="nav-link active" id="education-tab" data-bs-toggle="tab" data-bs-target="#education" type="button" role="tab">Feedback DATA</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="experience-tab" data-bs-toggle="tab" data-bs-target="#experience" type="button" role="tab">PERSONAL DATA</button>
@@ -362,7 +362,7 @@
 
                                                     <div class="form">
   <div class="tab-content p-3 border border-top-0" id="profileTabsContent">
-    <!-- complaint Tab -->
+    <!-- Feedback Tab -->
     <div class="tab-pane  show active" id="education" role="tabpanel" aria-labelledby="education-tab">
        
          <div class="form-group">
@@ -378,10 +378,10 @@
   <div class="form-group">
       <div class="col-md-4" style="margin-bottom: 15px;">
           <b>
-              <asp:Label ID="Label7" runat="server" Text="Complaint No.:"></asp:Label></b>
+              <asp:Label ID="Label7" runat="server" Text="Feedback No.:"></asp:Label></b>
       </div>
       <div class="col-md-4" style="margin-bottom: 15px;">
-          <asp:Label ID="lblcomplainno" runat="server"></asp:Label>
+          <asp:Label ID="lblFeedbackno" runat="server"></asp:Label>
       </div>
       <div class="col-md-2" style="margin-bottom: 15px;">
           <b>
@@ -402,7 +402,7 @@
   <div class="form-group">
       <div class="col-md-4" style="margin-bottom: 15px;">
           <b>
-              <asp:Label ID="lbldate" runat="server" Text="Complaint Date:"></asp:Label></b>
+              <asp:Label ID="lbldate" runat="server" Text="Feedback Date:"></asp:Label></b>
       </div>
       <div class="col-md-8" style="margin-bottom: 15px;">
           <asp:TextBox ID="txtdates" runat="server" CssClass="form-control" OnTextChanged="txtdates_TextChanged1"></asp:TextBox>
@@ -415,12 +415,12 @@
   <div class="form-group">
       <div class="col-md-4" style="margin-bottom: 15px;">
           <b>
-              <asp:Label ID="Label5" runat="server" Text="Complaint Type :"></asp:Label></b>
+              <asp:Label ID="Label5" runat="server" Text="Feedback Type :"></asp:Label></b>
       </div>
       <div class="col-md-8" style="margin-bottom: 15px;">
-          <asp:DropDownList ID="drpComplainType" runat="server" class="form-control select2me" AutoPostBack="true">
+          <asp:DropDownList ID="drpFeedbackype" runat="server" class="form-control select2me" AutoPostBack="true">
           </asp:DropDownList>
-          <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpComplainType" ErrorMessage="Complain Type required" InitialValue="0"></asp:RequiredFieldValidator>
+          <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpFeedbackype" ErrorMessage="Feedback Type required" InitialValue="0"></asp:RequiredFieldValidator>
       </div>
   </div>
 
@@ -519,7 +519,7 @@
                                                        <div class="form-group">
      <div class="col-md-4" style="margin-bottom: 15px;">
          <b>
-             <asp:Label ID="Label3" runat="server" Text=" Complaint Details : "></asp:Label></b>
+             <asp:Label ID="Label3" runat="server" Text=" Feedback Details : "></asp:Label></b>
      </div>
      <div class="col-md-8" style="margin-bottom: 15px;">
          <asp:TextBox ID="txtMessage" runat="server" placeholder="Wirte The Messaging" MaxLength="1000"  TextMode="MultiLine" class="form-control" Rows="4"></asp:TextBox>
@@ -632,8 +632,8 @@
                                                             <asp:Label ID="lblinfoDepartment" runat="server" Text=""></asp:Label></span>
                                                         <span class="todo-tasklist-badge badge" style="margin-bottom: 3px;">Physical Location-->
                                                             <asp:Label ID="lblinfoLocation" runat="server" Text=""></asp:Label></span>
-                                                        <span class="todo-tasklist-badge badge" style="margin-bottom: 3px;">Complain-->
-                                                            <asp:Label ID="lblinfocomplaintype" runat="server" Text=""></asp:Label></span>
+                                                        <span class="todo-tasklist-badge badge" style="margin-bottom: 3px;">Feedback-->
+                                                            <asp:Label ID="lblinfoFeedbackype" runat="server" Text=""></asp:Label></span>
                                                     </div>
                                                 </asp:Panel>
                                                 <asp:Panel ID="panChat" runat="server" DefaultButton="btnSubmit">

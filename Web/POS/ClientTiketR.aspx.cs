@@ -30,7 +30,7 @@ namespace Web.POS
 
             if (!IsPostBack)
             {
-                complainyear();
+                Feedbackyear();
 
                 string rj = "";
                 chklog.Checked = true;
@@ -94,7 +94,7 @@ namespace Web.POS
                 return;
 
                 BindData();
-                complainyear();
+                Feedbackyear();
                 panChat.Visible = false;
                 pnlinfo.Visible = false;
                 //pnlGroupChat.Visible = false;
@@ -128,7 +128,7 @@ namespace Web.POS
             }
         }
 
-        public void complainyear()
+        public void Feedbackyear()
         {
             int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
             string sql = " select distinct Year(UploadDate) as showyear  from CRMMainActivities where TenentID =" + TID + " and UploadDate is not NULL order by showyear desc";
@@ -187,11 +187,11 @@ namespace Web.POS
             drpusermt.DataBind();
             drpusermt.Items.Insert(0, new ListItem("-- Select --", "0"));
 
-            drpComplainType.DataSource = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.ACTIVE == "Y").OrderBy(p => p.REFNAME1);
-            drpComplainType.DataTextField = "REFNAME1";
-            drpComplainType.DataValueField = "REFID";
-            drpComplainType.DataBind();
-            drpComplainType.Items.Insert(0, new ListItem("-- Select --", "0"));
+            drpFeedbackype.DataSource = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback" && p.ACTIVE == "Y").OrderBy(p => p.REFNAME1);
+            drpFeedbackype.DataTextField = "REFNAME1";
+            drpFeedbackype.DataValueField = "REFID";
+            drpFeedbackype.DataBind();
+            drpFeedbackype.Items.Insert(0, new ListItem("-- Select --", "0"));
 
             DrpPhysicalLocation.DataSource = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.ACTIVE == "Y").OrderBy(p => p.REFNAME1);
             DrpPhysicalLocation.DataTextField = "REFNAME1";
@@ -274,8 +274,8 @@ namespace Web.POS
 
                 string SQOCommads = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                    " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                   " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                   " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "' and MyStatus ='Pending' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%' and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                   " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                   " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "' and MyStatus ='Pending' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%' and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
                 SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                 SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -292,12 +292,12 @@ namespace Web.POS
                 leblANew1.Text = Pending.ToString();
 
 
-                // int Completed = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Completed" && p.ACTIVITYE == "helpdesk" && p.UploadDate.Value.Year == dt && p.ReportedBy == rb && p.Patient_Name == patientname  && p.ComplaintNumber == comno).Count();
+                // int Completed = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Completed" && p.ACTIVITYE == "helpdesk" && p.UploadDate.Value.Year == dt && p.ReportedBy == rb && p.Patient_Name == patientname  && p.FeedbackNumber == comno).Count();
 
                 string SQOCommadin = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                  " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                 " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='InProgress' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                 " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='InProgress' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
                 SqlCommand CMDin = new SqlCommand(SQOCommadin, con);
                 SqlDataAdapter ADBin = new SqlDataAdapter(CMDin);
@@ -315,8 +315,8 @@ namespace Web.POS
 
                 string SQOCommadi = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                  " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                 " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='Closed' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                 " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='Closed' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
                 SqlCommand CMDi = new SqlCommand(SQOCommadi, con);
                 SqlDataAdapter ADBi = new SqlDataAdapter(CMDi);
@@ -331,7 +331,7 @@ namespace Web.POS
 
                 int Closed = counti;
                 leblANew4.Text = Closed.ToString();
-                int Delivered = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Delivered" && p.ACTIVITYE == "helpdesk" && p.UploadDate.Value.Year == dt && p.ReportedBy == rb && p.Patient_Name == patientname && p.ComplaintNumber == comno).Count();
+                int Delivered = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Delivered" && p.ACTIVITYE == "helpdesk" && p.UploadDate.Value.Year == dt && p.ReportedBy == rb && p.Patient_Name == patientname && p.FeedbackNumber == comno).Count();
                 //  leblANew5.Text = Delivered.ToString();
 
 
@@ -357,8 +357,8 @@ namespace Web.POS
 
                 string SQOCommads = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                    " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                   " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                   " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='Pending' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%' and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                   " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                   " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='Pending' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%' and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
                 SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                 SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -375,12 +375,12 @@ namespace Web.POS
                 leblANew1.Text = Pending.ToString();
 
 
-                //  int Completed = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Completed" && p.ACTIVITYE == "helpdesk" && p.UploadDate.Value.Year == dt && p.ReportedBy == rb && p.Patient_Name == patientname && p.MRN == mrn && p.ComplaintNumber == comno).Count();
+                //  int Completed = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Completed" && p.ACTIVITYE == "helpdesk" && p.UploadDate.Value.Year == dt && p.ReportedBy == rb && p.Patient_Name == patientname && p.MRN == mrn && p.FeedbackNumber == comno).Count();
 
                 string SQOCommadin = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                  " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                 " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='InProgress' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                 " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='InProgress' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
                 SqlCommand CMDin = new SqlCommand(SQOCommadin, con);
                 SqlDataAdapter ADBin = new SqlDataAdapter(CMDin);
@@ -398,8 +398,8 @@ namespace Web.POS
 
                 string SQOCommadi = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                  " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                 " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='Closed' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                 " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                 " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='Closed' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
                 SqlCommand CMDi = new SqlCommand(SQOCommadi, con);
                 SqlDataAdapter ADBi = new SqlDataAdapter(CMDi);
@@ -490,11 +490,11 @@ namespace Web.POS
 
                 string SQOCommads = " select MasterCODE as 'MasterCODE' , FoloEmp as 'FoloEmp' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                     " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                    " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber' , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                    " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + status + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                    " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber' , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                    " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + status + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
-                //+ " and TickComplainType BETWEEN '" + drpcomplaintypefrom.SelectedValue + "' AND  ' " + drpcomplaintypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
-                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtcomplain.Text + "%' ";
+                //+ " and TickFeedbackype BETWEEN '" + drpFeedbackypefrom.SelectedValue + "' AND  ' " + drpFeedbackypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
+                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtFeedback.Text + "%' ";
 
                 SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                 SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -512,11 +512,11 @@ namespace Web.POS
                 int dt = Convert.ToInt32(drpyears.SelectedValue);
                 string SQOCommads = " select MasterCODE as 'MasterCODE' ,  FoloEmp as 'FoloEmp' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                     " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                    " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' ,UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                    " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + status + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                    " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' ,UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                    " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + status + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
-                //+ " and TickComplainType BETWEEN '" + drpcomplaintypefrom.SelectedValue + "' AND  ' " + drpcomplaintypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
-                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtcomplain.Text + "%' ";
+                //+ " and TickFeedbackype BETWEEN '" + drpFeedbackypefrom.SelectedValue + "' AND  ' " + drpFeedbackypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
+                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtFeedback.Text + "%' ";
 
                 SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                 SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -624,11 +624,11 @@ namespace Web.POS
                 int dt = Convert.ToInt32(drpyears.SelectedValue);
                 string SQOCommads = " select MasterCODE as 'MasterCODE' ,  FoloEmp as 'FoloEmp' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                     " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                    " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName', UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                    " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + StatusAll + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                    " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName', UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                    " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + StatusAll + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
-                //+ " and TickComplainType BETWEEN '" + drpcomplaintypefrom.SelectedValue + "' AND  ' " + drpcomplaintypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
-                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtcomplain.Text + "%' ";
+                //+ " and TickFeedbackype BETWEEN '" + drpFeedbackypefrom.SelectedValue + "' AND  ' " + drpFeedbackypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
+                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtFeedback.Text + "%' ";
 
                 SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                 SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -650,11 +650,11 @@ namespace Web.POS
                 int dt = Convert.ToInt32(drpyears.SelectedValue);
                 string SQOCommads = " select MasterCODE as 'MasterCODE' ,  FoloEmp as 'FoloEmp' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                    " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                                   " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                                   " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + StatusAll + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                                   " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                                   " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "'and MyStatus ='" + StatusAll + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%'  and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
-                //+ " and TickComplainType BETWEEN '" + drpcomplaintypefrom.SelectedValue + "' AND  ' " + drpcomplaintypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
-                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtcomplain.Text + "%' ";
+                //+ " and TickFeedbackype BETWEEN '" + drpFeedbackypefrom.SelectedValue + "' AND  ' " + drpFeedbackypeto.SelectedValue + " ' and UploadDate BETWEEN  '" + stdate + "' AND '" + etdate + "' and TickDepartmentID BETWEEN '" + drpdepartmentfrom.SelectedValue + "' AND  '" + drpdepartmentto.SelectedValue + "' " +
+                //" and TickCatID BETWEEN '" + drpcategoryfrom.SelectedValue + "' AND  ' " + drpcategoryto.SelectedValue + " ' and TickSubCatID BETWEEN '" + drpscategoryfrom.SelectedValue + "' AND  '" + drpscategoryto.SelectedValue + "' and ReportedBy BETWEEN '" + drpreportfrom.SelectedValue + "' AND  '" + drpreportto.SelectedValue + " ' and Remarks like '%" + txtFeedback.Text + "%' ";
 
                 SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                 SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -692,24 +692,24 @@ namespace Web.POS
             PnlBindTick.Visible = true;
             pnlTicki.Visible = false;
         }
-        public void maxComplainID()
+        public void maxFeedbackID()
         {
             int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-            string maxid = "select max(MyID)+1 AS NEWComplaintNumber from CRMMainActivities where tenentid=10 and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
+            string maxid = "select max(MyID)+1 AS NEWFeedbackNumber from CRMMainActivities where tenentid=10 and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
             DataTable dt = DataCon.GetDataTable(maxid);
             DateTime startdate = DateTime.Now;
             string stdate = startdate.ToString("yyyyMM");
             string num = dt.Rows[0].ItemArray[0].ToString();
-            lblcomplainno.Text = stdate + num;
-            string cno = lblcomplainno.Text;
-            ViewState["ComplaintNumber"] = cno;
+            lblFeedbackno.Text = stdate + num;
+            string cno = lblFeedbackno.Text;
+            ViewState["FeedbackNumber"] = cno;
 
         }
         protected void linkAllNew_Click(object sender, EventArgs e)
         {
             // Database.CRMMainActivity objCRMMainActivities = new Database.CRMMainActivity();
             clen();
-            maxComplainID();
+            maxFeedbackID();
             getStatusAll("NEW");
             pnlTicki.Visible = true;
             panChat.Visible = false;
@@ -800,7 +800,7 @@ namespace Web.POS
             chkirno.Checked = false;
             txtComent.Text = txtMessage.Text = txtSubject.Text = "";
             //  drpActivityName.SelectedValue = "Help Desk";
-            drpComplainType.SelectedIndex = 0;
+            drpFeedbackype.SelectedIndex = 0;
             DrpPhysicalLocation.SelectedIndex = 0;
             DrpTCatSubCate.SelectedIndex = 0;
             //DrpSubCat.SelectedIndex = 0;
@@ -825,7 +825,7 @@ namespace Web.POS
                 objCRMMainActivities.TenentID = TID;
                 objCRMMainActivities.COMPID = 1;
                 objCRMMainActivities.Prefix = "ONL";
-                string maxid = "select ISNull(max(MyID),0)+1 AS NEWComplaintNumber from CRMMainActivities where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
+                string maxid = "select ISNull(max(MyID),0)+1 AS NEWFeedbackNumber from CRMMainActivities where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
                 DataTable dt = DataCon.GetDataTable(maxid);
                 DateTime startdate = DateTime.Now;
                 string stdate = startdate.ToString("yyyyMM");
@@ -864,7 +864,7 @@ namespace Web.POS
                 objCRMMainActivities.MyStatus = "Pending";
                 objCRMMainActivities.UploadDate = DateTime.Now;//Convert.ToDateTime(txtdates.Text);                
                 objCRMMainActivities.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMMainActivities.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMMainActivities.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMMainActivities.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMMainActivities.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -895,14 +895,14 @@ namespace Web.POS
                 objCRMMainActivities.StaffInvoice = true;
                 objCRMMainActivities.IRDone = true;
                 objCRMMainActivities.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMMainActivities.ComplaintNumber = master.ToString();
+                objCRMMainActivities.FeedbackNumber = master.ToString();
                 objCRMMainActivities.Contact = txtcontact.Text;
                 objCRMMainActivities.IncidentReport = true;
                 String url = "insert new record in CRMMainActivity with " + "TenentID = " + TID + "COMPID = 1  MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = " + objCRMMainActivities.MasterCODE + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
-                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
                 String tablename = "CRMMainActivity";
                 string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
                 objCRMMainActivities.CRUP_ID = Classes.GlobleClass.EncryptionHelpers.WriteLog(url, evantname, tablename, loginUserId.ToString(), 0, auditno);
                 DB.CRMMainActivities.AddObject(objCRMMainActivities);
                 DB.SaveChanges();
@@ -973,7 +973,7 @@ namespace Web.POS
                 objCRMActivity.FromColumn = DB.CRMActivities.Count() > 0 ? Convert.ToInt32(DB.CRMActivities.Max(p => p.FromColumn) + 1) : 1;
                 objCRMActivity.Version = strUName;
                 objCRMActivity.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMActivity.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMActivity.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMActivity.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMActivity.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -986,17 +986,17 @@ namespace Web.POS
                 objCRMActivity.StaffInvoice = true;
                 objCRMActivity.IRDone = true;
                 objCRMActivity.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMActivity.ComplaintNumber = master.ToString();
+                objCRMActivity.FeedbackNumber = master.ToString();
                 objCRMActivity.Contact = txtcontact.Text;
                 objCRMActivity.IncidentReport = true;
                 objCRMActivity.aspcomment = 2101401;
                 objCRMActivity.CRUP_ID = objCRMMainActivities.CRUP_ID;
                 String url2 = "insert new record in CRMActivity with " + "TenentID = " + TID + "COMPID =1 MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE =" + objCRMMainActivities.MasterCODE + "LocationID = 1" + "ActivityID = " + activityID + "Prefix = ONL ";
-                String evantname2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                String evantname2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
 
                 int seriea = DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == objCRMMainActivities.CRUP_ID).Count() > 0 ? Convert.ToInt32(DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == objCRMMainActivities.CRUP_ID).Max(p => p.MySerial) + 1) : 1;
                 string loginUserId2 = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                int auditno2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
                 int crup = Convert.ToInt32(objCRMMainActivities.CRUP_ID);
                 Database.tblAudit objaudits = new Database.tblAudit();
                 objaudits.TENANT_ID = TID;
@@ -1028,7 +1028,7 @@ namespace Web.POS
                 string Function = "openModalsmall2('" + msg + "');";
                 ClientScript.RegisterStartupScript(this.GetType(), "Tickit Number", "openModalsmall2();", true);
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", Function, true);
-                maxComplainID();
+                maxFeedbackID();
                 //}
             }
 
@@ -1053,7 +1053,7 @@ namespace Web.POS
                     objCRMMainActivities.MyStatus = Mystatus;
                     objCRMMainActivities.UploadDate = DateTime.Now; //Convert.ToDateTime(txtdates.Text); ;
                     objCRMMainActivities.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                    objCRMMainActivities.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                    objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                     objCRMMainActivities.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                     objCRMMainActivities.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                     objCRMMainActivities.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -1086,7 +1086,7 @@ namespace Web.POS
                     }
                     objCRMMainActivities.IRDone = true;
                     objCRMMainActivities.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                    objCRMMainActivities.ComplaintNumber = objCRMMainActivities.MasterCODE.ToString();
+                    objCRMMainActivities.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                     objCRMMainActivities.Contact = txtcontact.Text;
                     objCRMMainActivities.IncidentReport = true;
                     objCRMMainActivities.FoloEmp = Convert.ToInt32(drpfoloemp.SelectedValue);
@@ -1106,7 +1106,7 @@ namespace Web.POS
                     }
 
                     String url = "Update record in CRMMainActivity with " + "TenentID = " + TID + "COMPID =1  MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = " + objCRMMainActivities.MasterCODE + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
-                    String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME3;
+                    String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME3;
                     String tablename = "CRMMainActivity";
                     string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
                     int crupID = Convert.ToInt32(objCRMMainActivities.CRUP_ID);
@@ -1142,7 +1142,7 @@ namespace Web.POS
                     objCRMActivity.Version = strUName;
                     objCRMActivity.UrlRedirct = Request.Url.AbsolutePath;
                     objCRMActivity.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                    objCRMActivity.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                    objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                     objCRMActivity.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                     objCRMActivity.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                     objCRMActivity.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -1155,7 +1155,7 @@ namespace Web.POS
                     objCRMActivity.StaffInvoice = true;
                     objCRMActivity.IRDone = true;
                     objCRMActivity.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                    objCRMActivity.ComplaintNumber = objCRMMainActivities.MasterCODE.ToString();
+                    objCRMActivity.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                     objCRMActivity.Contact = txtcontact.Text;
                     objCRMActivity.IncidentReport = true;
                     objCRMActivity.REMINDERNOTE = "Pending";
@@ -1182,7 +1182,7 @@ namespace Web.POS
                     string msg = "Your Ticket Number Is " + TickitNo;
                     string Function = "openModalsmall2('" + msg + "');";
                     ClientScript.RegisterStartupScript(this.GetType(), "Tickit Number", "openModalsmall2();", true);
-                    maxComplainID();
+                    maxFeedbackID();
 
                 }
             }
@@ -1253,7 +1253,7 @@ namespace Web.POS
                     int MainSubRefNo = 0;
                     string URL = Request.Url.AbsolutePath;
                     int HelpDept = 0;
-                    int HelpComplain = 0;
+                    int HelpFeedback = 0;
                     int HelpLocation = 0;
                     int HelpCatID = 0;
                     int HelpSubID = 0;
@@ -1285,7 +1285,7 @@ namespace Web.POS
                     //{
                     //    Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.MasterCODE == tiki);
                     //    HelpDept = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
-                    //    HelpComplain = Convert.ToInt32(objCRMMainActivities.TickComplainType);
+                    //    HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
                     //    HelpLocation = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
                     //    HelpCatID = Convert.ToInt32(objCRMMainActivities.TickCatID);
                     //    HelpSubID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
@@ -1304,7 +1304,7 @@ namespace Web.POS
                     //int crupID = Convert.ToInt16(DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == MsterCose).CRUP_ID);
 
                     //int CRUP_ID = crupID;
-                    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, UploadDate, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL, HelpDept, HelpComplain, HelpLocation, HelpCatID, HelpSubID, "", aspcomment1, investigation);
+                    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, UploadDate, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL, HelpDept, HelpFeedback, HelpLocation, HelpCatID, HelpSubID, "", aspcomment1, investigation);
 
                     Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki);
                     objCRMMainActivities.MyStatus = drpStatus.SelectedValue;
@@ -1381,11 +1381,11 @@ namespace Web.POS
                     ltsRemainderNotes.DataBind();
 
                     String url = "insert new record in CRMActivity with " + "TenentID = " + TID + "COMPID =1 MASTERCODE = " + MasterCODE + "LinkMasterCODE =" + LinkMasterCODE + "LocationID = 1" + "ActivityID = " + ActivityID + "Prefix = ONL ";
-                    String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                    String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
 
                     int seriea = DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == CRUP_ID).Count() > 0 ? Convert.ToInt32(DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == CRUP_ID).Max(p => p.MySerial) + 1) : 1;
                     string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                    int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                    int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
 
                     Database.tblAudit objaudits = new Database.tblAudit();
                     objaudits.TENANT_ID = TID;
@@ -1454,7 +1454,7 @@ namespace Web.POS
                     string URL = Request.Url.AbsolutePath;
                     int CRUP_ID = Convert.ToInt16(DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki).CRUP_ID);
                     int HelpDept = 0;
-                    int HelpComplain = 0;
+                    int HelpFeedback = 0;
                     int HelpLocation = 0;
                     int HelpCatID = 0;
                     int HelpSubID = 0;
@@ -1485,7 +1485,7 @@ namespace Web.POS
                     {
                         Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki);
                         HelpDept = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
-                        HelpComplain = Convert.ToInt32(objCRMMainActivities.TickComplainType);
+                        HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
                         HelpLocation = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
                         HelpCatID = Convert.ToInt32(objCRMMainActivities.TickCatID);
                         HelpSubID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
@@ -1566,11 +1566,11 @@ namespace Web.POS
                         DB.SaveChanges();
 
                         String url = "insert new record in CRMActivity with " + "TenentID = " + TID + "COMPID =1 MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE =" + objCRMMainActivities.MasterCODE + "LocationID = 1" + "ActivityID = " + ActivityID + "Prefix = ONL ";
-                        String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                        String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
 
                         int seriea = DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == CRUP_ID).Count() > 0 ? Convert.ToInt32(DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == CRUP_ID).Max(p => p.MySerial) + 1) : 1;
                         string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
 
                         Database.tblAudit objaudits = new Database.tblAudit();
                         objaudits.TENANT_ID = TID;
@@ -1610,7 +1610,7 @@ namespace Web.POS
                     //int crupID =Convert.ToInt16( DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == MsterCose).CRUP_ID);
 
                     //int CRUP_ID = crupID;
-                    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, UploadDate, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL, HelpDept, HelpComplain, HelpLocation, HelpCatID, HelpSubID, "", aspcomment1, investigation);
+                    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, UploadDate, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL, HelpDept, HelpFeedback, HelpLocation, HelpCatID, HelpSubID, "", aspcomment1, investigation);
 
                     string Status = drpStatus.SelectedValue;
                     getStatusAll(Status);
@@ -1713,10 +1713,10 @@ namespace Web.POS
                 DB.SaveChanges();
 
                 String url = "insert new record in CRMMainActivity with " + "TenentID = " + TID + "MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = " + objCRMMainActivities.MasterCODE + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
-                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
                 String tablename = "CRMMainActivity";
                 string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
                 objCRMMainActivities.CRUP_ID = Classes.GlobleClass.EncryptionHelpers.WriteLog(url, evantname, tablename, loginUserId.ToString(), 0, auditno);
 
 
@@ -1778,7 +1778,7 @@ namespace Web.POS
                     drpStatus.Enabled = true;
                     lblinfoDepartment.Visible = true;
                     lblinfoLocation.Visible = true;
-                    lblinfocomplaintype.Visible = true;
+                    lblinfoFeedbackype.Visible = true;
 
                     btnSubmit.Visible = true;
                     LinkButton btnclick123 = (LinkButton)e.Item.FindControl("btnclick123");
@@ -1811,10 +1811,10 @@ namespace Web.POS
                         Database.CRMMainActivity infoObj = DB.CRMMainActivities.Single(p => p.TenentID == alternetTENENT && p.MyID == myidd && p.ACTIVITYE == "helpdesk" && p.MasterCODE == Tikitno);
                         int did = Convert.ToInt32(infoObj.TickDepartmentID);
                         int LOCid = Convert.ToInt32(infoObj.TickPhysicalLocation);
-                        int compid = Convert.ToInt32(infoObj.TickComplainType);
+                        int compid = Convert.ToInt32(infoObj.TickFeedbackype);
                         lblinfoDepartment.Text = DB.DeptITSupers.Where(p => p.TenentID == TID && p.DeptID == did).Count() == 1 ? DB.DeptITSupers.Single(p => p.TenentID == TID && p.DeptID == did).DeptName : "Not Found";
                         lblinfoLocation.Text = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.REFID == LOCid).Count() == 1 ? DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.REFID == LOCid).REFNAME1 : "Not Found";
-                        lblinfocomplaintype.Text = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == compid).Count() == 1 ? DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == compid).REFNAME1 : "Not Found";
+                        lblinfoFeedbackype.Text = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback" && p.REFID == compid).Count() == 1 ? DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback" && p.REFID == compid).REFNAME1 : "Not Found";
                         pnlinfo.Visible = true;
                     }
                     else
@@ -1845,11 +1845,11 @@ namespace Web.POS
                 //DrpSubCat.SelectedIndex = 0;
 
                 Database.CRMMainActivity objICCATEGORY = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID);
-                if (objICCATEGORY.ComplaintNumber != "" && objICCATEGORY.ComplaintNumber != null)
-                    lblcomplainno.Text = objICCATEGORY.ComplaintNumber;
-                if (objICCATEGORY.TickComplainType != 0 && objICCATEGORY.TickComplainType != null)
+                if (objICCATEGORY.FeedbackNumber != "" && objICCATEGORY.FeedbackNumber != null)
+                    lblFeedbackno.Text = objICCATEGORY.FeedbackNumber;
+                if (objICCATEGORY.TickFeedbackype != 0 && objICCATEGORY.TickFeedbackype != null)
                 {
-                    drpComplainType.SelectedValue = objICCATEGORY.TickComplainType.ToString();
+                    drpFeedbackype.SelectedValue = objICCATEGORY.TickFeedbackype.ToString();
                 }
                 if (objICCATEGORY.TickDepartmentID != 0 && objICCATEGORY.TickDepartmentID != null)
                 {
@@ -2133,7 +2133,7 @@ namespace Web.POS
             drpStatus.Enabled = false;
             lblinfoDepartment.Visible = false;
             lblinfoLocation.Visible = false;
-            lblinfocomplaintype.Visible = false;
+            lblinfoFeedbackype.Visible = false;
             // Response.Redirect("/CRM/HelpDeskSchedule.aspx");
 
             //string strUName = ((USER_MST)Session["USER"]).FIRST_NAME;
@@ -2183,7 +2183,7 @@ namespace Web.POS
             //    int MainSubRefNo = 0;
             //    string URL = Request.Url.AbsolutePath;
             //    int HelpDept = 0;
-            //    int HelpComplain = 0;
+            //    int HelpFeedback = 0;
             //    int HelpLocation = 0;
             //    int HelpCatID = 0;
             //    int HelpSubID = 0;
@@ -2191,11 +2191,11 @@ namespace Web.POS
 
             //    Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki);
             //    HelpDept = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
-            //    HelpComplain = Convert.ToInt32(objCRMMainActivities.TickComplainType);
+            //    HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
             //    HelpLocation = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
             //    HelpCatID = Convert.ToInt32(objCRMMainActivities.TickCatID);
             //    HelpSubID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
-            //    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL,HelpDept, HelpComplain, HelpLocation, HelpCatID, HelpSubID);
+            //    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL,HelpDept, HelpFeedback, HelpLocation, HelpCatID, HelpSubID);
 
 
             //    objCRMMainActivities.MyStatus = drpStatus.SelectedValue;
@@ -2248,7 +2248,7 @@ namespace Web.POS
             //    string URL = Request.Url.AbsolutePath;
 
             //    int HelpDept = 0;
-            //    int HelpComplain = 0;
+            //    int HelpFeedback = 0;
             //    int HelpLocation = 0;
             //    int HelpCatID = 0;
             //    int HelpSubID = 0;
@@ -2256,11 +2256,11 @@ namespace Web.POS
 
             //    Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki);
             //    HelpDept = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
-            //    HelpComplain = Convert.ToInt32(objCRMMainActivities.TickComplainType);
+            //    HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
             //    HelpLocation = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
             //    HelpCatID = Convert.ToInt32(objCRMMainActivities.TickCatID);
             //    HelpSubID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
-            //    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL, HelpDept, HelpComplain, HelpLocation, HelpCatID, HelpSubID);
+            //    Classes.ACMClass.InsertACM_CRMActivities(TenentID, COMPID, MasterCODE, LinkMasterCODE, MenuID, ActivityID, ACTIVITYTYPE, REFTYPE, REFSUBTYPE, PerfReferenceNo, EarlierRefNo, NextUser, NextRefNo, AMIGLOBAL, MYPERSONNEL, ActivityPerform, REMINDERNOTE, ESTCOST, GROUPCODE, USERCODEENTERED, UPDTTIME, USERNAME, CRUP_ID, InitialDate, DeadLineDate, RouteID, Version1, Type, MyStatus, GroupBy, DocID, ToColumn, FromColumn, Active, MainSubRefNo, URL, HelpDept, HelpFeedback, HelpLocation, HelpCatID, HelpSubID);
 
             //    objCRMMainActivities.MyStatus = drpStatus.SelectedValue;
             //    objCRMMainActivities.USERNAME = strUName;
@@ -2558,25 +2558,25 @@ namespace Web.POS
         {
             lblticket.Visible = true;
             txtticket.Visible = true;
-            lblcomplain.Visible = true;
-            txtcomplain.Visible = true;
+            lblFeedback.Visible = true;
+            txtFeedback.Visible = true;
             btnsearch.Visible = true;
         }
 
         protected void btnsearch_Click(object sender, EventArgs e)
         {
             int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-            if (txtticket.Text != null && txtticket.Text != "" && txtcomplain.Text != null && txtcomplain.Text != "")
+            if (txtticket.Text != null && txtticket.Text != "" && txtFeedback.Text != null && txtFeedback.Text != "")
             {
 
                 int mastercode = Convert.ToInt32(txtticket.Text);
-                string complain = txtcomplain.Text;
-                if (DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == mastercode && p.ComplaintNumber == complain).Count() > 0)
+                string Feedback = txtFeedback.Text;
+                if (DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == mastercode && p.FeedbackNumber == Feedback).Count() > 0)
                 {
                     int dt2 = Convert.ToInt32(drpyears.SelectedValue);
-                    ltsRemainderNotes.DataSource = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Closed" && p.MasterCODE == mastercode && p.ComplaintNumber == complain && p.UploadDate.Value.Year == dt2).OrderByDescending(p => p.UploadDate);
+                    ltsRemainderNotes.DataSource = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MyStatus == "Closed" && p.MasterCODE == mastercode && p.FeedbackNumber == Feedback && p.UploadDate.Value.Year == dt2).OrderByDescending(p => p.UploadDate);
                     ltsRemainderNotes.DataBind();
-                    if (DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == mastercode && p.ComplaintNumber == complain).Count() > 0)
+                    if (DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == mastercode && p.FeedbackNumber == Feedback).Count() > 0)
                     {
                         int ID = mastercode;
                         string reminder = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID).REMINDERNOTE;
@@ -2589,7 +2589,7 @@ namespace Web.POS
                         //DB.SaveChanges();
                         ToalCoun();
                         //String url = "Update record in CRMMainActivity with " + "TenentID = " + TID + "MASTERCODE = " + ID + "LinkMasterCODE = 1" + "LocationID = 1";
-                        //String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME3;
+                        //String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME3;
                         //String tablename = "CRMMainActivity";
                         //string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
                         //int crupID = Convert.ToInt32(objcrm.CRUP_ID);
@@ -2630,7 +2630,7 @@ namespace Web.POS
             drpStatus.Enabled = false;
             lblinfoDepartment.Visible = false;
             lblinfoLocation.Visible = false;
-            lblinfocomplaintype.Visible = false;
+            lblinfoFeedbackype.Visible = false;
 
         }
 
@@ -2660,11 +2660,11 @@ namespace Web.POS
                 String evantname = "delete";
                 String tablename = "ICSUBCATEGORY";
                 string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
                 Classes.GlobleClass.EncryptionHelpers.WriteLog(url, evantname, tablename, loginUserId.ToString(), 0, auditno);
 
-                lblcomplainno.Text = "";
-                drpComplainType.SelectedIndex = 0;
+                lblFeedbackno.Text = "";
+                drpFeedbackype.SelectedIndex = 0;
                 drpSDepartment.SelectedIndex = 0;
                 chklog.Checked = false;
                 DrpPhysicalLocation.SelectedIndex = 0;
@@ -2864,7 +2864,7 @@ namespace Web.POS
             drpStatus.Enabled = false;
             lblinfoDepartment.Visible = false;
             lblinfoLocation.Visible = false;
-            lblinfocomplaintype.Visible = false;
+            lblinfoFeedbackype.Visible = false;
         }
 
         protected void drpusers_SelectedIndexChanged(object sender, EventArgs e)
@@ -2902,8 +2902,8 @@ namespace Web.POS
             }
             string SQOCommads = " select MasterCODE as 'MasterCODE' , Remarks as Remarks , USERCODE as 'USERCODE' , MyID as 'MyID' , ACTIVITYE as 'ACTIVITYE' , Patient_Name as 'Patient_Name', MRN as 'MRN', " +
                                " TenentID as 'TenentID' , REMINDERNOTE as 'REMINDERNOTE' , MyStatus as 'MyStatus' , UploadDate  as 'UploadDate', " +
-                               " ReportedBy as 'ReportedBy' ,  ComplaintNumber as 'ComplaintNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
-                               " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%' and ComplaintNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
+                               " ReportedBy as 'ReportedBy' ,  FeedbackNumber as 'FeedbackNumber'  , UseReciepeName as 'UseReciepeName' , UseReciepeID as 'UseReciepeID' from CRMMainActivities " +
+                               " where TenentID = " + TID + " and year(UploadDate) = '" + dt + "' and ACTIVITYE = 'helpdesk'  and Patient_Name like '" + txtpatientnames.Text + "%' and FeedbackNumber like '" + txtcnose.Text + "%' " + paramStr + " ORDER BY  UploadDate desc";
 
             SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
             SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -2940,7 +2940,7 @@ namespace Web.POS
                 objCRMMainActivities.MyStatus = "Closed";
                 objCRMMainActivities.UploadDate = DateTime.Now; //Convert.ToDateTime(txtdates.Text); ;
                 objCRMMainActivities.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMMainActivities.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMMainActivities.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMMainActivities.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMMainActivities.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -2965,7 +2965,7 @@ namespace Web.POS
                 objCRMMainActivities.StaffInvoice = true;
                 objCRMMainActivities.IRDone = true;
                 objCRMMainActivities.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMMainActivities.ComplaintNumber = objCRMMainActivities.MasterCODE.ToString();
+                objCRMMainActivities.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                 objCRMMainActivities.Contact = txtcontact.Text;
                 objCRMMainActivities.IncidentReport = true;
                 objCRMMainActivities.FoloEmp = Convert.ToInt32(drpfoloemp.SelectedValue);
@@ -2983,7 +2983,7 @@ namespace Web.POS
                 }
 
                 String url = "Update record in CRMMainActivity with " + "TenentID = " + TID + "COMPID =1  MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = " + objCRMMainActivities.MasterCODE + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
-                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME3;
+                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME3;
                 String tablename = "CRMMainActivity";
                 string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
                 int crupID = Convert.ToInt32(objCRMMainActivities.CRUP_ID);
@@ -3014,7 +3014,7 @@ namespace Web.POS
                 objCRMActivity.Version = strUName;
                 objCRMActivity.UrlRedirct = Request.Url.AbsolutePath;
                 objCRMActivity.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMActivity.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMActivity.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMActivity.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMActivity.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -3026,7 +3026,7 @@ namespace Web.POS
                 objCRMActivity.StaffInvoice = true;
                 objCRMActivity.IRDone = true;
                 objCRMActivity.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMActivity.ComplaintNumber = objCRMMainActivities.MasterCODE.ToString();
+                objCRMActivity.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                 objCRMActivity.Contact = txtcontact.Text;
                 objCRMActivity.IncidentReport = true;
                 objCRMActivity.REMINDERNOTE = "Pending";
@@ -3121,9 +3121,9 @@ namespace Web.POS
                 string msg = "Your Ticket Number Is " + TickitNo;
                 string Function = "openModalsmall2('" + msg + "');";
                 ClientScript.RegisterStartupScript(this.GetType(), "Tickit Number", "openModalsmall2();", true);
-                maxComplainID();
+                maxFeedbackID();
             }
-            else if (ViewState["ComplaintNumber"] != null)
+            else if (ViewState["FeedbackNumber"] != null)
             {
                 string strUName = ((USER_MST)Session["USER"]).LOGIN_ID;
                 int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -3134,7 +3134,7 @@ namespace Web.POS
                 objCRMMainActivities.TenentID = TID;
                 objCRMMainActivities.COMPID = 1;
                 objCRMMainActivities.Prefix = "ONL";
-                string maxid = "select ISNull(max(MyID),0)+1 AS NEWComplaintNumber from CRMMainActivities where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
+                string maxid = "select ISNull(max(MyID),0)+1 AS NEWFeedbackNumber from CRMMainActivities where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
                 DataTable dt = DataCon.GetDataTable(maxid);
                 DateTime startdate = DateTime.Now;
                 string stdate = startdate.ToString("yyyyMM");
@@ -3167,7 +3167,7 @@ namespace Web.POS
                 objCRMMainActivities.MyStatus = "Pending";
                 objCRMMainActivities.UploadDate = DateTime.Now;//Convert.ToDateTime(txtdates.Text);                
                 objCRMMainActivities.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMMainActivities.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMMainActivities.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMMainActivities.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMMainActivities.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -3197,15 +3197,15 @@ namespace Web.POS
                 objCRMMainActivities.StaffInvoice = true;
                 objCRMMainActivities.IRDone = true;
                 objCRMMainActivities.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMMainActivities.ComplaintNumber = master.ToString();
+                objCRMMainActivities.FeedbackNumber = master.ToString();
                 objCRMMainActivities.Contact = txtcontact.Text;
                 objCRMMainActivities.IncidentReport = true;
                 objCRMMainActivities.subject = txtSubject.Text;
                 String url = "insert new record in CRMMainActivity with " + "TenentID = " + TID + "COMPID = 1  MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = " + objCRMMainActivities.MasterCODE + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
-                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
                 String tablename = "CRMMainActivity";
                 string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
                 objCRMMainActivities.CRUP_ID = Classes.GlobleClass.EncryptionHelpers.WriteLog(url, evantname, tablename, loginUserId.ToString(), 0, auditno); ;
                 DB.CRMMainActivities.AddObject(objCRMMainActivities);
                 DB.SaveChanges();
@@ -3266,7 +3266,7 @@ namespace Web.POS
                 objCRMActivity.FromColumn = DB.CRMActivities.Count() > 0 ? Convert.ToInt32(DB.CRMActivities.Max(p => p.FromColumn) + 1) : 1;
                 objCRMActivity.Version = strUName;
                 objCRMActivity.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMActivity.TickComplainType = Convert.ToInt32(drpComplainType.SelectedValue);
+                objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMActivity.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMActivity.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMActivity.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -3278,18 +3278,18 @@ namespace Web.POS
                 objCRMActivity.StaffInvoice = true;
                 objCRMActivity.IRDone = true;
                 objCRMActivity.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMActivity.ComplaintNumber = master.ToString();
+                objCRMActivity.FeedbackNumber = master.ToString();
                 objCRMActivity.Contact = txtcontact.Text;
                 objCRMActivity.IncidentReport = true;
                 objCRMActivity.aspcomment = 2101401;
                 objCRMActivity.CRUP_ID = objCRMMainActivities.CRUP_ID;
                 objCRMActivity.Subject = txtSubject.Text;
                 String url2 = "insert new record in CRMActivity with " + "TenentID = " + TID + "COMPID =1 MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE =" + objCRMMainActivities.MasterCODE + "LocationID = 1" + "ActivityID = " + activityID + "Prefix = ONL ";
-                String evantname2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+                String evantname2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFNAME1;
 
                 int seriea = DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == objCRMMainActivities.CRUP_ID).Count() > 0 ? Convert.ToInt32(DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == objCRMMainActivities.CRUP_ID).Max(p => p.MySerial) + 1) : 1;
                 string loginUserId2 = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
-                int auditno2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno2 = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
                 int crup = Convert.ToInt32(objCRMMainActivities.CRUP_ID);
                 Database.tblAudit objaudits = new Database.tblAudit();
                 objaudits.TENANT_ID = TID;
@@ -3398,7 +3398,7 @@ namespace Web.POS
                 string Function = "openModalsmall2('" + msg + "');";
                 ClientScript.RegisterStartupScript(this.GetType(), "Tickit Number", "openModalsmall2();", true);
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", Function, true);
-                maxComplainID();
+                maxFeedbackID();
             }
         }
 
@@ -3410,7 +3410,7 @@ namespace Web.POS
         protected void Button1_Click(object sender, EventArgs e)
         {
             clen();
-            maxComplainID();
+            maxFeedbackID();
             getStatusAll("NEW");
             pnlTicki.Visible = true;
             panChat.Visible = false;
@@ -3430,7 +3430,7 @@ namespace Web.POS
             int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
             int uid1 = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
             string UID = ((USER_MST)Session["USER"]).LOGIN_ID.ToString();
-            int tiki = Convert.ToInt32(lblcomplainno.Text);
+            int tiki = Convert.ToInt32(lblFeedbackno.Text);
             string Type = "Ticket";
             string Url = "../CRM/AttachmentMst.aspx?AttachID=" + tiki + "&DID=" + Type + "&RefNo=" + 11058 + "&UID=" + uid1;//+ "&recodInsert=" + tiki;
             string s = "window.open('" + Url + "', 'popup_window', 'width=950,height=225,left=100,top=100,resizable=yes');";

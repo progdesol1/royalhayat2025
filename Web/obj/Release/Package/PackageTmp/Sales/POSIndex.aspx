@@ -200,11 +200,11 @@
                                         </div>
 
                                         <div class="desc">
-                                            <%--<asp:Label ID="TODAYDate" runat="server" Text=""></asp:Label>--%>&nbsp;Complaint
+                                            <%--<asp:Label ID="TODAYDate" runat="server" Text=""></asp:Label>--%>&nbsp;Feedbackt
                                         </div>
                                     </div>
                                     <div class="more">
-                                        Today's Complains <i class="m-icon-swapright m-icon-white"></i>
+                                        Today's Feedbacks <i class="m-icon-swapright m-icon-white"></i>
                                     </div>
                                 </div>
                             </a>
@@ -223,11 +223,11 @@
                                             <asp:Label ID="lblbox2KD" runat="server" Text="0"></asp:Label>
                                         </div>
                                         <div class="desc">
-                                            <asp:Label ID="Thismonth" runat="server" Text=""></asp:Label>&nbsp;Complaint
+                                            <asp:Label ID="Thismonth" runat="server" Text=""></asp:Label>&nbsp;Feedbackt
                                         </div>
                                     </div>
                                     <div class="more">
-                                        Today Closed Complains  <i class="m-icon-swapright m-icon-white"></i>
+                                        Today Closed Feedbacks  <i class="m-icon-swapright m-icon-white"></i>
                                     </div>
                                 </div>
                             </a>
@@ -245,11 +245,11 @@
                                         <asp:Label ID="lblbox3KD" runat="server" Text="0"></asp:Label>
                                     </div>
                                     <div class="desc">
-                                        <asp:Label ID="ThisYear" runat="server" Text=""></asp:Label>&nbsp;Complaint
+                                        <asp:Label ID="ThisYear" runat="server" Text=""></asp:Label>&nbsp;Feedbackt
                                     </div>
                                 </div>
                                 <div class="more">
-                                    This Week's Open Complains <i class="m-icon-swapright m-icon-white"></i>
+                                    This Week's Open Feedbacks <i class="m-icon-swapright m-icon-white"></i>
                                 </div>
                             </div>
                         </div>
@@ -267,11 +267,11 @@
                                     </div>
                                     <div class="desc">
                                         <asp:Label ID="ThisYearReturn" runat="server"></asp:Label>
-                                        &nbsp;Complaint 
+                                        &nbsp;Feedbackt 
                                     </div>
                                 </div>
                                 <div class="more">
-                                    This Week Closed Complains <i class="m-icon-swapright m-icon-white"></i>
+                                    This Week Closed Feedbacks <i class="m-icon-swapright m-icon-white"></i>
                                 </div>
                             </div>
                         </div>
@@ -292,11 +292,11 @@
                                         <asp:Label ID="lblbox5KD" runat="server" Text="0"></asp:Label>
                                     </div>
                                     <div class="desc">
-                                        <asp:Label ID="TodayDatePurchase" runat="server" Text=""></asp:Label>&nbsp;Complaint
+                                        <asp:Label ID="TodayDatePurchase" runat="server" Text=""></asp:Label>&nbsp;Feedbackt
                                     </div>
                                 </div>
                                 <div class="more">
-                                    This Month's Open Complains <i class="m-icon-swapright m-icon-white"></i>
+                                    This Month's Open Feedbacks <i class="m-icon-swapright m-icon-white"></i>
                                 </div>
                             </div>
                         </div>
@@ -311,11 +311,11 @@
                                         <asp:Label ID="lblbox6KD" runat="server" Text="0"></asp:Label>
                                     </div>
                                     <div class="desc">
-                                        <asp:Label ID="ThisMonthPurchase" runat="server" Text=""></asp:Label>&nbsp;Complaint
+                                        <asp:Label ID="ThisMonthPurchase" runat="server" Text=""></asp:Label>&nbsp;Feedbackt
                                     </div>
                                 </div>
                                 <div class="more">
-                                    This Month Closed Complains  <i class="m-icon-swapright m-icon-white"></i>
+                                    This Month Closed Feedbacks  <i class="m-icon-swapright m-icon-white"></i>
                                 </div>
                             </div>
                         </div>
@@ -330,11 +330,11 @@
                                         <asp:Label ID="lblbox7KD" runat="server" Text="0"></asp:Label>
                                     </div>
                                     <div class="desc">
-                                        <asp:Label ID="ThisYearPurchase" runat="server" Text=""></asp:Label>&nbsp;Complaint
+                                        <asp:Label ID="ThisYearPurchase" runat="server" Text=""></asp:Label>&nbsp;Feedbackt
                                     </div>
                                 </div>
                                 <div class="more">
-                                    This Year's Open Complains  <i class="m-icon-swapright m-icon-white"></i>
+                                    This Year's Open Feedbacks  <i class="m-icon-swapright m-icon-white"></i>
                                 </div>
                             </div>
                         </div>
@@ -349,11 +349,11 @@
                                         <asp:Label ID="lblbox8KD" runat="server" Text="0"></asp:Label>
                                     </div>
                                     <div class="desc">
-                                        <%--<asp:Label ID="ThisYearPurchaseReturn" runat="server" Text=""></asp:Label>--%>&nbsp;Complaint
+                                        <%--<asp:Label ID="ThisYearPurchaseReturn" runat="server" Text=""></asp:Label>--%>&nbsp;Feedbackt
                                     </div>
                                 </div>
                                 <div class="more">
-                                    This Year Closed Complains <i class="m-icon-swapright m-icon-white"></i>
+                                    This Year Closed Feedbacks <i class="m-icon-swapright m-icon-white"></i>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +432,7 @@
                                                         </a>
                                                     </li>
                                                     <li style="background-color: #FEF2BA;">
-                                                        <a href="#overview_1" data-toggle="tab">Complaint No </a>
+                                                        <a href="#overview_1" data-toggle="tab">Feedbackt No </a>
                                                     </li>
                                                     <%-- <li style="background-color: #F2DEDE;">
                                                 <a href="#overview_2" data-toggle="tab">Most Viewed </a>
@@ -459,11 +459,11 @@
                                                                         </th>
                                                                         <th>Contact
                                                                         </th>
-                                                                        <th>Complaint No
+                                                                        <th>Feedbackt No
                                                                         </th>
                                                                         <th>Total Time
                                                                         </th>
-                                                                        <th>Complain Details
+                                                                        <th>Feedback Details
                                                                         </th>
 
                                                                     </tr>
@@ -485,11 +485,11 @@
                                                                                 </td>
                                                                         <td>
                                                                             <a href="../POS/ClientTiketR.aspx">
-                                                                                <asp:Label ID="Label7" runat="server" Text='<%# Eval("TickComplainType") %>'></asp:Label></a></td>
+                                                                                <asp:Label ID="Label7" runat="server" Text='<%# Eval("TickFeedbackType") %>'></asp:Label></a></td>
                                                                                 </td>
                                                                                  <td>
                                                                                      <a href="../POS/ClientTiketR.aspx">
-                                                                                         <asp:Label ID="Label4" runat="server" Text='<%# Eval("TickComplainType") %>'></asp:Label></a></td>
+                                                                                         <asp:Label ID="Label4" runat="server" Text='<%# Eval("TickFeedbackType") %>'></asp:Label></a></td>
                                                                                 </td>
                                                                         <td>
                                                                             <a href="../POS/ClientTiketR.aspx">
@@ -510,7 +510,7 @@
 
                                                                 <div class="tools" style="padding-bottom: 10px;">
 
-                                                                    <asp:TextBox ID="txtxcomplaint" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="Complaint Number"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtxFeedbackt" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="Feedbackt Number"></asp:TextBox>
 
 
                                                                     <asp:Button ID="btnsearch2" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnsearch2_Click" />
@@ -524,13 +524,13 @@
                                                                                 <th>Patient Name</th>
                                                                                 <th>MRN No</th>
                                                                                 <th>Contact</th>
-                                                                                <th>Complain No</th>
+                                                                                <th>Feedback No</th>
                                                                                 <th>Total Time</th>
-                                                                                <th>Complain Details</th>
+                                                                                <th>Feedback Details</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <asp:Repeater ID="listmaxcomplaintno" runat="server" OnItemCommand="listmaxcomplaintno_ItemCommand">
+                                                                            <asp:Repeater ID="listmaxFeedbacktno" runat="server" OnItemCommand="listmaxFeedbacktno_ItemCommand">
                                                                                 <ItemTemplate>
                                                                                     <tr>
                                                                                         <td>
@@ -553,7 +553,7 @@
                                                                                         </td>
                                                                                         <td>
                                                                                             <asp:LinkButton ID="lnkcom" runat="server" CommandName="lnkcom" CommandArgument='<%# Eval("MasterCODE")%>'>
-                                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
+                                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("FeedbacktNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
                                                                                             </asp:LinkButton>
                                                                                         </td>
                                                                                         <td>
@@ -601,9 +601,9 @@
                                                                                 <th>Patient Name</th>
                                                                                 <th>MRN No</th>
                                                                                 <th>Contact</th>
-                                                                                <th>Complain No</th>
+                                                                                <th>Feedback No</th>
                                                                                 <th>Total Time</th>
-                                                                                <th>Complain Details</th>
+                                                                                <th>Feedback Details</th>
 
                                                                             </tr>
                                                                         </thead>
@@ -630,7 +630,7 @@
                                                                                         </td>
                                                                         <td>
                                                                             <asp:LinkButton ID="lnkcom" runat="server" CommandName="lnkcom" CommandArgument='<%# Eval("MasterCODE")%>'>
-                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
+                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("FeedbacktNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
                                                                             </asp:LinkButton>
                                                                         </td>
                                                                                         <td>
@@ -679,9 +679,9 @@
                                                                         <th>Patient Name</th>
                                                                         <th>MRN No</th>
                                                                         <th>Contact</th>
-                                                                        <th>Complain No</th>
+                                                                        <th>Feedback No</th>
                                                                         <th>Total Time</th>
-                                                                        <th>Complain Details</th>
+                                                                        <th>Feedback Details</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -707,7 +707,7 @@
                                                                                 </td>
                                                                         <td>
                                                                             <asp:LinkButton ID="lnkcom" runat="server" CommandName="lnkcom" CommandArgument='<%# Eval("MasterCODE")%>'>
-                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
+                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("FeedbacktNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
                                                                             </asp:LinkButton>
                                                                         </td>
 
@@ -754,9 +754,9 @@
                                                                                 <th>Patient Name</th>
                                                                                 <th>MRN No</th>
                                                                                 <th>Contact</th>
-                                                                                <th>Complain No</th>
+                                                                                <th>Feedback No</th>
                                                                                 <th>Total Time</th>
-                                                                                <th>Complain Details</th>
+                                                                                <th>Feedback Details</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -782,7 +782,7 @@
                                                                                         </td>
                                                                         <td>
                                                                             <asp:LinkButton ID="lnkcom" runat="server" CommandName="lnkcom" CommandArgument='<%# Eval("MasterCODE")%>'>
-                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
+                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("FeedbacktNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
                                                                             </asp:LinkButton>
                                                                         </td>
                                                                                         <td>
@@ -831,9 +831,9 @@
                                                                                 <th>Patient Name</th>
                                                                                 <th>MRN No</th>
                                                                                 <th>Contact</th>
-                                                                                <th>Complain No</th>
+                                                                                <th>Feedback No</th>
                                                                                 <th>Total Time</th>
-                                                                                <th>Complain Details</th>
+                                                                                <th>Feedback Details</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -859,7 +859,7 @@
                                                                                         </td>
                                                                         <td>
                                                                             <asp:LinkButton ID="lnkcom" runat="server" CommandName="lnkcom" CommandArgument='<%# Eval("MasterCODE")%>'>
-                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
+                                                                                <asp:Label ID="lblcn" runat="server" Text='<%# Eval("FeedbacktNumber") %>'></asp:Label><asp:Label ID="lblm4" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
                                                                             </asp:LinkButton>
                                                                         </td>
                                                                                         <td>

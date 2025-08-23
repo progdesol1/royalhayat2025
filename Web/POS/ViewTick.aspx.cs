@@ -40,12 +40,12 @@ namespace Web.POS
                     listcrupId.DataSource = DB.tblAudits.Where(p => p.TENANT_ID == TID && p.CRUP_ID == crupID);
                     listcrupId.DataBind();                    
                     Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == Master); objCRMMainActivities.RouteID = 1;
-                    txtcomplaint.Text = objCRMMainActivities.ComplaintNumber;
+                    txtFeedback.Text = objCRMMainActivities.FeedbackNumber;
                     txtdates.Text =  objCRMMainActivities.UploadDate.ToString();
                     int deptID =Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
                     string name = DB.DeptITSupers.Single(p => p.TenentID == TID && p.DeptID == deptID).DeptName;
-                    int comptype = Convert.ToInt32(objCRMMainActivities.TickComplainType);
-                    string comname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == comptype).REFNAME1;
+                    int comptype = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
+                    string comname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback" && p.REFID == comptype).REFNAME1;
                     int phID = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
                     string phname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.REFID == phID).REFNAME1;
                     int catID = Convert.ToInt32(objCRMMainActivities.TickCatID);
@@ -63,13 +63,13 @@ namespace Web.POS
                     txtcate.Enabled = false;
                     txtsubcat.Enabled = false;
                     txtsubcat.Enabled = false;
-                    txtcomplaint.Enabled = false;
+                    txtFeedback.Enabled = false;
                     txtmessage.Enabled = false;
-                    txtcomplaintype.Enabled = false;
+                    txtFeedbackype.Enabled = false;
                     txtreport.Enabled = false;
                     txtdepartment.Text = name;
                     txtreport.Text = username;
-                    txtcomplaintype.Text = comname;
+                    txtFeedbackype.Text = comname;
                     txtlocation.Text = phname;
                     txtpatientname.Text = objCRMMainActivities.Patient_Name;
                     txtMRN.Text = objCRMMainActivities.MRN;
@@ -78,8 +78,8 @@ namespace Web.POS
                     txtsubcat.Text = subcatname;
                     txtreport.Text = username;
                     txtmessage.Text = des;
-                     //Complaint 1234567 View Only Dated dd-mmm-yyyy MRN #####
-                    lblUser.Text = "View Only Complaint " + objCRMMainActivities.ComplaintNumber + " Dated = " + txtdates.Text + " MRN " + objCRMMainActivities.MRN;
+                     //Feedback 1234567 View Only Dated dd-mmm-yyyy MRN #####
+                    lblUser.Text = "View Only Feedback " + objCRMMainActivities.FeedbackNumber + " Dated = " + txtdates.Text + " MRN " + objCRMMainActivities.MRN;
                 }
             }
         }
