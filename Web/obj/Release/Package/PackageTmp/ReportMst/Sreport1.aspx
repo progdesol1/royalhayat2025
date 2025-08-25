@@ -89,7 +89,7 @@
                                                         <table class="table table-striped table-bordered table-hover" id="sample_1">
                                                             <thead>
                                                                 <tr>
-                                                                    <th style="text-align: center"><strong>Complaint No</strong></th>
+                                                                    <th style="text-align: center"><strong>Feedback No</strong></th>
                                                                     <th style="text-align: center"><strong>Reference</strong></th>
                                                                     <th style="text-align: center"><strong>Created By</strong></th>
                                                                     <th style="text-align: center"><strong>Action</strong></th>
@@ -107,65 +107,65 @@
                                                                     <ItemTemplate>
                                                                         <tr>
                                                                             <td style="text-align: center;">
-                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>' target="_blank">
-                                                                                    <asp:Label ID="lblcomplain" runat="server" Text='<%# Eval("ComplaintNumber")%>'></asp:Label>
-                                                                                    <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>' target="_blank">
+                                                                                    <asp:Label ID="lblFeedback" runat="server" Text='<%# Eval("FeedbackNumber")%>'></asp:Label>
+                                                                                    <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                          
                                                                             <td style="text-align: center;">
-                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>' target="_blank">
+                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>' target="_blank">
                                                                                     <asp:Label ID="lbltickdk" runat="server" Text='<%#Eval("Reference")%>'></asp:Label>
-                                                                                    <asp:Label ID="lblID2" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="lblID2" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                             <td style="text-align: center;">
-                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>' target="_blank">
+                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>' target="_blank">
                                                                                     <asp:Label ID="lbltickcat" runat="server" Text='<%#Eval("CreatedBy")%>'></asp:Label>
-                                                                                    <asp:Label ID="lblID3" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="lblID3" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                          
                                                                             <td style="text-align: center;">
-                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>'  target="_blank">
+                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>'  target="_blank">
                                                                                     <asp:Label ID="lblstatus" runat="server" Text='<%# Eval("Action")%>'></asp:Label>
-                                                                                    <asp:Label ID="lblID5" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="lblID5" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                               <td style="text-align: center;">
-                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>'  target="_blank">
+                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>'  target="_blank">
                                                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Status")%>'></asp:Label>
-                                                                                    <asp:Label ID="Label8" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="Label8" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                               </td>
                                                                               <td style="text-align: center;">
-                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>'  target="_blank">
+                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>'  target="_blank">
                                                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("Patient")%>'></asp:Label>
-                                                                                    <asp:Label ID="Label10" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="Label10" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                               </td>
                                                                                <td style="text-align: center;">
-                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>' target="_blank">
+                                                                                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>' target="_blank">
                                                                                     <asp:Label ID="lblmrn" runat="server" Text='<%# Eval("MRN")%>'></asp:Label>
-                                                                                    <asp:Label ID="lblID1" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="lblID1" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                                </td>
                                                                               <td style="text-align: center;">
-                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>'  target="_blank">
+                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>'  target="_blank">
                                                                                     <asp:Label ID="Label12" runat="server" Text='<%# Eval("ReportedBy")%>'></asp:Label>                                                                               
-                                                                                    <asp:Label ID="Label13" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="Label13" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                               </td>
                                                                              <td style="text-align: center;">
-                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>'  target="_blank">
+                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>'  target="_blank">
                                                                                     <asp:Label ID="Label15" runat="server" Text='<%# Eval("Dept")%>'></asp:Label>
-                                                                                    <asp:Label ID="Label24" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="Label24" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                              <td style="text-align: center;">
-                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>'  target="_blank">
+                                                                               <a  href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("FeedbackNumber")%>'  target="_blank">
                                                                                     <asp:Label ID="Label25" runat="server" Text='<%# Eval("ActivityNote")%>'></asp:Label>
-                                                                                    <asp:Label ID="Label27" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                    <asp:Label ID="Label27" Visible="false" runat="server" Text='<%# Eval("FeedbackNumber") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>

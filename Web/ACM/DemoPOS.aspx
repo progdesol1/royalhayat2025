@@ -448,7 +448,7 @@
                                                                     <div class="m-nav-grid__row">
                                                                         <asp:LinkButton ID="LinkButton1" runat="server" CssClass="m-nav-grid__item" OnClick="LinkButton1_Click1">
                                                                             <i class="m-nav-grid__icon flaticon-map"></i>
-                                                                            <span class="m-nav-grid__text">Complain
+                                                                            <span class="m-nav-grid__text">Feedback
                                                                             </span>
                                                                         </asp:LinkButton>
                                                                         <%-- <a href="#" class="m-nav-grid__item">
@@ -458,14 +458,14 @@
                                                                         </a>--%>
                                                                         <a href="../POS/ClientTiketR.aspx?status=pending" class="m-nav-grid__item">
                                                                             <i class="m-nav-grid__icon flaticon-time"></i>
-                                                                            <span class="m-nav-grid__text">Complain Type
+                                                                            <span class="m-nav-grid__text">Feedback Type
                                                                             </span>
                                                                         </a>
                                                                     </div>
                                                                     <div class="m-nav-grid__row">
                                                                         <a href="#../ReportMst/HelpDeskReport.aspx" class="m-nav-grid__item">
                                                                             <i class="m-nav-grid__icon flaticon-folder"></i>
-                                                                            <span class="m-nav-grid__text">Complain Report
+                                                                            <span class="m-nav-grid__text">Feedback Report
                                                                             </span></a>
 
                                                                         <a href="../ReportMst/HelpDeskExcRep.aspx" class="m-nav-grid__item">

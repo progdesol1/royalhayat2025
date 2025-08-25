@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -97,12 +97,12 @@ namespace Web.ACM
                         }
 
                         String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Login").REFNAME1;
-                        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
 
 
                         GlobleClass.EncryptionHelpers.WriteLog("Login:", evantname, "USER_MST", Userid.ToString(), 0, auditno);
-                        Response.Redirect("DemoPrvilage.aspx");
-                        //Response.Redirect("demo.aspx");
+                        Response.Redirect("~/acm/DemoPrvilage.aspx");
+                        //Response.Redirect("~/acm/demo.aspx");
                     }
                 }
                 else
@@ -157,7 +157,7 @@ namespace Web.ACM
                         Session["SiteModuleID"] = Modulid;
                         Session["SAFirstname"] = UserList.FIRST_NAME1.ToString();
 
-                        Response.Redirect("DemoPrvilage.aspx");
+                        Response.Redirect("~/acm/DemoPrvilage.aspx");
                     }
                     if (UserList.USER_ID == Userid && UserList.ACC_LOCK == "S" && UserList.USER_TYPE == 9)
                     {
@@ -167,7 +167,7 @@ namespace Web.ACM
                         Session["Firstname"] = lFirstName.ToString();
                         Session["SiteModuleID"] = Modulid;
                         Session["SAFirstname"] = UserList.FIRST_NAME1.ToString();
-                        Response.Redirect("DemoPrvilage.aspx");
+                        Response.Redirect("~/acm/DemoPrvilage.aspx");
                     }
                     if (UserList.USERDATE.Value >= DateTime.Now.Date  && UserList.ACTIVEUSER == true)
                     {
@@ -310,14 +310,14 @@ namespace Web.ACM
                     Response.Cookies.Add(aCookie);
 
                     //GlobleClass.EncryptionHelpers.WriteLog("Login:", "Login", "USER_MST", objLiggingAction.USER_ID.ToString(), 0);
-                    Classes.GlobleClass.InsertErrorLog1("USER_MST", "Login.aspx", "Login:", "LineNo:0");
+                    Classes.GlobleClass.InsertErrorLog1("USER_MST", "~/acm/Login.aspx", "Login:", "LineNo:0");
                     if (Modulid == 39)
                     {
-                        Response.Redirect("DemoPOS.aspx");
+                        Response.Redirect("~/acm/DemoPOS.aspx");
                     }
                     else
                     {
-                        Response.Redirect("DemoPrvilage.aspx");
+                        Response.Redirect("~/acm/DemoPrvilage.aspx");
                     }
 
                 }
@@ -513,17 +513,17 @@ namespace Web.ACM
                 Response.Cookies.Add(aCookie);
 
                 String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Login").REFNAME1;
-                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+                int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Feedback").REFID;
 
 
                 GlobleClass.EncryptionHelpers.WriteLog("Login:", evantname, "USER_MST", objLiggingAction.USER_ID.ToString(), 0, auditno);
                 if (Modulid == 39)
                 {
-                    Response.Redirect("DemoPOS.aspx");
+                    Response.Redirect("~/acm/DemoPOS.aspx");
                 }
                 else
                 {
-                    Response.Redirect("DemoPOS.aspx");
+                    Response.Redirect("~/acm/DemoPOS.aspx");
                 }
 
             }

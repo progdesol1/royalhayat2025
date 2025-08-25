@@ -30,9 +30,9 @@ namespace Web
                 {
                     DateTime sdt = DateTime.Now.AddDays(-1);
                     DateTime Edt = DateTime.Now.AddDays(0);
-                    string SQOCommads = " select distinct NoticeEmail  from  ViewDeptWiseComplainDailyReport where TenentID = 10 and UploadDate BETWEEN ' " + sdt + " ' AND ' " + Edt  + "' and TickDepartmentID BETWEEN '1' AND '99999'" +
+                    string SQOCommads = " select distinct NoticeEmail  from  ViewDeptWiseFeedbackDailyReport where TenentID = 10 and UploadDate BETWEEN ' " + sdt + " ' AND ' " + Edt  + "' and TickDepartmentID BETWEEN '1' AND '99999'" +
                                "and TickCatID BETWEEN '1' AND '99999' and  TickSubCatID BETWEEN '1' AND '99999'"+
-                                "and TickComplainType BETWEEN '210001' AND '210006'";
+                                "and TickFeedbackType BETWEEN '210001' AND '210006'";
 
                     SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                     SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -54,12 +54,12 @@ namespace Web
                         DateTime Edt = DateTime.Now.AddDays(0);
 
 
-                        string SQOCommads = " select ComplaintNumber as 'ComplaintNumber' , DeptName as 'DeptName' , MasterCODE as 'MasterCODE' , TickComplainType as 'complain' , TickDepartmentID as 'Department' , " +
+                        string SQOCommads = " select FeedbacktNumber as 'FeedbacktNumber' , DeptName as 'DeptName' , MasterCODE as 'MasterCODE' , TickFeedbackType as 'Feedback' , TickDepartmentID as 'Department' , " +
                                 " Patient_Name as Name , MRN as 'MRN' , aspcomment as 'aspcomment' , MyStatus as MyStatus , NoticeEmail as 'NoticeEmail' , TickCatID as 'Category' , " +
                                 " TickSubCatID as 'SubCategory' , ActivityPerform as 'Remarks', ReportedBy as 'ReportedBy' , UploadDate as 'UploadDate' " +
-                                " from ViewDeptWiseComplainDailyReport where TenentID = " + TID + "and UploadDate BETWEEN ' " + sdt + " ' AND ' " + Edt + "' and TickDepartmentID BETWEEN '1' AND '99999'" +
+                                " from ViewDeptWiseFeedbackDailyReport where TenentID = " + TID + "and UploadDate BETWEEN ' " + sdt + " ' AND ' " + Edt + "' and TickDepartmentID BETWEEN '1' AND '99999'" +
                                 "and TickCatID BETWEEN '1' AND '99999' and  TickSubCatID BETWEEN '1' AND '99999'" +
-                                "and TickComplainType BETWEEN '210001' AND '210006' and NoticeEmail='" + Email + "'  order by TickDepartmentID , NoticeEmail";
+                                "and TickFeedbackType BETWEEN '210001' AND '210006' and NoticeEmail='" + Email + "'  order by TickDepartmentID , NoticeEmail";
 
                         SqlCommand CMD2 = new SqlCommand(SQOCommads, con);
                         SqlDataAdapter ADB1 = new SqlDataAdapter(CMD2);
@@ -77,12 +77,12 @@ namespace Web
                         bool Flag = false;
                         int dID = 0;
 
-                        string Tablecontant = "<table border='1' class='table table-bordered table-hover' style='with:100%'><thead><tr> <th style='background-color:skyblue;font-size:large;font-weight:bold;'> Complain No </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> MRN </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Date </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Dept Name </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Action </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Remark </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Status </th></tr></thead><tbody>";
+                        string Tablecontant = "<table border='1' class='table table-bordered table-hover' style='with:100%'><thead><tr> <th style='background-color:skyblue;font-size:large;font-weight:bold;'> Feedback No </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> MRN </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Date </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Dept Name </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Action </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Remark </th><th style='background-color:skyblue;font-size:large;font-weight:bold;'> Status </th></tr></thead><tbody>";
                         //string email = "";
                         for (int i = 0; i < dt1.Rows.Count; i++)
                         {
 
-                            string complainno = dt1.Rows[i]["ComplaintNumber"].ToString();
+                            string Feedbackno = dt1.Rows[i]["FeedbacktNumber"].ToString();
                             int Master = Convert.ToInt32(dt1.Rows[i]["MasterCODE"]);
                             int department = Convert.ToInt32(dt1.Rows[i]["Department"]);
                             DateTime dt = Convert.ToDateTime(dt1.Rows[i]["UploadDate"]);
@@ -95,7 +95,7 @@ namespace Web
 
                             Flag = true;
                             Database.CRMMainActivity obj = DB.CRMMainActivities.Single(p => p.MasterCODE == Master);
-                            Tablecontant += "<tr><td>" + complainno + "</td><td>" + MRN + "</td> <td>" + dt + " </td> <td>" + dname + " </td><td>" + action + " </td> <td>" + remark + " </td><td>" + MyStatus + " </td> </tr>";
+                            Tablecontant += "<tr><td>" + Feedbackno + "</td><td>" + MRN + "</td> <td>" + dt + " </td> <td>" + dname + " </td><td>" + action + " </td> <td>" + remark + " </td><td>" + MyStatus + " </td> </tr>";
 
                         }                       
                         if (Flag)
@@ -104,8 +104,8 @@ namespace Web
 
                               
                                Tablecontant += " </tbody> </table>";
-                               string Ourcontant = " <span style = \"font-family:Arial;font-size:10pt\"> Subject :" + sdt + "<b></b>,<br /><br />This email is reference to the Complain recorded on " + sdt + "," + Edt + " ,  <br /><br />" + Tablecontant + "<br /><br /><br /><br /><br /></span>";
-                               //string Tocontant = " <span style = \"font-family:Arial;font-size:10pt\">Dear Sir, <b></b>,<br /><br />DepartmentManager,<br />This email is reference to the Complain recorded on " + sdt + "," + Edt + ",  <br />" + Tablecontant + "<br /><br /><br /><br />Thanks<br /></span>";
+                               string Ourcontant = " <span style = \"font-family:Arial;font-size:10pt\"> Subject :" + sdt + "<b></b>,<br /><br />This email is reference to the Feedback recorded on " + sdt + "," + Edt + " ,  <br /><br />" + Tablecontant + "<br /><br /><br /><br /><br /></span>";
+                               //string Tocontant = " <span style = \"font-family:Arial;font-size:10pt\">Dear Sir, <b></b>,<br /><br />DepartmentManager,<br />This email is reference to the Feedback recorded on " + sdt + "," + Edt + ",  <br />" + Tablecontant + "<br /><br /><br /><br />Thanks<br /></span>";
 
                                //sendEmail(Tocontant, Email);
                                sendEmail(Ourcontant, Email);
@@ -147,15 +147,15 @@ namespace Web
             smpt.Send(msg);
         }
 
-        public string getcomplainname(int complain)
+        public string getFeedbackname(int Feedback)
         {
-            if (complain == 0 || complain == null)
+            if (Feedback == 0 || Feedback == null)
             {
                 return null;
             }
             else
             {
-                return DB.REFTABLEs.SingleOrDefault(p => p.REFID == complain && p.TenentID == TID && p.REFTYPE == "HelpDesk" && p.REFSUBTYPE == "complain").REFNAME1;
+                return DB.REFTABLEs.SingleOrDefault(p => p.REFID == Feedback && p.TenentID == TID && p.REFTYPE == "HelpDesk" && p.REFSUBTYPE == "Feedback").REFNAME1;
             }
 
         }

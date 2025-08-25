@@ -152,9 +152,9 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="color: ">
-                                                                <asp:Label runat="server" ID="Label20" class="col-md-4 control-label" Text="From Complain Type"></asp:Label>
+                                                                <asp:Label runat="server" ID="Label20" class="col-md-4 control-label" Text="From Feedback Type"></asp:Label>
                                                                 <div class="col-md-8">
-                                                                    <asp:DropDownList ID="drpcomplaintypefrom" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="drpFeedbackypefrom" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
 
 
                                                                 </div>
@@ -162,10 +162,10 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="color: ">
-                                                                <asp:Label runat="server" ID="Label21" class="col-md-4 control-label" Text="To Complain Type"></asp:Label>
+                                                                <asp:Label runat="server" ID="Label21" class="col-md-4 control-label" Text="To Feedback Type"></asp:Label>
 
                                                                 <div class="col-md-8">
-                                                                    <asp:DropDownList ID="drpcomplaintypeto" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
+                                                                    <asp:DropDownList ID="drpFeedbackypeto" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
 
                                                                 </div>
                                                             </div>
@@ -217,11 +217,11 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="color: ">
-                                                                <asp:Label runat="server" ID="Label29" class="col-md-4 control-label" Text="Text in complain"></asp:Label>
+                                                                <asp:Label runat="server" ID="Label29" class="col-md-4 control-label" Text="Text in Feedback"></asp:Label>
 
                                                                 <div class="col-md-8">
-                                                                    <asp:TextBox ID="txtcomplain" runat="server" CssClass="form-control"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtcomplain" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                                                    <asp:TextBox ID="txtFeedback" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtFeedback" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -258,7 +258,7 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase">Complaint Report</span>
+                        <span class="caption-subject bold uppercase">Feedback Report</span>
                     </div>
                     <div class="tools"></div>
                 </div>
@@ -268,7 +268,7 @@
                             <tr>
                                 <th></th>
                                 <th>ACTION</th>
-                                <th style="text-align: center"><strong>Complain</strong></th>
+                                <th style="text-align: center"><strong>Feedback</strong></th>
                                 <th style="text-align: center"><strong>Date</strong></th>
                                 <th style="text-align: center"><strong>Department</strong></th>
                                 <th style="text-align: center"><strong>Category</strong></th>
@@ -290,7 +290,7 @@
                                             <asp:Button ID="lnkpn" runat="server" Text="EDIT" CommandName="lnkpn" CommandArgument='<%# Eval("MasterCODE")%>' /></td>
                                         <td style="text-align: center;">
                                             <asp:LinkButton ID="lnkpn6" runat="server" CommandName="lnkpn6" CommandArgument='<%# Eval("MasterCODE")%>'>
-                                                <asp:Label ID="lblcomplain" runat="server" Text='<%#getcomplainname(Convert .ToInt32( Eval("complain")))%>'></asp:Label>
+                                                <asp:Label ID="lblFeedback" runat="server" Text='<%#getFeedbackname(Convert .ToInt32( Eval("Feedback")))%>'></asp:Label>
                                                 <asp:Label ID="lblm1" Visible="false" runat="server" Text='<%# Eval("MasterCODE") %>'></asp:Label>
                                             </asp:LinkButton>
                                         </td>
