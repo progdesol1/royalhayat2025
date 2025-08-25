@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpDeskExcRep.aspx.cs" Inherits="Web.ReportMst.HelpDeskExcRep" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpDeskExcRep.aspx.cs" Inherits="Web.ReportMst.HelpDeskExcRep" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
@@ -40,7 +40,7 @@
                         <asp:Label ID="Label9" runat="server" Text="From" CssClass="col-md-3"></asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox ID="txtstartdate" runat="server" CssClass="form-control" placeholder="dd/MM/yyyy"></asp:TextBox>
-                            <cc1:CalendarExtender ID="TextBoxemp1" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtstartdate" Format="MM/dd/yyyy"></cc1:CalendarExtender>
+                            <cc1:CalendarExtender ID="TextBoxemp1" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtstartdate" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <asp:Label ID="Label10" runat="server" Text="To" CssClass="col-md-1"></asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox ID="txtenddate" runat="server" CssClass="form-control" placeholder="dd/MM/yyyy"></asp:TextBox>
-                            <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtenddate" Format="MM/dd/yyyy"></cc1:CalendarExtender>
+                            <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtenddate" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                         </div>
                     </div>
                     <asp:Button ID="btnsub" runat="server" CssClass="btn btn-sm btn-circle red" Text="GO" OnClick="btnsub_Click" />

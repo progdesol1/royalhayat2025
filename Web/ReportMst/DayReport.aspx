@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DayReport.aspx.cs" Inherits="Web.ReportMst.DayReport" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DayReport.aspx.cs" Inherits="Web.ReportMst.DayReport" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
@@ -73,8 +73,8 @@
                                                                 <asp:Label runat="server" ID="lblActive1s" class="col-md-4 control-label" Text="Action Start Date"></asp:Label>
 
                                                                 <div class="col-md-8">
-                                                                    <asp:TextBox ID="txtdateFrom" Placeholder="dd/MMM/yyyy" runat="server" CssClass="form-control input-medium"></asp:TextBox>
-                                                                    <cc1:CalendarExtender ID="TextBoxtxtdateFrom_CalendarExtender" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
+                                                                    <asp:TextBox ID="txtdateFrom" Placeholder="dd/MM/yyyy" runat="server" CssClass="form-control input-medium"></asp:TextBox>
+                                                                    <cc1:CalendarExtender ID="TextBoxtxtdateFrom_CalendarExtender" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                                     <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" TargetControlID="txtdateFrom" ValidChars="/" FilterType="Custom, numbers" runat="server" />--%>
                                                                 </div>
                                                             </div>
@@ -85,8 +85,8 @@
                                                             <div class="form-group" style="color: ">
                                                                 <asp:Label runat="server" ID="Label22" class="col-md-4 control-label" Text="Action To Date"></asp:Label>
                                                                 <div class="col-md-8">
-                                                                    <asp:TextBox ID="txtdateTO" Placeholder="dd/MMM/yyyy" runat="server" CssClass="form-control input-medium"></asp:TextBox>
-                                                                    <cc1:CalendarExtender ID="CalendarExtendertxtdateTO" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateTO" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
+                                                                    <asp:TextBox ID="txtdateTO" Placeholder="dd/MM/yyyy" runat="server" CssClass="form-control input-medium"></asp:TextBox>
+                                                                    <cc1:CalendarExtender ID="CalendarExtendertxtdateTO" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateTO" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                                     <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" TargetControlID="txtdateTO" ValidChars="/" FilterType="Custom, numbers" runat="server" />--%>
                                                                 </div>
                                                             </div>

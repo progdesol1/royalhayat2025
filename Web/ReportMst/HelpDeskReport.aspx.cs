@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Configuration;
 using System.Web;
@@ -30,9 +30,9 @@ namespace Web.ReportMst
             if (!IsPostBack)
             {
                 DateTime EDT = DateTime.Now;
-                txtdateTO.Text = EDT.ToString("MM/dd/yyyy");
+                txtdateTO.Text = EDT.ToString("dd/MM/yyyy");
                 DateTime SDT = EDT.AddMonths(-1);
-                txtdateFrom.Text = SDT.ToString("MM/dd/yyyy");
+                txtdateFrom.Text = SDT.ToString("dd/MM/yyyy");
                 bindterminal();
                 Department();
                 subcategoryto();

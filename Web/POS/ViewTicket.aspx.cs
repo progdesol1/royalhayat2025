@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -108,7 +108,7 @@ namespace Web.POS
 
         protected void lnkback_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Sales/POSIndex.aspx");
+            Response.Redirect("/ACM/DemoPOS.aspx");
         }
 
         protected void lnkattach_Click(object sender, EventArgs e)

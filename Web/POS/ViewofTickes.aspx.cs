@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -1296,14 +1296,14 @@ namespace Web.POS
             if (aspcomment.SelectedValue == "4")
             {
                 drpinvestigation.Visible = true;
-                Label20.Visible = true;
-                Label20.Text = "Risk";
+                //Label20.Visible = true;
+                //Label20.Text = "Risk";
                 Rating1.Visible = true;
             }
             else
             {
                 drpinvestigation.Visible = false;
-                Label20.Visible = false;
+                //Label20.Visible = false;
                 Rating1.Visible = false;
             }
 
@@ -1431,7 +1431,7 @@ namespace Web.POS
                 aspcomment.Visible = false;
                 txtComent.Visible = false;
                 drpStatus.Visible = false;
-                Label6.Visible = false;
+                //Label6.Visible = false;
                 btnAttch.Visible = false;
                 btnSubmit.Visible = false;
                 btnTikitClose.Visible = false;
@@ -1446,7 +1446,7 @@ namespace Web.POS
                 aspcomment.Visible = true;
                 txtComent.Visible = true;
                 drpStatus.Visible = true;
-                Label6.Visible = true;
+                //Label6.Visible = true;
                 btnAttch.Visible = true;
                 btnSubmit.Visible = true;
                 btnTikitClose.Visible = true;
