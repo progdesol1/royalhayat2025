@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/POS/POSMaster.Master" AutoEventWireup="true" CodeBehind="ViewTicket.aspx.cs" Inherits="Web.POS.ViewTicket" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/POS/POSMaster.Master" AutoEventWireup="true" CodeBehind="ViewTicket.aspx.cs" Inherits="Web.POS.ViewTicket" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -67,7 +67,6 @@
                         <div class="portlet-body">
                             <div class="row">
                                 <div class="col-md-5 col-sm-4">
-
                                     <div class="portlet-body todo-project-list-content">
                                         <div class="todo-project-list">
                                             <asp:Panel ID="panChat" runat="server">
@@ -182,180 +181,164 @@
                                 </div>
 
                                 <div class="todo-tasklist-devider"></div>
-                                <div class="col-md-7 col-sm-8">
-                                    <div class="scroller" style="max-height: 1000px;" data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
-                                        <div class="form-horizontal" style="padding-left: 10px;">
-                                            <!-- TASK HEAD -->
-                                            <asp:Panel ID="pnlSuccessMsg" runat="server" Visible="false">
-                                                <div class="alert alert-success alert-dismissable">
-                                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>
-                                                    <asp:Label ID="lblMsg" runat="server"></asp:Label>
-                                                </div>
-                                            </asp:Panel>
+                             
+                                   <div class="col-md-7 col-sm-8">
+  <div class="scroller" style="max-height: 1000px;" 
+       data-always-visible="0" data-rail-visible="0" data-handle-color="#dae3e7">
+       
+    <div class="p-3">
 
-                                            <asp:Panel ID="pnlTicki" runat="server">
-                                                <div class="form">
-                                                    <div class="form-group">
-                                                        <div class="col-md-8 col-sm-8" style="margin-bottom: 15px;">
-                                                            <div class="todo-taskbody-user">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 col-sm-4" style="margin-bottom: 15px;">
-                                                        </div>
-                                                    </div>
-                                                    <!-- END TASK HEAD -->
-                                                    <!-- TASK TITLE -->
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label7" runat="server" Text="Complain No.:"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtcomplaint" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="lbldate" runat="server" Text="Date:"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtdates" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            <cc1:CalendarExtender ID="CalendarExtendertxtdateTO" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdates" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtdates" ErrorMessage="Date required" InitialValue="0"></asp:RequiredFieldValidator>
+      <!-- Success Message -->
+      <asp:Panel ID="pnlSuccessMsg" runat="server" Visible="false">
+        <div class="alert alert-success alert-dismissable">
+          <button aria-hidden="true" data-dismiss="alert" class="close" type="button"></button>
+          <asp:Label ID="lblMsg" runat="server"></asp:Label>
+        </div>
+      </asp:Panel>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label5" runat="server" Text="Complain Type :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtcomplaintype" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label4" runat="server" Text="Department:"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtdepartment" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label8" runat="server" Text="Physical Location :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtlocation" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label13" runat="server" Text="Patient Name :"></asp:Label></b>
-                                                        </div>
+      <!-- Complaint Form -->
+      <asp:Panel ID="pnlTicki" runat="server">
 
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtpatientname" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label14" runat="server" Text="MRN :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtMRN" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label18" runat="server" Text="Contact No :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtcontact" runat="server" CssClass="form-control"></asp:TextBox>
+        <!-- Complaint No -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label7" runat="server" Text="Complain No.:" />
+          </label>
+          <asp:TextBox ID="txtcomplaint" runat="server" CssClass="form-control form-control-lg" />
+        </div>
 
-                                                        </div>
-                                                    </div>
+        <!-- Date -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="lbldate" runat="server" Text="Date:" />
+          </label>
+          <asp:TextBox ID="txtdates" runat="server" CssClass="form-control form-control-lg" />
+          <cc1:CalendarExtender ID="CalendarExtendertxtdateTO" runat="server" 
+             Enabled="True" PopupButtonID="calender" TargetControlID="txtdates" 
+             Format="dd/MMM/yyyy" />
+          <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+             ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" 
+             ControlToValidate="txtdates" ErrorMessage="Date required" InitialValue="0" />
+        </div>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label9" runat="server" Text="Category :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtcate" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label10" runat="server" Text="Sub-Category :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtsubcat" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label1" runat="server" Text="Description :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtmessage" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-                                                        </div>
-                                                    </div>
+        <!-- Complaint Type -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label5" runat="server" Text="Complain Type :" />
+          </label>
+          <asp:TextBox ID="txtcomplaintype" runat="server" CssClass="form-control form-control-lg" />
+        </div>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label17" runat="server" Text="Reported by :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtreport" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label3" runat="server" Text="Investigation Result  :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:TextBox ID="txtrelevant" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        </div>
-                                                    </div>
+        <!-- Department -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label4" runat="server" Text="Department:" />
+          </label>
+          <asp:TextBox ID="txtdepartment" runat="server" CssClass="form-control form-control-lg" />
+        </div>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-2" style="margin-bottom: 15px;">
-                                                            <b>
-                                                                <asp:Label ID="Label2" runat="server" Text="Attachment Link :"></asp:Label></b>
-                                                        </div>
-                                                        <div class="col-md-6" style="margin-bottom: 15px;">
-                                                            <asp:LinkButton ID="lnkattach" runat="server" OnClick="lnkattach_Click" Style="background-color: blue;" CssClass="btn btn-default">
-                                                                <u style="color: yellow;">
-                                                                    <asp:Label ID="lblattach" Style="color: yellow;" runat="server"></asp:Label>
-                                                                </u>
-                                                            </asp:LinkButton>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-actions right todo-form-actions">
-                                                    </div>
-                                                </div>
-                                            </asp:Panel>
-                                            <asp:LinkButton ID="btnEdit" runat="server" Visible="false" class="btn btn-sm yellow filter-submit margin-bottom">Print</asp:LinkButton>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" Visible="false" class="btn btn-sm blue filter-submit margin-bottom">Email</asp:LinkButton>
-                                            <asp:LinkButton ID="lnkback" runat="server" class="btn btn-sm blue filter-submit margin-bottom" OnClick="lnkback_Click">Back</asp:LinkButton>
+        <!-- Physical Location -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label8" runat="server" Text="Physical Location :" />
+          </label>
+          <asp:TextBox ID="txtlocation" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Patient Name -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label13" runat="server" Text="Patient Name :" />
+          </label>
+          <asp:TextBox ID="txtpatientname" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- MRN -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label14" runat="server" Text="MRN :" />
+          </label>
+          <asp:TextBox ID="txtMRN" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Contact No -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label18" runat="server" Text="Contact No :" />
+          </label>
+          <asp:TextBox ID="txtcontact" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label9" runat="server" Text="Category :" />
+          </label>
+          <asp:TextBox ID="txtcate" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Sub-Category -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label10" runat="server" Text="Sub-Category :" />
+          </label>
+          <asp:TextBox ID="txtsubcat" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label1" runat="server" Text="Description :" />
+          </label>
+          <asp:TextBox ID="txtmessage" runat="server" CssClass="form-control form-control-lg" 
+                       TextMode="MultiLine" Rows="20" />
+        </div>
+
+        <!-- Reported by -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label17" runat="server" Text="Reported by :" />
+          </label>
+          <asp:TextBox ID="txtreport" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Investigation Result -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label3" runat="server" Text="Investigation Result :" />
+          </label>
+          <asp:TextBox ID="txtrelevant" runat="server" CssClass="form-control form-control-lg" />
+        </div>
+
+        <!-- Attachment Link -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            <asp:Label ID="Label2" runat="server" Text="Attachment Link :" />
+          </label>
+          <asp:LinkButton ID="lnkattach" runat="server" OnClick="lnkattach_Click" 
+                          CssClass="btn btn-link text-primary fw-semibold">
+            <asp:Label ID="lblattach" runat="server" />
+          </asp:LinkButton>
+        </div>
+
+      </asp:Panel>
+
+      <!-- Action buttons -->
+      <div class="d-flex gap-2 mt-4">
+        <asp:LinkButton ID="btnEdit" runat="server" Visible="false" CssClass="btn btn-warning btn-lg">Print</asp:LinkButton>
+        <asp:LinkButton ID="LinkButton1" runat="server" Visible="false" CssClass="btn btn-info btn-lg">Email</asp:LinkButton>
+        <asp:LinkButton ID="lnkback" runat="server" CssClass="btn btn-secondary btn-lg" OnClick="lnkback_Click">Back</asp:LinkButton>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
 
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                                
 
                         </div>
                     </div>

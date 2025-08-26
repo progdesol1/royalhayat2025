@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportSmile.aspx.cs" Inherits="Web.ReportMst.ReportSmile" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportSmile.aspx.cs" Inherits="Web.ReportMst.ReportSmile" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
@@ -148,8 +148,8 @@
                                                                 <asp:Label ID="lblFrom" runat="server" Text="From" Style="margin-left: 10px;"></asp:Label></strong>
                                                         </div>
                                                         <div class="col-md-8">
-                                                            <asp:TextBox ID="txtdateFrom" Placeholder="dd/MMM/yyyy" runat="server" CssClass="form-control input-medium"></asp:TextBox>
-                                                            <cc1:CalendarExtender ID="TextBoxtxtdateFrom_CalendarExtender" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
+                                                            <asp:TextBox ID="txtdateFrom" Placeholder="dd/MM/yyyy" runat="server" CssClass="form-control input-medium"></asp:TextBox>
+                                                            <cc1:CalendarExtender ID="TextBoxtxtdateFrom_CalendarExtender" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                             <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" TargetControlID="txtdateFrom" ValidChars="/" FilterType="Custom, numbers" runat="server" />--%>
                                                         </div>
                                                     </div>
@@ -184,7 +184,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <asp:DropDownList ID="drpfrmterminal" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
-                                                            <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
+                                                            <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                             <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" TargetControlID="txtdateFrom" ValidChars="/" FilterType="Custom, numbers" runat="server" />--%>
                                                         </div>
                                                     </div>
@@ -198,7 +198,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                            <asp:DropDownList ID="drptoterminal" runat="server" AutoPostBack="true" CssClass="form-control"></asp:DropDownList>
-                                                            <cc1:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
+                                                            <cc1:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                             <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" TargetControlID="txtdateFrom" ValidChars="/" FilterType="Custom, numbers" runat="server" />--%>
                                                         </div>
                                                     </div>
@@ -218,7 +218,7 @@
                                                     <asp:ListItem Text="Red" Value="1"></asp:ListItem>
                                                     <asp:ListItem Text="Yellow" Value="2"></asp:ListItem>
                                                 </asp:DropDownList>
-                                                            <cc1:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MMM/yyyy"></cc1:CalendarExtender>
+                                                            <cc1:CalendarExtender ID="CalendarExtender3" runat="server" Enabled="True" PopupButtonID="calender" TargetControlID="txtdateFrom" Format="dd/MM/yyyy"></cc1:CalendarExtender>
                                                             <%--<cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" TargetControlID="txtdateFrom" ValidChars="/" FilterType="Custom, numbers" runat="server" />--%>
                                                         </div>
                                                     </div>

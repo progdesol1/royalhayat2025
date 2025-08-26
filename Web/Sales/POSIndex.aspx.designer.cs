@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.Sales {
-    
-    
-    public partial class POSIndex {
-        
+namespace Web.Sales
+{
+
+
+    public partial class POSIndex
+    {
+
         /// <summary>
         /// style_components control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlLink style_components;
-        
+
         /// <summary>
         /// style_color control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlLink style_color;
-        
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// toolscriptmanagerID control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager toolscriptmanagerID;
-        
+
         /// <summary>
         /// ListQuickLink control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListQuickLink;
-        
+
         /// <summary>
         /// lblbox1KD control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox1KD;
-        
+
         /// <summary>
         /// lblbox2KD control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox2KD;
-        
+
         /// <summary>
         /// Thismonth control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Thismonth;
-        
+
         /// <summary>
         /// lblbox3KD control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox3KD;
-        
+
         /// <summary>
         /// ThisYear control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ThisYear;
-        
+
         /// <summary>
         /// lblbox4KD control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox4KD;
-        
+
         /// <summary>
         /// ThisYearReturn control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ThisYearReturn;
-        
+
         /// <summary>
         /// lblbox5KD control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox5KD;
-        
+
         /// <summary>
         /// TodayDatePurchase control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label TodayDatePurchase;
-        
+
         /// <summary>
         /// lblbox6KD control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox6KD;
-        
+
         /// <summary>
         /// ThisMonthPurchase control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ThisMonthPurchase;
-        
+
         /// <summary>
         /// lblbox7KD control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox7KD;
-        
+
         /// <summary>
         /// ThisYearPurchase control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ThisYearPurchase;
-        
+
         /// <summary>
         /// lblbox8KD control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblbox8KD;
-        
+
         /// <summary>
         /// ListViewLogdata control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListViewLogdata;
-        
+
         /// <summary>
         /// btnshopAct control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnshopAct;
-        
+
         /// <summary>
         /// btnFastCarReport control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFastCarReport;
-        
+
         /// <summary>
         /// ListOrderTop10 control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListOrderTop10;
-        
+
         /// <summary>
         /// UpdatePanel5 control.
         /// </summary>
@@ -227,7 +229,16 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel5;
-        
+
+        /// <summary>
+        /// pnlSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSearch;
+
         /// <summary>
         /// txtxcomplaint control.
         /// </summary>
@@ -236,7 +247,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtxcomplaint;
-        
+
         /// <summary>
         /// btnsearch2 control.
         /// </summary>
@@ -245,7 +256,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsearch2;
-        
+
         /// <summary>
         /// listmaxcomplaintno control.
         /// </summary>
@@ -254,7 +265,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater listmaxcomplaintno;
-        
+
         /// <summary>
         /// UpdatePanel3 control.
         /// </summary>
@@ -263,7 +274,16 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-        
+
+        /// <summary>
+        /// Panel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel3;
+
         /// <summary>
         /// txtCustomer control.
         /// </summary>
@@ -272,7 +292,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustomer;
-        
+
         /// <summary>
         /// btnSearchCus control.
         /// </summary>
@@ -281,7 +301,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchCus;
-        
+
         /// <summary>
         /// listCustomer control.
         /// </summary>
@@ -290,7 +310,16 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView listCustomer;
-        
+
+        /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
+
         /// <summary>
         /// txtsearch control.
         /// </summary>
@@ -299,7 +328,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsearch;
-        
+
         /// <summary>
         /// btnSearch control.
         /// </summary>
@@ -308,7 +337,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
-        
+
         /// <summary>
         /// listMinimumAndMax control.
         /// </summary>
@@ -317,7 +346,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater listMinimumAndMax;
-        
+
         /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
@@ -326,7 +355,16 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
+
+        /// <summary>
+        /// Panel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
+
         /// <summary>
         /// txtserchmrnno control.
         /// </summary>
@@ -335,7 +373,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtserchmrnno;
-        
+
         /// <summary>
         /// btnsearch1 control.
         /// </summary>
@@ -344,7 +382,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsearch1;
-        
+
         /// <summary>
         /// listMinimumAndMaxand control.
         /// </summary>
@@ -353,7 +391,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater listMinimumAndMaxand;
-        
+
         /// <summary>
         /// UpdatePanel4 control.
         /// </summary>
@@ -362,7 +400,16 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-        
+
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
         /// <summary>
         /// txtcommentno control.
         /// </summary>
@@ -371,7 +418,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcommentno;
-        
+
         /// <summary>
         /// btnseach3 control.
         /// </summary>
@@ -380,7 +427,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnseach3;
-        
+
         /// <summary>
         /// listmaximumcomment control.
         /// </summary>
@@ -389,7 +436,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater listmaximumcomment;
-        
+
         /// <summary>
         /// DrpNolink control.
         /// </summary>
@@ -398,7 +445,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DrpNolink;
-        
+
         /// <summary>
         /// drpLink control.
         /// </summary>
@@ -407,7 +454,7 @@ namespace Web.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpLink;
-        
+
         /// <summary>
         /// btnSaveCust control.
         /// </summary>

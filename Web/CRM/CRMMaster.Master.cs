@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -67,115 +67,111 @@ namespace Web.CRM
         }
 
 
+    protected void Page_Load(object sender, EventArgs e)
+    {
+      if (!IsPostBack)
+      {
+        Session["Previous"] = Session["Current"];
+        Session["Current"] = Request.RawUrl;
+        Session["ADMInPrevious"] = Session["ADMInCurrent"];
+        Session["ADMInCurrent"] = Request.RawUrl;
 
-        protected void Page_Load(object sender, EventArgs e)
+        // ✅ Check if user session exists
+        if (Session["USER"] == null || !(Session["USER"] is USER_MST user))
         {
-            if (!IsPostBack)
-            {
-
-                Session["Previous"] = Session["Current"];
-                Session["Current"] = Request.RawUrl;
-                //  PutAbsant();
-                Session["ADMInPrevious"] = Session["ADMInCurrent"];
-                Session["ADMInCurrent"] = Request.RawUrl;
-                string strUName = ((USER_MST)Session["USER"]).FIRST_NAME;
-                //lblUserName.Text = strUName;
-                int TID = 10;//Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-                int userID = ((USER_MST)Session["USER"]).USER_ID;
-                int LocationID = Convert.ToInt32(((USER_MST)Session["USER"]).LOCATION_ID);
-                if (Session["MenuACm"] != null)
-                {
-                    //GlobleClass.DeleteTempUser(TID, userID, LocationID, 7);
-                    //GlobleClass.getMenuGloble(TID, userID, LocationID, 7);
-                    //Session["MenuACm"] = null;
-                }
-
-                //string strRoleName = "";
-                //if (strUName == "Ayo")
-                //    strRoleName = DB.ROLE_MST.Single(p => p.TenentID == TID && p.ROLE_NAME == "Super Admin").ROLE_NAME;
-                //  else if(TID==0)
-                //    strRoleName = DB.ROLE_MST.Single(p => p.TenentID == TID && p.ROLE_ID==1 ).ROLE_NAME;
-                //else
-                //    strRoleName = DB.ROLE_MST.Single(p => p.TenentID == TID && p.ROLE_NAME == "Simple User").ROLE_NAME;
-
-                //lblRole.Text = "Role : " + strRoleName.ToString();
-
-                //string UID = (((USER_MST)Session["USER"]).USER_ID).ToString();
-                //if (DB.TBLCOMPANYSETUPs.Where(p => p.TenentID == TID && p.USERID == UID).Count() > 0)
-                //{
-                //    string strCompanyName = DB.TBLCOMPANYSETUPs.Single(p => p.TenentID == TID && p.USERID == UID).COMPNAME;
-                //    //lblCompanyName.Text = "Company : " + strCompanyName.ToString();
-                //}
-                //  menubind(7);
-                //lblDate.Text = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
-
-                int UserID = GetLogginID();
-                DateTime TodayDate = DateTime.Now.Date;
-                List<Attandance> ObjList = (from item in DB.Attandances where item.UserID == UserID && item.InTime.Value.Year == TodayDate.Year && item.InTime.Value.Month == TodayDate.Month && item.InTime.Value.Day == TodayDate.Day  select item).ToList();
-                if (ObjList.Where(p=>p.OutTime == null).Count() > 0)
-                {
-                    linkCheckIn.Visible = false;
-                    //btnSignin.CssClass = "stdbtn";
-                    linkCheckOut.Visible = true;
-                    //btnSignOut.CssClass = "stdbtn btn_blue";
-                    //linkCheckIn.BackColor = Color.Green;
-                }
-                else
-                {
-                    if (ObjList.Count() == 0)
-                    {
-                        Attandance Obj = new Attandance();
-                        Obj.UserID = GetLogginID();
-                        Obj.InTime = DateTime.Now;
-                        Obj.isAbsent = false;
-                        Obj.Deleted = true;
-                        Obj.Active = true;
-                        DB.Attandances.AddObject(Obj);
-                        DB.SaveChanges();
-                        linkCheckIn.Visible = false;
-                        linkCheckOut.Visible = true;
-                    }
-                    else
-                    {
-                        linkCheckIn.Visible = true;
-                        //btnSignin.CssClass = "stdbtn btn_red";
-                        //btnSignOut.CssClass = "stdbtn";
-                        //linkCheckIn.BackColor = Color.Red;
-                        //btnSignOut.ForeColor = Color.Black;
-                        linkCheckOut.Visible = false;
-                    }
-                }
-                //int LID = Convert.ToInt32(((USER_MST)Session["USER"]).LOCATION_ID);
-                //string NewLogText = ((USER_MST)Session["USER"]).FIRST_NAME;
-                //string UID1 = ((USER_MST)Session["USER"]).LAST_NAME;
-                //int CrupID = Convert.ToInt32(((USER_MST)Session["USER"]).CRUP_ID);
-                //string table = ((USER_MST)Session["USER"]).FIRST_NAME;
-                //string UserName = ((USER_MST)Session["USER"]).FIRST_NAME;
-                //GlobleClass.UpdateLog(NewLogText, CrupID, table, UserName, TID, UID1, LID);
-
-                if (Request.QueryString["MID"] != null)
-                {
-                    string Menuid = Request.QueryString["MID"].ToString();
-                    string MenuName = Classes.GlobleClass.EncryptionHelpers.Decrypt(Menuid);
-                    string[] MenuidQwe = MenuName.Split('~');
-                    int Meni = Convert.ToInt32(MenuidQwe[1]);
-
-                    FUNCTION_MST obj = DB.FUNCTION_MST.Single(p => p.MENU_ID == Meni);//p.TenentID == TID &&
-                    lblpagename.Text = obj.MENU_NAME1;
-                    lblpageid.Text = Meni.ToString();
-
-                    //   haresh    // ltsMenu.DataSource = DB.tempUser.Where(p => p.ACTIVEMENU == true && p.MENU_TYPE == "Separator" && p.MODULE_ID == MID || p.AMIGLOBALE == 1).OrderBy(a => a.MENU_ORDER);
-                    // ltsMenu.DataBind();
-
-                }
-                Classes.Toastr.ShowToast(Page, Classes.Toastr.ToastType.Success, "Wel Come To CRM DashBoard", "Winner!", Classes.Toastr.ToastPosition.TopCenter);
-            }
-
-
+          // If no user, redirect to login or set defaults
+          Response.Redirect("~/ACM/Login.aspx");
+          return;
         }
 
+        // Now it's safe to use user
+        string strUName = user.FIRST_NAME ?? "Unknown";
+        // lblUserName.Text = strUName;
 
-        public void BindMeniList()
+        int TID = 10; // Or user.TenentID ?? 0
+        int userID = user.USER_ID;
+        int LocationID = user.LOCATION_ID ;
+
+        if (Session["MenuACm"] != null)
+        {
+          // Optional: your logic here
+        }
+
+        // ✅ Attendance check (safe for nulls)
+        int UserID = GetLogginID();
+        DateTime TodayDate = DateTime.Now.Date;
+
+        var ObjList = (from item in DB.Attandances
+                       where item.UserID == UserID &&
+                             item.InTime.HasValue &&
+                             item.InTime.Value.Date == TodayDate
+                       select item).ToList();
+
+        if (ObjList.Any(p => p.OutTime == null))
+        {
+          linkCheckIn.Visible = false;
+          linkCheckOut.Visible = true;
+        }
+        else
+        {
+          if (!ObjList.Any())
+          {
+            Attandance Obj = new Attandance
+            {
+              UserID = UserID,
+              InTime = DateTime.Now,
+              isAbsent = false,
+              Deleted = true,
+              Active = true
+            };
+            DB.Attandances.AddObject(Obj);
+            DB.SaveChanges();
+
+            linkCheckIn.Visible = false;
+            linkCheckOut.Visible = true;
+          }
+          else
+          {
+            linkCheckIn.Visible = true;
+            linkCheckOut.Visible = false;
+          }
+        }
+
+        // ✅ Safe menu handling
+        if (!string.IsNullOrEmpty(Request.QueryString["MID"]))
+        {
+          string Menuid = Request.QueryString["MID"];
+          string MenuName = Classes.GlobleClass.EncryptionHelpers.Decrypt(Menuid);
+          string[] MenuidQwe = MenuName.Split('~');
+
+          if (MenuidQwe.Length > 1 && int.TryParse(MenuidQwe[1], out int Meni))
+          {
+            FUNCTION_MST obj = DB.FUNCTION_MST
+                .SingleOrDefault(p => p.MENU_ID == Meni);
+
+            if (obj != null)
+            {
+              lblpagename.Text = obj.MENU_NAME1 ?? "Unknown Page";
+              lblpageid.Text = Meni.ToString();
+            }
+            else
+            {
+              lblpagename.Text = "Page Not Found";
+              lblpageid.Text = "0";
+            }
+          }
+        }
+
+        // ✅ Toast message
+        Classes.Toastr.ShowToast(Page, Classes.Toastr.ToastType.Success,
+                                 "Welcome To CRM Dashboard", "Winner!",
+                                 Classes.Toastr.ToastPosition.TopCenter);
+      }
+    }
+
+
+
+    public void BindMeniList()
         {
             /// int TID = Convert.ToInt32(((USER_MST)Session["User"]).TenentID);
             //List<tempUser> result1 = Classes.Globle.EncryptionHelpers.getMenu(TID);

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="POSIndex.aspx.cs" Inherits="Web.Sales.POSIndex" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="POSIndex.aspx.cs" Inherits="Web.Sales.POSIndex" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -150,11 +150,8 @@
                             <span class="active">Dashboard</span>
                         </li>
                     </ul>
-
-
                     <div class="row">
                         <div class="col-md-12">
-
                             <div class="portlet-body">
                                 <div class="tab-content">
                                     <div class="tiles">
@@ -181,11 +178,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <%-- </div>--%>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
                             <a href="#">
@@ -209,7 +204,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
                             <a href="#">
@@ -232,7 +226,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
                             <div class="dashboard-stat purple-plum">
@@ -253,7 +246,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
                             <div class="dashboard-stat green-haze">
@@ -275,10 +267,7 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
@@ -358,15 +347,9 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet box blue">
-
                                 <asp:ListView ID="ListViewLogdata" runat="server" Visible="false">
                                     <ItemTemplate>
                                         <tr>
@@ -378,26 +361,43 @@
                                         </tr>
                                     </ItemTemplate>
                                 </asp:ListView>
-
                             </div>
-
-
-
-
                             <br />
-                            <br />
+                           <style>
+                                .icon-link {
+                                    display: inline-block;
+                                    height: 100px;
+                                    width: 100px;
+                                    margin: 0 15px;
+                                    text-align: center;
+                                }
+                                .icon-link img {
+                                    height: 95px;
+                                    width: 99px;
+                                    object-fit: contain;
+                                }
+                            </style>
+                           <div>
+                                <a href="../POS/ClientTiketR.aspx" class="icon-link">
+                                    <img src="../../assets/images/ICON/TicketInvestigation1LogoBest.png" alt="Ticket Investigation" />
+                                </a>
 
-                            <a href="../POS/ClientTiketR.aspx">
-                                <img src="../Smilies/Smilies/co1.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="../POS/ClientTiketR.aspx?status=pending">
-                            <img src="../Smilies/Smilies/co22.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <a href="../ReportMst/HelpDeskReport.aspx">
-                           <img src="../Smilies/Smilies/co3.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <a href="../ReportMst/HelpDeskExcRep.aspx">
-                           <img src="../Smilies/Smilies/com44.png" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <a href="../ReportMst/DayReport.aspx">
-                             <img src="../Smilies/Smilies/DR.png" style="height: 95px; width: 99px;" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <br />
+                                <a href="../POS/ClientTiketR.aspx?status=pending" class="icon-link">
+                                    <img src="../../assets/images/ICON/ComplaintTicket3LogoBest.png" alt="Pending Complaints" />
+                                </a>
+
+                                <a href="../ReportMst/HelpDeskReport.aspx" class="icon-link">
+                                    <img src="../../assets/images/ICON/HelpDesk.jpg" alt="Help Desk Report" />
+                                </a>
+
+                                <a href="../ReportMst/HelpDeskExcRep.aspx" class="icon-link">
+                                    <img src="../../assets/images/ICON/HelpDeskReports3LogoBest.png" alt="Help Desk Excel Report" />
+                                </a>
+
+                                <a href="../ReportMst/DayReport.aspx" class="icon-link">
+                                    <img src="../../assets/images/ICON/StatisticalReports1.png" alt="Statistical Reports" />
+                                </a>
+                            </div>
                             <br />
                             <div class="row">
                                 <div class="col-md-12">
@@ -418,11 +418,9 @@
                                                 <a href="javascript:;" class="fullscreen"></a>
                                                 <a href="javascript:;" class="remove"></a>
                                             </div>
-
                                         </div>
                                         <div class="portlet-body">
                                             <div class="tabbable-line">
-
                                                 <ul class="nav nav-tabs">
                                                     <li style="background-color: #E9F6BC;">
                                                         <a href="#overview_8" data-toggle="tab">Patient Name</a>
@@ -446,7 +444,6 @@
                                                     </li>
 
                                                 </ul>
-
                                                 <div class="tab-content">
                                                     <div class="tab-pane" id="overview_4">
                                                         <div class="table-responsive">
@@ -510,10 +507,15 @@
 
                                                                 <div class="tools" style="padding-bottom: 10px;">
 
-                                                                    <asp:TextBox ID="txtxcomplaint" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="Complaint Number"></asp:TextBox>
+                                                                  <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnsearch2">
+     <asp:TextBox ID="txtxcomplaint" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="Complaint Number"></asp:TextBox>
 
 
-                                                                    <asp:Button ID="btnsearch2" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnsearch2_Click" />
+ <asp:Button ID="btnsearch2" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnsearch2_Click" />
+</asp:Panel>
+
+
+                                                                   
                                                                     <%--<asp:Label ID="lblcount" runat="server" ForeColor="Red" Font-Bold="true" Font-Size="Large" Text=""></asp:Label>--%>
                                                                 </div>
                                                                 <div class="table-responsive">
@@ -588,11 +590,11 @@
                                                             <ContentTemplate>
 
                                                                 <div class="tools" style="padding-bottom: 10px;">
-
+                                                                  <asp:Panel ID="Panel3" runat="server" DefaultButton="btnSearchCus">
                                                                     <asp:TextBox ID="txtCustomer" runat="server" CssClass="input-circle" placeholder="Contact Number" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;"></asp:TextBox>
                                                                     <asp:Button ID="btnSearchCus" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnSearchCus_Click" />
+                                                                    </asp:Panel>
                                                                 </div>
-
                                                                 <div class="table-responsive">
                                                                     <table class="table table-striped table-hover table-bordered">
                                                                         <thead>
@@ -663,11 +665,12 @@
                                                     <div class="tab-pane active" id="overview_8">
 
                                                         <div class="tools" style="padding-bottom: 10px;">
-
+                                                          <asp:Panel ID="Panel2" runat="server" DefaultButton="btnSearch">
                                                             <asp:TextBox ID="txtsearch" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="Patient Name"></asp:TextBox>
 
 
                                                             <asp:Button ID="btnSearch" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                                                            </asp:Panel>
                                                             <%--<asp:Label ID="lblcount" runat="server" ForeColor="Red" Font-Bold="true" Font-Size="Large" Text=""></asp:Label>--%>
                                                         </div>
 
@@ -733,17 +736,16 @@
 
                                                     </div>
 
-
-
                                                     <div class="tab-pane" id="overview_9">
                                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                             <ContentTemplate>
                                                                 <div class="tools" style="padding-bottom: 10px;">
-
+                                                                  <asp:Panel ID="Panel4" runat="server" DefaultButton="btnsearch1">
                                                                     <asp:TextBox ID="txtserchmrnno" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="MRN No"></asp:TextBox>
 
 
                                                                     <asp:Button ID="btnsearch1" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnsearch1_Click" />
+                                                                    </asp:Panel>
                                                                 </div>
 
                                                                 <div class="table-responsive">
@@ -816,12 +818,14 @@
                                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional">
                                                             <ContentTemplate>
                                                                 <div class="tools" style="padding-bottom: 10px;">
+                                                                  <asp:Panel ID="Panel1" runat="server" DefaultButton="btnseach3">
 
                                                                     <asp:TextBox ID="txtcommentno" runat="server" CssClass="input-circle" Style="width: 60%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; box-shadow: none; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;" placeholder="Text From Description"></asp:TextBox>
 
 
                                                                     <asp:Button ID="btnseach3" class="btn btn-circle green btn-outline btn-sm" runat="server" Text="Search" OnClick="btnseach3_Click" />
-                                                                </div>
+                                                                    </asp:Panel>
+                                                                </div>  
 
                                                                 <div class="table-responsive">
                                                                     <table class="table table-striped table-hover table-bordered">
@@ -888,29 +892,13 @@
                                                             </Triggers>
                                                         </asp:UpdatePanel>
                                                     </div>
-
-
                                                 </div>
-
-
-
-
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
-
                         </div>
-
-
-
-
                     </div>
                 </div>
                 <a href="javascript:;" class="page-quick-sidebar-toggler">
@@ -1491,7 +1479,6 @@
                     </div>
                 </div>
             </div>
-
             <nav class="quick-nav">
                 <a class="quick-nav-trigger" href="#0">
                     <span aria-hidden="true"></span>
@@ -1525,7 +1512,6 @@
                 <span aria-hidden="true" class="quick-nav-bg"></span>
             </nav>
             <div class="quick-nav-overlay"></div>
-
             <div id="responsive" class="modal fade" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" style="margin-top: 0px; margin-bottom: 0px;">
                     <div class="modal-content">

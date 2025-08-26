@@ -123,15 +123,6 @@ namespace Web.POS
         protected global::System.Web.UI.WebControls.Label leblANew4;
 
         /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-
-        /// <summary>
         /// drpyears control.
         /// </summary>
         /// <remarks>
@@ -321,15 +312,6 @@ namespace Web.POS
         protected global::System.Web.UI.WebControls.Label lblcomplainno;
 
         /// <summary>
-        /// Label24 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label24;
-
-        /// <summary>
         /// chklog control.
         /// </summary>
         /// <remarks>
@@ -337,6 +319,15 @@ namespace Web.POS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chklog;
+
+        /// <summary>
+        /// Label24 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label24;
 
         /// <summary>
         /// Label1 control.
@@ -384,6 +375,15 @@ namespace Web.POS
         protected global::System.Web.UI.WebControls.Label lblmsgl;
 
         /// <summary>
+        /// RequiredFieldValidator8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+
+        /// <summary>
         /// CalendarExtendertxtdateTO control.
         /// </summary>
         /// <remarks>
@@ -391,15 +391,6 @@ namespace Web.POS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtendertxtdateTO;
-
-        /// <summary>
-        /// RequiredFieldValidator5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
         /// Label5 control.
@@ -501,6 +492,15 @@ namespace Web.POS
         protected global::System.Web.UI.WebControls.CheckBox chklist;
 
         /// <summary>
+        /// txtstaffname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtstaffname;
+
+        /// <summary>
         /// Label19 control.
         /// </summary>
         /// <remarks>
@@ -535,15 +535,6 @@ namespace Web.POS
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkirno;
-
-        /// <summary>
-        /// txtstaffname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtstaffname;
 
         /// <summary>
         /// Label13 control.

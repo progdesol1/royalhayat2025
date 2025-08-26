@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -529,238 +529,310 @@ namespace Web.Sales
             }
         }
 
-        public void ShopbindFull()
+    /*public void ShopbindFull()
+    {
+        int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+        int ToDay = Convert.ToInt32(DateTime.Now.Day);
+        int ToMonth = Convert.ToInt32(DateTime.Now.Month);
+        int ToYear = Convert.ToInt32(DateTime.Now.Year);
+        string YYYY = ToYear.ToString();
+        string MMM = "";
+        if (ToMonth > 9)
         {
-            int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-            int ToDay = Convert.ToInt32(DateTime.Now.Day);
-            int ToMonth = Convert.ToInt32(DateTime.Now.Month);
-            int ToYear = Convert.ToInt32(DateTime.Now.Year);
-            string YYYY = ToYear.ToString();
-            string MMM = "";
-            if (ToMonth > 9)
-            {
-                MMM = YYYY + "-" + ToMonth.ToString();
-            }
+            MMM = YYYY + "-" + ToMonth.ToString();
+        }
+        else
+        {
+            MMM = YYYY + "-0" + ToMonth.ToString();
+        }
+        var Date = DateTime.Now.ToString("yyyy-MM-dd");
+        string sqlTodaysale = "select count(*) as TodayComp from CRMMainActivities where TenentID=" + TID + " and MyStatus not in('Completed', 'Closed') and UploadDate='" + Date + "'";
+        SqlCommand CMD1 = new SqlCommand(sqlTodaysale, con);
+        SqlDataAdapter ADB = new SqlDataAdapter(CMD1);
+        DataSet ds = new DataSet();
+        ADB.Fill(ds);
+        DataTable dt = ds.Tables[0];
+        if (dt.Rows.Count > 0)
+        {
+            lblbox1KD.Text = dt.Rows[0].ItemArray[0].ToString();
+        }
+        //List<Database.Win_sales_payment> itemList = DB.Win_sales_payment.Where(p => p.TenentID == TID && p.return_id == 0 && (p.sales_time.Contains(Date))).ToList();
+        //decimal TOT1 = Convert.ToDecimal(itemList.Sum(p => p.payment_amount));
+        //lblbox1KD.Text = TOT1.ToString();
+
+        //Sale This Month
+        DateTime startDate = DateTime.Now.AddMonths(-1);
+        DateTime endDate = DateTime.Now;
+        string START = startDate.ToString("yyyy-MM-dd");
+        string End = endDate.ToString("yyyy-MM-dd");
+        // select count(*) as  MonthComp from [CRMMainActivities] where [UploadDate] between month(getdate()) -1 and Month(getdate())
+
+        string sqlMonthsale = "select count(*) as TodayComp from CRMMainActivities where TenentID=" + TID + " and MyStatus = 'Closed' and UploadDate='" + Date + "'";
+        SqlCommand CMD2 = new SqlCommand(sqlMonthsale, con);
+        SqlDataAdapter ADB2 = new SqlDataAdapter(CMD2);
+        DataSet ds1 = new DataSet();
+        ADB2.Fill(ds1);
+        DataTable dt1 = ds1.Tables[0];
+        if (dt1.Rows.Count > 0)
+        {
+            decimal MonthSe = 0;
+            if (dt1.Rows[0].ItemArray[0].ToString() == "")
+                MonthSe = 0;
             else
-            {
-                MMM = YYYY + "-0" + ToMonth.ToString();
-            }
-            var Date = DateTime.Now.ToString("yyyy-MM-dd");
-            string sqlTodaysale = "select count(*) as TodayComp from CRMMainActivities where TenentID=" + TID + " and MyStatus not in('Completed', 'Closed') and UploadDate='" + Date + "'";
-            SqlCommand CMD1 = new SqlCommand(sqlTodaysale, con);
-            SqlDataAdapter ADB = new SqlDataAdapter(CMD1);
-            DataSet ds = new DataSet();
-            ADB.Fill(ds);
-            DataTable dt = ds.Tables[0];
-            if (dt.Rows.Count > 0)
-            {
-                lblbox1KD.Text = dt.Rows[0].ItemArray[0].ToString();
-            }
-            //List<Database.Win_sales_payment> itemList = DB.Win_sales_payment.Where(p => p.TenentID == TID && p.return_id == 0 && (p.sales_time.Contains(Date))).ToList();
-            //decimal TOT1 = Convert.ToDecimal(itemList.Sum(p => p.payment_amount));
-            //lblbox1KD.Text = TOT1.ToString();
-
-            //Sale This Month
-            DateTime startDate = DateTime.Now.AddMonths(-1);
-            DateTime endDate = DateTime.Now;
-            string START = startDate.ToString("yyyy-MM-dd");
-            string End = endDate.ToString("yyyy-MM-dd");
-            // select count(*) as  MonthComp from [CRMMainActivities] where [UploadDate] between month(getdate()) -1 and Month(getdate())
-
-            string sqlMonthsale = "select count(*) as TodayComp from CRMMainActivities where TenentID=" + TID + " and MyStatus = 'Closed' and UploadDate='" + Date + "'";
-            SqlCommand CMD2 = new SqlCommand(sqlMonthsale, con);
-            SqlDataAdapter ADB2 = new SqlDataAdapter(CMD2);
-            DataSet ds1 = new DataSet();
-            ADB2.Fill(ds1);
-            DataTable dt1 = ds1.Tables[0];
-            if (dt1.Rows.Count > 0)
-            {
-                decimal MonthSe = 0;
-                if (dt1.Rows[0].ItemArray[0].ToString() == "")
-                    MonthSe = 0;
-                else
-                    MonthSe = Convert.ToDecimal(dt1.Rows[0].ItemArray[0].ToString());
-                MonthSe = Math.Round(MonthSe, 3);
-                lblbox2KD.Text = MonthSe.ToString();
-            }
-
-            //DateTime endDate123 = DateTime.Now;
-            //string End123 = endDate123.ToString("yyyy-MM-dd");
-            //DateTime startDate123 = endDate123;//.AddDays(-7);
-            //string START123 = startDate123.ToString("yyyy-MM-dd");
-            //var s = startDate123.DayOfWeek;
-
-
-
-            // Complain new week
-            DateTime WeekEndDate = DateTime.Now;
-            string End1234 = WeekEndDate.ToString("yyyy-MM-dd");
-            String swe1 = "select dateadd(d, 7-DATEPART(dw, GETDATE()), GETDATE()) as LastDateOfWeek";
-            SqlCommand CMD4 = new SqlCommand(swe1, con);
-            SqlDataAdapter ADB4 = new SqlDataAdapter(CMD4);
-            DataSet ds3 = new DataSet();
-            ADB4.Fill(ds3);
-            DataTable dt3 = ds3.Tables[0];
-            if (dt3.Rows.Count > 0)
-            {
-                if (dt3.Rows[0].ItemArray[0].ToString() == null || dt3.Rows[0].ItemArray[0].ToString() == "")
-                { }
-                else
-                {
-                    WeekEndDate = Convert.ToDateTime(dt3.Rows[0].ItemArray[0].ToString());
-
-                }
-            }
-
-            DateTime WeekStartDate = DateTime.Now;
-            string End123 = WeekStartDate.ToString("yyyy-MM-dd");
-
-            String swe2 = "select dateadd(d, - DATEPART(dw, GETDATE()), GETDATE()) as FirstDateOfWeek";
-            SqlCommand CMD46 = new SqlCommand(swe2, con);
-            SqlDataAdapter ADB46 = new SqlDataAdapter(CMD46);
-            DataSet ds36 = new DataSet();
-            ADB46.Fill(ds36);
-            DataTable dt36 = ds36.Tables[0];
-            if (dt36.Rows.Count > 0)
-            {
-                if (dt36.Rows[0].ItemArray[0].ToString() == null || dt36.Rows[0].ItemArray[0].ToString() == "")
-                { }
-                else
-                {
-                    WeekStartDate = Convert.ToDateTime(dt36.Rows[0].ItemArray[0].ToString());
-
-                }
-            }
-
-            string sqlYearsale = "select count(*) as  Currentweek from CRMMainActivities where TenentID=" + TID + " and MyStatus not in('Completed', 'Closed') and UploadDate BETWEEN '" + End123 + "' AND    '" + End1234 + "' ";
-            SqlCommand CMD3 = new SqlCommand(sqlYearsale, con);
-            SqlDataAdapter ADB3 = new SqlDataAdapter(CMD3);
-            DataSet ds2 = new DataSet();
-            ADB3.Fill(ds2);
-            DataTable dt2 = ds2.Tables[0];
-            if (dt2.Rows.Count > 0)
-            {
-                decimal Year = 0;
-                if (dt2.Rows[0].ItemArray[0].ToString() == "")
-                    Year = 0;
-                else
-                    Year = Convert.ToDecimal(dt2.Rows[0].ItemArray[0].ToString());
-                Year = Math.Round(Year, 3);
-                lblbox3KD.Text = Year.ToString();
-            }
-
-            //This week Close complain
-
-
-            string sqlYearRetsale = "select count(*) as  Currentweek from CRMMainActivities where TenentID=" + TID + " and MyStatus = 'Closed' and UploadDate BETWEEN '" + End123 + "' AND    '" + End1234 + "'  ";
-            SqlCommand CMD45 = new SqlCommand(sqlYearRetsale, con);
-            SqlDataAdapter ADB45 = new SqlDataAdapter(CMD45);
-            DataSet ds35 = new DataSet();
-            ADB45.Fill(ds35);
-            DataTable dt35 = ds35.Tables[0];
-            if (dt35.Rows.Count > 0)
-            {
-                if (dt35.Rows[0].ItemArray[0].ToString() == null || dt35.Rows[0].ItemArray[0].ToString() == "")
-                { }
-                else
-                {
-                    decimal Yearret = Convert.ToDecimal(dt35.Rows[0].ItemArray[0].ToString());
-                    Yearret = Math.Round(Yearret, 3);
-                    lblbox4KD.Text = Yearret.ToString();
-                }
-            }
-
-            //This month new complain
-
-            string TodayPur = " select count(*) as  CurrentMonth from CRMMainActivities where TenentID= " + TID + " and MyStatus not in('Completed', 'Closed') and Month(UploadDate)=Month(getdate()) ";
-            SqlCommand CMD5 = new SqlCommand(TodayPur, con);
-            SqlDataAdapter ADB5 = new SqlDataAdapter(CMD5);
-            DataSet ds4 = new DataSet();
-            ADB5.Fill(ds4);
-            DataTable dt4 = ds4.Tables[0];
-            if (dt4.Rows.Count > 0)
-            {
-                lblbox5KD.Text = (dt4.Rows[0].ItemArray[0].ToString());
-            }
-
-            string STARTp = startDate.ToString("yyyy-MM-dd");
-            string Endp = endDate.ToString("yyyy-MM-dd");
-
-            //This month close complain
-
-            string MonthPur = " select count(*) as  CurrentMonth from CRMMainActivities where TenentID= " + TID + " and MyStatus = 'Closed' and Month(UploadDate)=Month(getdate())";
-            SqlCommand CMD6 = new SqlCommand(MonthPur, con);
-            SqlDataAdapter ADB6 = new SqlDataAdapter(CMD6);
-            DataSet ds5 = new DataSet();
-            ADB6.Fill(ds5);
-            DataTable dt5 = ds5.Tables[0];
-            if (dt5.Rows.Count > 0)
-            {
-                if (dt5.Rows[0].ItemArray[0].ToString() == null || dt5.Rows[0].ItemArray[0].ToString() == "")
-                { }
-                else
-                {
-                    decimal Monthpur = Convert.ToDecimal(dt5.Rows[0].ItemArray[0].ToString());
-                    Monthpur = Math.Round(Monthpur, 3);
-                    lblbox6KD.Text = Monthpur.ToString();
-                }
-            }
-
-            // This Year New complain
-
-            DateTime EDT = DateTime.Now;
-            string ENDJ = EDT.ToString("MM/dd/yyyy");
-            DateTime SDT = new DateTime(EDT.Year, 1, 1);
-            string STARTJ = SDT.ToString("MM/dd/yyyy");
-
-            string yearPur = "select count(*) as CurrentYear from CRMMainActivities where TenentID=" + TID + " and MyStatus not in('Completed', 'Closed') and Year(UploadDate)=YEar(getdate())";
-            SqlCommand CMD7 = new SqlCommand(yearPur, con);
-            SqlDataAdapter ADB7 = new SqlDataAdapter(CMD7);
-            DataSet ds6 = new DataSet();
-            ADB7.Fill(ds6);
-            DataTable dt7 = ds6.Tables[0];
-            if (dt7.Rows.Count > 0)
-            {
-                if (dt7.Rows[0].ItemArray[0].ToString() == null || dt7.Rows[0].ItemArray[0].ToString() == "")
-                { }
-                else
-                {
-                    decimal Yearp = Convert.ToDecimal(dt7.Rows[0].ItemArray[0].ToString());
-                    Yearp = Math.Round(Yearp, 3);
-                    lblbox7KD.Text = Yearp.ToString();
-                }
-            }
-
-            //This year Close complain
-
-            string yearPur2 = "select count(*) as CurrentYear from CRMMainActivities where TenentID=" + TID + " and MyStatus = 'Closed' and Year(UploadDate)=YEar(getdate())";
-            SqlCommand CMD8 = new SqlCommand(yearPur2, con);
-            SqlDataAdapter ADB8 = new SqlDataAdapter(CMD8);
-            DataSet ds8 = new DataSet();
-            ADB8.Fill(ds8);
-            DataTable dt8 = ds8.Tables[0];
-            if (dt8.Rows.Count > 0)
-            {
-                if (dt8.Rows[0].ItemArray[0].ToString() == null || dt8.Rows[0].ItemArray[0].ToString() == "")
-                { }
-                else
-                {
-                    decimal Yearp = Convert.ToDecimal(dt8.Rows[0].ItemArray[0].ToString());
-                    Yearp = Math.Round(Yearp, 3);
-                    lblbox8KD.Text = Yearp.ToString();
-                }
-            }
-
-
-            List<Database.Win_tbl_purchase_history> itemListYearPurchaseReturn = DB.Win_tbl_purchase_history.Where(p => p.TenentID == TID && (p.purchase_date.Contains(YYYY))).ToList();
-            decimal TOT8 = Convert.ToDecimal(itemListYearPurchaseReturn.Sum(p => p.cost_price));
-            // lblbox8KD.Text = TOT8.ToString();
-            string Purreturnyear = DateTime.Now.ToString("yyyy");
-            //  ThisYearPurchaseReturn.Text = Purreturnyear;
-
+                MonthSe = Convert.ToDecimal(dt1.Rows[0].ItemArray[0].ToString());
+            MonthSe = Math.Round(MonthSe, 3);
+            lblbox2KD.Text = MonthSe.ToString();
         }
 
-        protected void listMinimumAndMax_ItemCommand(object source, RepeaterCommandEventArgs e)
+        //DateTime endDate123 = DateTime.Now;
+        //string End123 = endDate123.ToString("yyyy-MM-dd");
+        //DateTime startDate123 = endDate123;//.AddDays(-7);
+        //string START123 = startDate123.ToString("yyyy-MM-dd");
+        //var s = startDate123.DayOfWeek;
+
+
+
+        // Complain new week
+        DateTime WeekEndDate = DateTime.Now;
+        string End1234 = WeekEndDate.ToString("yyyy-MM-dd");
+        String swe1 = "select dateadd(d, 7-DATEPART(dw, GETDATE()), GETDATE()) as LastDateOfWeek";
+        SqlCommand CMD4 = new SqlCommand(swe1, con);
+        SqlDataAdapter ADB4 = new SqlDataAdapter(CMD4);
+        DataSet ds3 = new DataSet();
+        ADB4.Fill(ds3);
+        DataTable dt3 = ds3.Tables[0];
+        if (dt3.Rows.Count > 0)
+        {
+            if (dt3.Rows[0].ItemArray[0].ToString() == null || dt3.Rows[0].ItemArray[0].ToString() == "")
+            { }
+            else
+            {
+                WeekEndDate = Convert.ToDateTime(dt3.Rows[0].ItemArray[0].ToString());
+
+            }
+        }
+
+        DateTime WeekStartDate = DateTime.Now;
+        string End123 = WeekStartDate.ToString("yyyy-MM-dd");
+
+        String swe2 = "select dateadd(d, - DATEPART(dw, GETDATE()), GETDATE()) as FirstDateOfWeek";
+        SqlCommand CMD46 = new SqlCommand(swe2, con);
+        SqlDataAdapter ADB46 = new SqlDataAdapter(CMD46);
+        DataSet ds36 = new DataSet();
+        ADB46.Fill(ds36);
+        DataTable dt36 = ds36.Tables[0];
+        if (dt36.Rows.Count > 0)
+        {
+            if (dt36.Rows[0].ItemArray[0].ToString() == null || dt36.Rows[0].ItemArray[0].ToString() == "")
+            { }
+            else
+            {
+                WeekStartDate = Convert.ToDateTime(dt36.Rows[0].ItemArray[0].ToString());
+
+            }
+        }
+
+        string sqlYearsale = "select count(*) as  Currentweek from CRMMainActivities where TenentID=" + TID + " and MyStatus not in('Completed', 'Closed') and UploadDate BETWEEN '" + End123 + "' AND    '" + End1234 + "' ";
+        SqlCommand CMD3 = new SqlCommand(sqlYearsale, con);
+        SqlDataAdapter ADB3 = new SqlDataAdapter(CMD3);
+        DataSet ds2 = new DataSet();
+        ADB3.Fill(ds2);
+        DataTable dt2 = ds2.Tables[0];
+        if (dt2.Rows.Count > 0)
+        {
+            decimal Year = 0;
+            if (dt2.Rows[0].ItemArray[0].ToString() == "")
+                Year = 0;
+            else
+                Year = Convert.ToDecimal(dt2.Rows[0].ItemArray[0].ToString());
+            Year = Math.Round(Year, 3);
+            lblbox3KD.Text = Year.ToString();
+        }
+
+        //This week Close complain
+
+
+        string sqlYearRetsale = "select count(*) as  Currentweek from CRMMainActivities where TenentID=" + TID + " and MyStatus = 'Closed' and UploadDate BETWEEN '" + End123 + "' AND    '" + End1234 + "'  ";
+        SqlCommand CMD45 = new SqlCommand(sqlYearRetsale, con);
+        SqlDataAdapter ADB45 = new SqlDataAdapter(CMD45);
+        DataSet ds35 = new DataSet();
+        ADB45.Fill(ds35);
+        DataTable dt35 = ds35.Tables[0];
+        if (dt35.Rows.Count > 0)
+        {
+            if (dt35.Rows[0].ItemArray[0].ToString() == null || dt35.Rows[0].ItemArray[0].ToString() == "")
+            { }
+            else
+            {
+                decimal Yearret = Convert.ToDecimal(dt35.Rows[0].ItemArray[0].ToString());
+                Yearret = Math.Round(Yearret, 3);
+                lblbox4KD.Text = Yearret.ToString();
+            }
+        }
+
+        //This month new complain
+
+        string TodayPur = " select count(*) as  CurrentMonth from CRMMainActivities where TenentID= " + TID + " and MyStatus not in('Completed', 'Closed') and Month(UploadDate)=Month(getdate()) ";
+        SqlCommand CMD5 = new SqlCommand(TodayPur, con);
+        SqlDataAdapter ADB5 = new SqlDataAdapter(CMD5);
+        DataSet ds4 = new DataSet();
+        ADB5.Fill(ds4);
+        DataTable dt4 = ds4.Tables[0];
+        if (dt4.Rows.Count > 0)
+        {
+            lblbox5KD.Text = (dt4.Rows[0].ItemArray[0].ToString());
+        }
+
+        string STARTp = startDate.ToString("yyyy-MM-dd");
+        string Endp = endDate.ToString("yyyy-MM-dd");
+
+        //This month close complain
+
+        string MonthPur = " select count(*) as  CurrentMonth from CRMMainActivities where TenentID= " + TID + " and MyStatus = 'Closed' and Month(UploadDate)=Month(getdate())";
+        SqlCommand CMD6 = new SqlCommand(MonthPur, con);
+        SqlDataAdapter ADB6 = new SqlDataAdapter(CMD6);
+        DataSet ds5 = new DataSet();
+        ADB6.Fill(ds5);
+        DataTable dt5 = ds5.Tables[0];
+        if (dt5.Rows.Count > 0)
+        {
+            if (dt5.Rows[0].ItemArray[0].ToString() == null || dt5.Rows[0].ItemArray[0].ToString() == "")
+            { }
+            else
+            {
+                decimal Monthpur = Convert.ToDecimal(dt5.Rows[0].ItemArray[0].ToString());
+                Monthpur = Math.Round(Monthpur, 3);
+                lblbox6KD.Text = Monthpur.ToString();
+            }
+        }
+
+        // This Year New complain
+
+        DateTime EDT = DateTime.Now;
+        string ENDJ = EDT.ToString("MM/dd/yyyy");
+        DateTime SDT = new DateTime(EDT.Year, 1, 1);
+        string STARTJ = SDT.ToString("MM/dd/yyyy");
+
+        string yearPur = "select count(*) as CurrentYear from CRMMainActivities where TenentID=" + TID + " and MyStatus not in('Completed', 'Closed') and Year(UploadDate)=YEar(getdate())";
+        SqlCommand CMD7 = new SqlCommand(yearPur, con);
+        SqlDataAdapter ADB7 = new SqlDataAdapter(CMD7);
+        DataSet ds6 = new DataSet();
+        ADB7.Fill(ds6);
+        DataTable dt7 = ds6.Tables[0];
+        if (dt7.Rows.Count > 0)
+        {
+            if (dt7.Rows[0].ItemArray[0].ToString() == null || dt7.Rows[0].ItemArray[0].ToString() == "")
+            { }
+            else
+            {
+                decimal Yearp = Convert.ToDecimal(dt7.Rows[0].ItemArray[0].ToString());
+                Yearp = Math.Round(Yearp, 3);
+                lblbox7KD.Text = Yearp.ToString();
+            }
+        }
+
+        //This year Close complain
+
+        string yearPur2 = "select count(*) as CurrentYear from CRMMainActivities where TenentID=" + TID + " and MyStatus = 'Closed' and Year(UploadDate)=YEar(getdate())";
+        SqlCommand CMD8 = new SqlCommand(yearPur2, con);
+        SqlDataAdapter ADB8 = new SqlDataAdapter(CMD8);
+        DataSet ds8 = new DataSet();
+        ADB8.Fill(ds8);
+        DataTable dt8 = ds8.Tables[0];
+        if (dt8.Rows.Count > 0)
+        {
+            if (dt8.Rows[0].ItemArray[0].ToString() == null || dt8.Rows[0].ItemArray[0].ToString() == "")
+            { }
+            else
+            {
+                decimal Yearp = Convert.ToDecimal(dt8.Rows[0].ItemArray[0].ToString());
+                Yearp = Math.Round(Yearp, 3);
+                lblbox8KD.Text = Yearp.ToString();
+            }
+        }
+
+
+        List<Database.Win_tbl_purchase_history> itemListYearPurchaseReturn = DB.Win_tbl_purchase_history.Where(p => p.TenentID == TID && (p.purchase_date.Contains(YYYY))).ToList();
+        decimal TOT8 = Convert.ToDecimal(itemListYearPurchaseReturn.Sum(p => p.cost_price));
+        // lblbox8KD.Text = TOT8.ToString();
+        string Purreturnyear = DateTime.Now.ToString("yyyy");
+        //  ThisYearPurchaseReturn.Text = Purreturnyear;
+
+    }*/
+
+      public void ShopbindFull()
+      {
+        int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+
+        string sql = @"
+          DECLARE @TID INT = @TenantParam;
+          DECLARE @Today DATE = CAST(GETDATE() AS DATE);
+          DECLARE @WeekStart DATE = DATEADD(DAY, 1 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE));
+          DECLARE @WeekEnd DATE = DATEADD(DAY, 7 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE));
+
+          SELECT 
+              -- 1 Today's New
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus NOT IN ('Completed', 'Closed') AND UploadDate = @Today) AS TodayComp,
+
+              -- 2 Today's Closed
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus = 'Closed' AND UploadDate = @Today) AS TodayClosed,
+
+              -- 3 Current Week New
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus NOT IN ('Completed', 'Closed') 
+               AND UploadDate BETWEEN @WeekStart AND @WeekEnd) AS CurrentWeekNew,
+
+              -- 4 Current Week Closed
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus = 'Closed' 
+               AND UploadDate BETWEEN @WeekStart AND @WeekEnd) AS CurrentWeekClosed,
+
+              -- 5 Current Month New
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus NOT IN ('Completed', 'Closed') 
+               AND MONTH(UploadDate) = MONTH(GETDATE()) AND YEAR(UploadDate) = YEAR(GETDATE())) AS CurrentMonthNew,
+
+              -- 6 Current Month Closed
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus = 'Closed' 
+               AND MONTH(UploadDate) = MONTH(GETDATE()) AND YEAR(UploadDate) = YEAR(GETDATE())) AS CurrentMonthClosed,
+
+              -- 7 Current Year New
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus NOT IN ('Completed', 'Closed') 
+               AND YEAR(UploadDate) = YEAR(GETDATE())) AS CurrentYearNew,
+
+              -- 8 Current Year Closed
+              (SELECT COUNT(*) FROM CRMActivities 
+               WHERE TenentID = @TID AND MyStatus = 'Closed' 
+               AND YEAR(UploadDate) = YEAR(GETDATE())) AS CurrentYearClosed;
+      ";
+
+        using (SqlCommand cmd = new SqlCommand(sql, con))
+        {
+          cmd.Parameters.AddWithValue("@TenantParam", TID);
+          SqlDataAdapter da = new SqlDataAdapter(cmd);
+          DataTable dt = new DataTable();
+          da.Fill(dt);
+
+          if (dt.Rows.Count > 0)
+          {
+            lblbox1KD.Text = dt.Rows[0]["TodayComp"].ToString();
+            lblbox2KD.Text = dt.Rows[0]["TodayClosed"].ToString();
+            lblbox3KD.Text = dt.Rows[0]["CurrentWeekNew"].ToString();
+            lblbox4KD.Text = dt.Rows[0]["CurrentWeekClosed"].ToString();
+            lblbox5KD.Text = dt.Rows[0]["CurrentMonthNew"].ToString();
+            lblbox6KD.Text = dt.Rows[0]["CurrentMonthClosed"].ToString();
+            lblbox7KD.Text = dt.Rows[0]["CurrentYearNew"].ToString();
+            lblbox8KD.Text = dt.Rows[0]["CurrentYearClosed"].ToString();
+          }
+        }
+      }
+
+
+    protected void listMinimumAndMax_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "lnkpn")
             {
