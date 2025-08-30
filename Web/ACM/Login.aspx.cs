@@ -169,7 +169,7 @@ namespace Web.ACM
                         Session["SAFirstname"] = UserList.FIRST_NAME1.ToString();
                         Response.Redirect("~/acm/DemoPrvilage.aspx");
                     }
-                    if (UserList.USERDATE.Value >= DateTime.Now.Date  && UserList.ACTIVEUSER == true)
+                    if (UserList.Till_DT.Value >= DateTime.Now.Date  && UserList.ACTIVEUSER == true)
                     {
                         List = List.Where(p => p.TenentID == TID && p.LocationID == 1 && p.UserID == UserList.USER_ID ).OrderBy(p => p.MENU_ORDER).ToList();
                         if (List.Count() > 0)
