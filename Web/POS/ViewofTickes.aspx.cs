@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -158,11 +158,11 @@ namespace Web.POS
             drpusermt.DataBind();
             drpusermt.Items.Insert(0, new ListItem("-- Select --", "0"));
 
-            drpFeedbackype.DataSource = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback").OrderBy(p=>p.REFNAME1);
+            /*drpFeedbackype.DataSource = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback").OrderBy(p=>p.REFNAME1);
             drpFeedbackype.DataTextField = "REFNAME1";
             drpFeedbackype.DataValueField = "REFID";
             drpFeedbackype.DataBind();
-            drpFeedbackype.Items.Insert(0, new ListItem("-- Select --", "0"));
+            drpFeedbackype.Items.Insert(0, new ListItem("-- Select --", "0"));*/
 
             DrpPhysicalLocation.DataSource = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation").OrderBy(p=>p.REFNAME1);
             DrpPhysicalLocation.DataTextField = "REFNAME1";
@@ -248,7 +248,7 @@ namespace Web.POS
             chkirno.Checked = false;
             txtComent.Text = txtMessage.Text = txtSubject.Text = "";
           //  drpActivityName.SelectedValue = "Help Desk";
-            drpFeedbackype.SelectedIndex = 0;
+           // drpFeedbackype.SelectedIndex = 0;
             DrpPhysicalLocation.SelectedIndex = 0;
             DrpTCatSubCate.SelectedIndex = 0;
             DrpSubCat.SelectedIndex = 0;
@@ -298,7 +298,7 @@ namespace Web.POS
                 objCRMMainActivities.MyStatus = "Pending";
                 objCRMMainActivities.UploadDate = Convert.ToDateTime(txtdates.Text);
                 objCRMMainActivities.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
+                //objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMMainActivities.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMMainActivities.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMMainActivities.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -318,7 +318,7 @@ namespace Web.POS
                 objCRMMainActivities.StaffInvoice =true;
                 objCRMMainActivities.IRDone = true;
                 objCRMMainActivities.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMMainActivities.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
+                //objCRMMainActivities.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                 objCRMMainActivities.Contact =  txtcontact.Text;
                 objCRMMainActivities.IncidentReport = true;
                 String url = "insert new record in CRMMainActivity with " + "TenentID = " + TID + "COMPID =" + CID + "MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = 1" + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
@@ -374,7 +374,7 @@ namespace Web.POS
                 objCRMActivity.Version = strUName;
 
                 objCRMActivity.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
+                //objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                 objCRMActivity.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                 objCRMActivity.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                 objCRMActivity.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -386,7 +386,7 @@ namespace Web.POS
                 objCRMActivity.StaffInvoice = true;
                 objCRMActivity.IRDone = true;
                 objCRMActivity.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                objCRMActivity.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
+                //objCRMActivity.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                 objCRMActivity.Contact = txtcontact.Text;
                 objCRMActivity.IncidentReport = true;
                 objCRMActivity.aspcomment = 1;
@@ -434,7 +434,7 @@ namespace Web.POS
                     objCRMMainActivities.MyStatus = "Pending";
                     objCRMMainActivities.UploadDate = Convert.ToDateTime(txtdates.Text);
                     objCRMMainActivities.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                    objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
+                    //objCRMMainActivities.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                     objCRMMainActivities.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                     objCRMMainActivities.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                     objCRMMainActivities.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -449,7 +449,7 @@ namespace Web.POS
                     objCRMMainActivities.StaffInvoice = true;
                     objCRMMainActivities.IRDone = true;
                     objCRMMainActivities.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                    objCRMMainActivities.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
+                    //objCRMMainActivities.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                     objCRMMainActivities.Contact = txtcontact.Text;
                     objCRMMainActivities.IncidentReport = true;
                     DB.SaveChanges();
@@ -481,7 +481,7 @@ namespace Web.POS
                     objCRMActivity.Version = strUName;
 
                     objCRMActivity.TickDepartmentID = Convert.ToInt32(drpSDepartment.SelectedValue);
-                    objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
+                    //objCRMActivity.TickFeedbackype = Convert.ToInt32(drpFeedbackype.SelectedValue);
                     objCRMActivity.TickPhysicalLocation = Convert.ToInt32(DrpPhysicalLocation.SelectedValue);
                     objCRMActivity.TickCatID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
                     objCRMActivity.TickSubCatID = Convert.ToInt32(DrpSubCat.SelectedValue);
@@ -493,7 +493,7 @@ namespace Web.POS
                     objCRMActivity.StaffInvoice = true;
                     objCRMActivity.IRDone = true;
                     objCRMActivity.ReportedBy = Convert.ToInt32(drpusermt.SelectedValue);
-                    objCRMActivity.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
+                    //objCRMActivity.FeedbackNumber = objCRMMainActivities.MasterCODE.ToString();
                     objCRMActivity.Contact = txtcontact.Text;
                     objCRMActivity.IncidentReport = true;
 
@@ -605,7 +605,7 @@ namespace Web.POS
                     {
                         Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.MasterCODE == tiki);
                         HelpDept = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
-                        HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
+                        //HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
                         HelpLocation = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
                         HelpCatID = Convert.ToInt32(objCRMMainActivities.TickCatID);
                         HelpSubID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
@@ -709,7 +709,7 @@ namespace Web.POS
                     {
                         Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki);
                         HelpDept = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
-                        HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
+                        //HelpFeedback = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
                         HelpLocation = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
                         HelpCatID = Convert.ToInt32(objCRMMainActivities.TickCatID);
                         HelpSubID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
@@ -882,7 +882,7 @@ namespace Web.POS
                         Database.CRMMainActivity infoObj = DB.CRMMainActivities.Single(p => p.TenentID == alternetTENENT && p.MyID == myidd && p.ACTIVITYE == "helpdesk" && p.MasterCODE== Tikitno);
                         int did = Convert.ToInt32(infoObj.TickDepartmentID);
                         int LOCid = Convert.ToInt32(infoObj.TickPhysicalLocation);
-                        int compid = Convert.ToInt32(infoObj.TickFeedbackype);
+                        //int compid = Convert.ToInt32(infoObj.TickFeedbackype);
                        
                     }
                     else
@@ -910,10 +910,10 @@ namespace Web.POS
                 int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
                 Database.CRMMainActivity objICCATEGORY = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID);
 
-                if (objICCATEGORY.TickFeedbackype != 0 && objICCATEGORY.TickFeedbackype != null)
+               /* if (objICCATEGORY.TickFeedbackype != 0 && objICCATEGORY.TickFeedbackype != null)
                 {
                     drpFeedbackype.SelectedValue = objICCATEGORY.TickFeedbackype.ToString();
-                }
+                }*/
                 if (objICCATEGORY.TickDepartmentID != 0 && objICCATEGORY.TickDepartmentID != null)
                 {
                     drpSDepartment.SelectedValue = objICCATEGORY.TickDepartmentID.ToString();
@@ -1296,14 +1296,14 @@ namespace Web.POS
             if (aspcomment.SelectedValue == "4")
             {
                 drpinvestigation.Visible = true;
-                Label20.Visible = true;
-                Label20.Text = "Risk";
+                //Label20.Visible = true;
+                //Label20.Text = "Risk";
                 Rating1.Visible = true;
             }
             else
             {
                 drpinvestigation.Visible = false;
-                Label20.Visible = false;
+                //Label20.Visible = false;
                 Rating1.Visible = false;
             }
 
@@ -1431,7 +1431,7 @@ namespace Web.POS
                 aspcomment.Visible = false;
                 txtComent.Visible = false;
                 drpStatus.Visible = false;
-                Label6.Visible = false;
+                //Label6.Visible = false;
                 btnAttch.Visible = false;
                 btnSubmit.Visible = false;
                 btnTikitClose.Visible = false;
@@ -1446,7 +1446,7 @@ namespace Web.POS
                 aspcomment.Visible = true;
                 txtComent.Visible = true;
                 drpStatus.Visible = true;
-                Label6.Visible = true;
+                //Label6.Visible = true;
                 btnAttch.Visible = true;
                 btnSubmit.Visible = true;
                 btnTikitClose.Visible = true;
