@@ -407,8 +407,8 @@ namespace Web.ReportMst
               
                 System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
                 msg.Subject = "Summary - " + depart + " Report for " + txtdateFrom.Text + "AND" + txtdateTO.Text;
-                msg.From = new System.Net.Mail.MailAddress("complaints@royalehListView1ayat.com");//("supportteam@digital53.com ");
-                msg.To.Add(new System.Net.Mail.MailAddress(Sep1));
+                msg.From = new System.Net.Mail.MailAddress("complaints@royalehayat.com");//("supportteam@digital53.com ");
+                msg.To.Add(new System.Net.Mail.MailAddress(email));
                 msg.BodyEncoding = System.Text.Encoding.UTF8;
                 msg.Body = body;
                 msg.IsBodyHtml = true;
@@ -789,7 +789,13 @@ namespace Web.ReportMst
 
                 sendEmail(Tocontant, txtpmail.Text);
                 //sendEmail(Ourcontant, "dangijalpa@gmail.com");
-                ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "myscript", "alert('Successfully mail Send.');", true);
+                ScriptManager.RegisterClientScriptBlock(
+                  Page,
+                  this.GetType(),
+                  "myscript",
+                  $"alert('Email successfully sent to {txtpmail.Text}');",
+                  true
+                );
             }
             else
             {

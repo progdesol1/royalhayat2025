@@ -409,28 +409,27 @@ namespace Web.ReportMst
         public void sendEmail(string body, string email)
         {
 
-            if (String.IsNullOrEmpty(email))
-                return;
-            //try
-            //{
-            System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
-            msg.Subject = "Thank You";
-            msg.From = new System.Net.Mail.MailAddress("complaint@royalehayat.com");//("supportteam@digital53.com ");
-            msg.To.Add(new System.Net.Mail.MailAddress(email));
-            msg.BodyEncoding = System.Text.Encoding.UTF8;
-            msg.Body = body;
-            msg.IsBodyHtml = true;
-            msg.Priority = System.Net.Mail.MailPriority.High;
-            System.Net.Mail.SmtpClient smpt = new System.Net.Mail.SmtpClient();
-            smpt.UseDefaultCredentials = false;
-            smpt.Host = "smtp.royalehayat.com";//for google required smtp.gmail.com and must be check Google Account setting https://myaccount.google.com/lesssecureapps?pli=1 ON//"mail.digital53.com";
-            smpt.Port = 587;
-            smpt.EnableSsl = false;
-            //smpt.Credentials = new System.Net.NetworkCredential("supportteam@digital53.com ", "Support123$");
-            smpt.Credentials = new System.Net.NetworkCredential("complaint@royalehayat.com", "nt3-rhh-m@1L");
-            smpt.Send(msg);
+          if (String.IsNullOrEmpty(email))
+            return;
+          //try
+          //{
+          System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
+          msg.Subject = "Thank You";
+          msg.From = new System.Net.Mail.MailAddress("complaints@royalehayat.com");//("supportteam@digital53.com ");
+          msg.To.Add(new System.Net.Mail.MailAddress(email));
+          msg.BodyEncoding = System.Text.Encoding.UTF8;
+          msg.Body = body;
+          msg.IsBodyHtml = true;
+          msg.Priority = System.Net.Mail.MailPriority.High;
+          System.Net.Mail.SmtpClient smpt = new System.Net.Mail.SmtpClient();
+          smpt.UseDefaultCredentials = false;
+          smpt.Host = "smtp.siteprotect.com";//for google required smtp.gmail.com and must be check Google Account setting https://myaccount.google.com/lesssecureapps?pli=1 ON//"mail.digital53.com";
+          smpt.Port = 587;
+          smpt.EnableSsl = true;
+          //smpt.Credentials = new System.Net.NetworkCredential("supportteam@digital53.com ", "Support123$");
+          smpt.Credentials = new System.Net.NetworkCredential("complaints@royalehayat.com", "Royal123$");
+          smpt.Send(msg);
         }
-
         public string getcomplainname(int complain)
         {
             if (complain == 0 || complain == null)
@@ -546,11 +545,16 @@ namespace Web.ReportMst
             for (int i = 0; i < ListViewComplaint.Items.Count; i++)
             {
 
-                Label lblID = (Label)ListViewComplaint.Items[i].FindControl("lblID");
+                Label lblID = (Label)ListViewComplaint.Items[i].FindControl("lblm1");
                 Label lblcomplain = (Label)ListViewComplaint.Items[i].FindControl("lblcomplain");
                 Label lbltickdk = (Label)ListViewComplaint.Items[i].FindControl("lbltickdk");
                 Label lbltickcat = (Label)ListViewComplaint.Items[i].FindControl("lbltickcat");
-                int id = Convert.ToInt32(lblID.Text);
+                int id = 0;
+
+                if (lblID != null && !string.IsNullOrEmpty(lblID.Text))
+                {
+                  id = Convert.ToInt32(lblID.Text);
+                }
 
                 count++;
                 Flag = true;
@@ -568,7 +572,14 @@ namespace Web.ReportMst
 
                 sendEmail(Tocontant, txtpmail.Text);
                 sendEmail(Ourcontant, "dangijalpa@gmail.com");
-                ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "myscript", "alert('Successfully mail Send.');", true);
+                ScriptManager.RegisterClientScriptBlock(
+                  Page,
+                  this.GetType(),
+                  "myscript",
+                  $"alert('Email successfully sent to {txtpmail.Text}');",
+                  true
+                );
+
             }
             else
             {

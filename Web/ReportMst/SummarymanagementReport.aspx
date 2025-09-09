@@ -334,6 +334,8 @@
                                                                                 <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("ComplaintNumber")%>' target="_blank">
                                                                                     <asp:Label ID="lblcomplain" runat="server" Text='<%# Eval("ComplaintNumber")%>'></asp:Label>
                                                                                     <asp:Label ID="lblID" Visible="false" runat="server" Text='<%# Eval("ComplaintNumber") %>'></asp:Label>
+                                                                                  <asp:Label ID="lblmylineno" Visible="false" runat="server" Text='<%# Eval("MyLineNo") %>'></asp:Label>
+                                                                                  <asp:Label ID="lblconta" Visible="false" runat="server" Text='<%# Eval("Contact") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>
 

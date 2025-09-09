@@ -271,7 +271,7 @@
             if (btnSave) {
                 // Attach click event
                 btnSave.addEventListener('click', function (e) {
-                   alert('btnSave clicked'); // 🟢 This will run ONLY when you click the button
+                   //alert('btnSave clicked'); // 🟢 This will run ONLY when you click the button
 
                     // Run ASP.NET client-side validation for this ValidationGroup
                     if (typeof (Page_ClientValidate) === 'function') {
@@ -306,7 +306,6 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  
     <div style="background-color: #e9ecf3">
         <!-- Page Header -->
         <div class="complaint-header shadow-sm p-3 mb-4 rounded">
@@ -416,7 +415,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="todo-content">
                         <div class="portlet light bordered">
                             <div class="portlet-body">
@@ -505,227 +503,226 @@
                                                     </div>
                                                 </asp:Panel>
                                                 <asp:Panel ID="pnlTicki" runat="server">
-                                                <ul class="nav nav-tabs" id="profileTabs" role="tablist">
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="nav-link active" id="education-tab" data-bs-toggle="tab" data-bs-target="#education" type="button" role="tab">
-                                                            COMPLAINT DATA
-                                                        </button>
-                                                    </li>
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="nav-link" id="experience-tab" data-bs-toggle="tab" data-bs-target="#experience" type="button" role="tab">
-                                                            PERSONAL DATA
-                                                        </button>
-                                                    </li>
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="nav-link" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills" type="button" role="tab">
-                                                            INVESTIGATION DATA
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                                  <ul class="nav nav-tabs flex-column flex-sm-row" id="profileTabs" role="tablist">
+                                                      <li class="nav-item" role="presentation">
+                                                          <button class="nav-link active" id="education-tab" data-bs-toggle="tab" data-bs-target="#education" type="button" role="tab">
+                                                              COMPLAINT DATA
+                                                          </button>
+                                                      </li>
+                                                      <li class="nav-item" role="presentation">
+                                                          <button class="nav-link" id="experience-tab" data-bs-toggle="tab" data-bs-target="#experience" type="button" role="tab">
+                                                              PERSONAL DATA
+                                                          </button>
+                                                      </li>
+                                                      <li class="nav-item" role="presentation">
+                                                          <button class="nav-link" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills" type="button" role="tab">
+                                                              INVESTIGATION DATA
+                                                          </button>
+                                                      </li>
+                                                  </ul>
                                                 <div class="form">
                                                   <div class="tab-content p-3 border border-top-0" id="profileTabsContent">
-<!-- complaint Tab -->
-                                        <div class="tab-pane show active" id="education" role="tabpanel" aria-labelledby="education-tab">
-                                                              <div class="complaint-section">
-                                                                <div class="row">
-                                                                  <div class="col-4">
-                                                                    <!-- Complaint No & Log Only -->
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label fw-bold">
-                                                                            <asp:Label ID="Label7" runat="server" Text="Complaint No." />
-                                                                        </label>
-                                                                        <asp:Label ID="lblcomplainno" runat="server" CssClass="form-control-plaintext" />
-                                                                    </div>
-                                                                  </div>
-                                                                  <div class="col-4">
-                                                                    <div class="mb-3">
-                                                                        <div >
-                                                                            <asp:CheckBox ID="chklog" runat="server" AutoPostBack="true" />
-                                                                            <label class="form-check-label fw-bold" for="chklog">
-                                                                                <asp:Label ID="Label24" runat="server" Text="Log Only" />
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                  </div>
-                                                                  <div class="col-4">
-                                                                    <!-- Creation Date -->
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label fw-bold">
-                                                                            <asp:Label ID="Label1" runat="server" Text="Creation Date" />
-                                                                        </label>
-                                                                        <asp:Label ID="lbldatesd" runat="server" CssClass="form-control-plaintext" />
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
+                                                      <!-- complaint Tab -->
+                                                      <div class="tab-pane show active" id="education" role="tabpanel" aria-labelledby="education-tab">
+                                                                            <div class="complaint-section">
+                                                                              <div class="row">
+                                                                                <div class="col-4">
+                                                                                  <!-- Complaint No & Log Only -->
+                                                                                  <div class="mb-3">
+                                                                                      <label class="form-label fw-bold">
+                                                                                          <asp:Label ID="Label7" runat="server" Text="Complaint No." />
+                                                                                      </label>
+                                                                                      <asp:Label ID="lblcomplainno" runat="server" CssClass="form-control-plaintext" />
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="col-4">
+                                                                                  <div class="mb-3">
+                                                                                      <div >
+                                                                                          <asp:CheckBox ID="chklog" runat="server" AutoPostBack="true" />
+                                                                                          <label class="form-check-label fw-bold" for="chklog">
+                                                                                              <asp:Label ID="Label24" runat="server" Text="Log Only" />
+                                                                                          </label>
+                                                                                      </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="col-4">
+                                                                                  <!-- Creation Date -->
+                                                                                  <div class="mb-3">
+                                                                                      <label class="form-label fw-bold">
+                                                                                          <asp:Label ID="Label1" runat="server" Text="Creation Date" />
+                                                                                      </label>
+                                                                                      <asp:Label ID="lbldatesd" runat="server" CssClass="form-control-plaintext" />
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
 
-                                                                  <!-- Complaint Date -->
-                                                                  <div class="mb-3">
-                                                                      <label class="form-label fw-bold">
-                                                                          <asp:Label ID="lbldate" runat="server" Text="Complaint Date" />
-                                                                      </label>
+                                                                                <!-- Complaint Date -->
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label fw-bold">
+                                                                                        <asp:Label ID="lbldate" runat="server" Text="Complaint Date" />
+                                                                                    </label>
 
-                                                                      <div class="input-group">
-                                                                        <div class="row">
-                                                                          <div class="col-1">
-                                                                            <!-- Calendar Button -->
-                                                                            <button class="btn btn-outline-secondary" type="button" id="calender">
-                                                                                <i class="bi bi-calendar"></i>
-                                                                            </button>
-                                                                          </div>
-                                                                          <div class="col-11">
-                                                                            <!-- Date Textbox -->
-                                                                            <asp:TextBox 
-                                                                                ID="txtdates" 
-                                                                                runat="server" 
-                                                                                CssClass="form-control" 
-                                                                                OnTextChanged="txtdates_TextChanged1">
-                                                                            </asp:TextBox>
-                                                                          </div>
-                                                                        </div>
-                                                                      </div>
+                                                                                    <div class="input-group">
+                                                                                      <div class="row">
+                                                                                        <div class="col-1">
+                                                                                          <!-- Calendar Button -->
+                                                                                          <button class="btn btn-outline-secondary" type="button" id="calender">
+                                                                                              <i class="bi bi-calendar"></i>
+                                                                                          </button>
+                                                                                        </div>
+                                                                                        <div class="col-11">
+                                                                                          <!-- Date Textbox -->
+                                                                                          <asp:TextBox 
+                                                                                              ID="txtdates" 
+                                                                                              runat="server" 
+                                                                                              CssClass="form-control" 
+                                                                                              OnTextChanged="txtdates_TextChanged1">
+                                                                                          </asp:TextBox>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
 
-                                                                      <!-- Validation & Message -->
-                                                                      <asp:Label ID="lblmsgl" runat="server" Visible="false" CssClass="text-danger small mt-1 d-block"></asp:Label>                  
+                                                                                    <!-- Validation & Message -->
+                                                                                    <asp:Label ID="lblmsgl" runat="server" Visible="false" CssClass="text-danger small mt-1 d-block"></asp:Label>                  
 
-<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtdates" ErrorMessage="Date required" InitialValue="0"></asp:RequiredFieldValidator>
+              <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtdates" ErrorMessage="Date required" InitialValue="0"></asp:RequiredFieldValidator>
 
-                                                                      <!-- Calendar Extender -->
-                                                                      <cc1:CalendarExtender 
-                                                                          ID="CalendarExtendertxtdateTO" 
-                                                                          runat="server" 
-                                                                          Enabled="True" 
-                                                                          PopupButtonID="calender" 
-                                                                          TargetControlID="txtdates" 
-                                                                          Format="dd/MMM/yyyy">
-                                                                      </cc1:CalendarExtender>
-                                                                  </div>
+                                                                                    <!-- Calendar Extender -->
+                                                                                    <cc1:CalendarExtender 
+                                                                                        ID="CalendarExtendertxtdateTO" 
+                                                                                        runat="server" 
+                                                                                        Enabled="True" 
+                                                                                        PopupButtonID="calender" 
+                                                                                        TargetControlID="txtdates" 
+                                                                                        Format="dd/MMM/yyyy">
+                                                                                    </cc1:CalendarExtender>
+                                                                                </div>
 
-                                                                 <!-- Complaint Type -->
-                                                                  <div class="mb-3">
-                                                                      <label class="form-label fw-bold">
-                                                                          <asp:Label ID="Label5" runat="server" Text="Complaint Type" />
-                                                                      </label>
-                                                                      <asp:DropDownList ID="drpComplainType" runat="server" 
-                                                                          CssClass="form-select form-select-lg select2me w-100" AutoPostBack="true">
-                                                                      </asp:DropDownList>
-                                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Ticks"
-                                                                          Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpComplainType"
-                                                                          ErrorMessage="Complain Type required" InitialValue="0">
-                                                                      </asp:RequiredFieldValidator>
-                                                                  </div>
+                                                                               <!-- Complaint Type -->
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label fw-bold">
+                                                                                        <asp:Label ID="Label5" runat="server" Text="Complaint Type" />
+                                                                                    </label>
+                                                                                    <asp:DropDownList ID="drpComplainType" runat="server" 
+                                                                                        CssClass="form-select form-select-lg select2me w-100" AutoPostBack="true">
+                                                                                    </asp:DropDownList>
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Ticks"
+                                                                                        Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpComplainType"
+                                                                                        ErrorMessage="Complain Type required" InitialValue="0">
+                                                                                    </asp:RequiredFieldValidator>
+                                                                                </div>
 
-                                                                  <!-- Department -->
-                                                                  <div class="mb-3">
-                                                                      <label class="form-label fw-bold">
-                                                                          <asp:Label ID="Label4" runat="server" Text="Department" />
-                                                                      </label>
-                                                                      <asp:DropDownList ID="drpSDepartment" runat="server" 
-                                                                          CssClass="form-select form-select-lg select2me w-100" AutoPostBack="true" 
-                                                                          OnSelectedIndexChanged="drpSDepartment_SelectedIndexChanged">
-                                                                      </asp:DropDownList>
-                                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Ticks"
-                                                                          Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpSDepartment"
-                                                                          ErrorMessage="Department required" InitialValue="0">
-                                                                      </asp:RequiredFieldValidator>
-                                                                  </div>
+                                                                                <!-- Department -->
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label fw-bold">
+                                                                                        <asp:Label ID="Label4" runat="server" Text="Department" />
+                                                                                    </label>
+                                                                                    <asp:DropDownList ID="drpSDepartment" runat="server" 
+                                                                                        CssClass="form-select form-select-lg select2me w-100" AutoPostBack="true" 
+                                                                                        OnSelectedIndexChanged="drpSDepartment_SelectedIndexChanged">
+                                                                                    </asp:DropDownList>
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Ticks"
+                                                                                        Display="Dynamic" ForeColor="#a94442" ControlToValidate="drpSDepartment"
+                                                                                        ErrorMessage="Department required" InitialValue="0">
+                                                                                    </asp:RequiredFieldValidator>
+                                                                                </div>
 
-                                                                  <!-- Physical Location -->
-                                                                  <div class="mb-3">
-                                                                      <label class="form-label fw-bold">
-                                                                          <asp:Label ID="Label8" runat="server" Text="Physical Location" />
-                                                                      </label>
-                                                                      <asp:DropDownList ID="DrpPhysicalLocation" runat="server" 
-                                                                          CssClass="form-select form-select-lg select2me w-100" AutoPostBack="true">
-                                                                      </asp:DropDownList>
-                                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Ticks"
-                                                                          Display="Dynamic" ForeColor="#a94442" ControlToValidate="DrpPhysicalLocation"
-                                                                          ErrorMessage="Physical Location required" InitialValue="0">
-                                                                      </asp:RequiredFieldValidator>
-                                                                  </div>
+                                                                                <!-- Physical Location -->
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label fw-bold">
+                                                                                        <asp:Label ID="Label8" runat="server" Text="Physical Location" />
+                                                                                    </label>
+                                                                                    <asp:DropDownList ID="DrpPhysicalLocation" runat="server" 
+                                                                                        CssClass="form-select form-select-lg select2me w-100" AutoPostBack="true">
+                                                                                    </asp:DropDownList>
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Ticks"
+                                                                                        Display="Dynamic" ForeColor="#a94442" ControlToValidate="DrpPhysicalLocation"
+                                                                                        ErrorMessage="Physical Location required" InitialValue="0">
+                                                                                    </asp:RequiredFieldValidator>
+                                                                                </div>
 
                                                                  
 
-                                                                <div class="row">
-                                                                  <div class="col-6">
-                                                                                                                                         <!-- Staff Involved -->
-                                                                     <div class="mb-3">
-                                                                         <label class="form-label fw-bold">
-                                                                             <asp:Label ID="Label15" runat="server" Text="Staff Involved" />
-                                                                         </label>
-                                                                         <div>
-                                                                             <asp:CheckBox ID="chklist" runat="server" OnCheckedChanged="chklist_CheckedChanged" AutoPostBack="true" />
-                                                                             <label class="form-check-label">Yes</label>
-                                                                         </div>
-                                                                         <asp:TextBox ID="txtstaffname" runat="server" CssClass="form-control mt-2" Visible="false" placeholder="Staff Name"></asp:TextBox>
-                                                                     </div>
-                                                                  </div>
-                                                                  <div class="col-3">
-                                                                     <div class="mb-3">
-                                                                         <label class="form-label fw-bold">
-                                                                             <asp:Label ID="Label19" runat="server" Text="Inc Rep" />
-                                                                         </label>
-                                                                         <div>
-                                                                             <asp:CheckBox ID="chkinci" runat="server"/>
-                                                                         </div>
-                                                                     </div>
-                                                                  </div>
-                                                                  <div class="col-3">
-                                                                    <div class="mb-3">
-                                                                        <label class="form-label fw-bold">
-                                                                            <asp:Label ID="Label16" runat="server" Text="IR Done" />
-                                                                        </label>
-                                                                        <div>
-                                                                            <asp:CheckBox ID="chkirno" runat="server"/>
+                                                                              <div class="row">
+                                                                                <div class="col-6">
+                                                                                                                                                       <!-- Staff Involved -->
+                                                                                   <div class="mb-3">
+                                                                                       <label class="form-label fw-bold">
+                                                                                           <asp:Label ID="Label15" runat="server" Text="Staff Involved" />
+                                                                                       </label>
+                                                                                       <div>
+                                                                                           <asp:CheckBox ID="chklist" runat="server" OnCheckedChanged="chklist_CheckedChanged" AutoPostBack="true" />
+                                                                                           <label class="form-check-label">Yes</label>
+                                                                                       </div>
+                                                                                       <asp:TextBox ID="txtstaffname" runat="server" CssClass="form-control mt-2" Visible="false" placeholder="Staff Name"></asp:TextBox>
+                                                                                   </div>
+                                                                                </div>
+                                                                                <div class="col-3">
+                                                                                   <div class="mb-3">
+                                                                                       <label class="form-label fw-bold">
+                                                                                           <asp:Label ID="Label19" runat="server" Text="Inc Rep" />
+                                                                                       </label>
+                                                                                       <div>
+                                                                                           <asp:CheckBox ID="chkinci" runat="server"/>
+                                                                                       </div>
+                                                                                   </div>
+                                                                                </div>
+                                                                                <div class="col-3">
+                                                                                  <div class="mb-3">
+                                                                                      <label class="form-label fw-bold">
+                                                                                          <asp:Label ID="Label16" runat="server" Text="IR Done" />
+                                                                                      </label>
+                                                                                      <div>
+                                                                                          <asp:CheckBox ID="chkirno" runat="server"/>
+                                                                                      </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
+                                                      <!-- Personal Tab -->
+                                                      <div class="tab-pane" id="experience" role="tabpanel" aria-labelledby="experience-tab">
+
+                                                          <!-- Patient Name -->
+                                                          <div class="mb-3">
+                                                              <label class="form-label fw-semibold">
+                                                                  <asp:Label ID="Label13" runat="server" Text="Patient Name" />
+                                                              </label>
+                                                              <asp:TextBox ID="txtpatientname" runat="server" CssClass="form-control shadow-sm" placeholder="Enter patient name"></asp:TextBox>
+                                                              <asp:RequiredFieldValidator ID="required3" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtpatientname" ErrorMessage="Please add Patient Name"></asp:RequiredFieldValidator>
                                                           </div>
 
-<!-- Personal Tab -->
-<div class="tab-pane" id="experience" role="tabpanel" aria-labelledby="experience-tab">
+                                                          <!-- MRN -->
+                                                          <div class="mb-3">
+                                                              <label class="form-label fw-semibold">
+                                                                  <asp:Label ID="Label14" runat="server" Text="MRN" />
+                                                              </label>
+                                                              <asp:TextBox ID="txtMRN" runat="server" CssClass="form-control shadow-sm" placeholder="Enter MRN"></asp:TextBox>
+                                                          </div>
 
-    <!-- Patient Name -->
-    <div class="mb-3">
-        <label class="form-label fw-semibold">
-            <asp:Label ID="Label13" runat="server" Text="Patient Name" />
-        </label>
-        <asp:TextBox ID="txtpatientname" runat="server" CssClass="form-control shadow-sm" placeholder="Enter patient name"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="required3" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtpatientname" ErrorMessage="Please add Patient Name"></asp:RequiredFieldValidator>
-    </div>
+                                                          <!-- Subject -->
+                                                          <div class="mb-3">
+                                                              <label class="form-label fw-semibold">
+                                                                  <asp:Label ID="Label2" runat="server" Text="Subject" />
+                                                              </label>
+                                                              <asp:TextBox ID="txtSubject" runat="server" MaxLength="100" TextMode="MultiLine" Rows="2"
+                                                                  CssClass="form-control shadow-sm" placeholder="Write the subject"></asp:TextBox>
+                                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtSubject" ErrorMessage="Subject required"></asp:RequiredFieldValidator>
+                                                          </div>
 
-    <!-- MRN -->
-    <div class="mb-3">
-        <label class="form-label fw-semibold">
-            <asp:Label ID="Label14" runat="server" Text="MRN" />
-        </label>
-        <asp:TextBox ID="txtMRN" runat="server" CssClass="form-control shadow-sm" placeholder="Enter MRN"></asp:TextBox>
-    </div>
+                                                          <!-- Complaint Details -->
+                                                          <div class="mb-3">
+                                                              <label class="form-label fw-semibold">
+                                                                  <asp:Label ID="Label3" runat="server" Text="Complaint Details" />
+                                                              </label>
+                                                              <asp:TextBox ID="txtMessage" runat="server" MaxLength="1000" TextMode="MultiLine" Rows="15"
+                                                                  CssClass="form-control shadow-sm" placeholder="Write the message"></asp:TextBox>
+                                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtMessage" ErrorMessage="Message required"></asp:RequiredFieldValidator>
+                                                          </div>
 
-    <!-- Subject -->
-    <div class="mb-3">
-        <label class="form-label fw-semibold">
-            <asp:Label ID="Label2" runat="server" Text="Subject" />
-        </label>
-        <asp:TextBox ID="txtSubject" runat="server" MaxLength="100" Rows="2"
-            CssClass="form-control shadow-sm" placeholder="Write the subject"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtSubject" ErrorMessage="Subject required"></asp:RequiredFieldValidator>
-    </div>
-
-    <!-- Complaint Details -->
-    <div class="mb-3">
-        <label class="form-label fw-semibold">
-            <asp:Label ID="Label3" runat="server" Text="Complaint Details" />
-        </label>
-        <asp:TextBox ID="txtMessage" runat="server" MaxLength="1000" TextMode="MultiLine" Rows="15"
-            CssClass="form-control shadow-sm" placeholder="Write the message"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtMessage" ErrorMessage="Message required"></asp:RequiredFieldValidator>
-    </div>
-
-</div>
-<!-- INVESTIGATION DATA Tab -->
-                                                  <div class="tab-pane" id="skills" role="tabpanel" aria-labelledby="skills-tab">
+                                                      </div>
+                                                      <!-- INVESTIGATION DATA Tab -->
+                                                      <div class="tab-pane" id="skills" role="tabpanel" aria-labelledby="skills-tab">
 
     <!-- Contact No -->
     <div class="mb-3">
@@ -814,19 +811,20 @@
 </div>
                                                   </div>
                                                   <!-- Hidden Field to store tab -->
-                                                  <asp:HiddenField ID="hfActiveTab" runat="server" />        <div class="d-flex flex-wrap gap-2 justify-content-end mt-3">
-                                                      <asp:Button ID="btnattache" runat="server" CssClass="btn btn-outline-primary btn-sm" OnClick="btnattache_Click" Text="Attachments" />
+                                                  <asp:HiddenField ID="hfActiveTab" runat="server" />
+                                                    <div class="d-flex flex-wrap gap-2 justify-content-end mt-3">
+                                                        <asp:Button ID="btnattache" runat="server" CssClass="btn btn-outline-primary btn-sm" OnClick="btnattache_Click" Text="Attachments" />
     
-                                                      <asp:Button ID="btnSave" runat="server" CssClass="btn btn-success btn-sm" OnClick="btnSave_Click" Text="Submit" ValidationGroup="Ticks" />
+                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-success btn-sm" OnClick="btnSave_Click" Text="Submit" ValidationGroup="Ticks" />
     
-                                                      <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-secondary btn-sm" OnClick="btnCancel_Click" Text="Cancel" />
+                                                        <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-secondary btn-sm" OnClick="btnCancel_Click" Text="Cancel" />
     
-                                                      <asp:Button ID="btncack" runat="server" CssClass="btn btn-outline-secondary btn-sm" OnClick="btncack_Click" Text="Back" Visible="false" />
+                                                        <asp:Button ID="btncack" runat="server" CssClass="btn btn-outline-secondary btn-sm" OnClick="btncack_Click" Text="Back" Visible="false" />
     
-                                                      <asp:Button ID="btndelete" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="btndelete_Click" Text="Delete" Visible="false" />
+                                                        <asp:Button ID="btndelete" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="btndelete_Click" Text="Delete" Visible="false" />
     
-                                                      <asp:Button ID="btncloseandupdate" runat="server" CssClass="btn btn-danger btn-sm" OnClick="btncloseandupdate_Click" Text="Close Tkt & Save" />
-                                                  </div>
+                                                        <asp:Button ID="btncloseandupdate" runat="server" CssClass="btn btn-danger btn-sm" OnClick="btncloseandupdate_Click" Text="Close Tkt & Save" />
+                                                    </div>
                                                 </div>
                                                 </asp:Panel>
                                                 <asp:Panel ID="pnlinfo" runat="server">
@@ -1013,7 +1011,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade bs-modal-sm" id="small2" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-modal-sm" id="small2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm" style="margin-bottom: 0px; margin-top: 0px;">
             <div class="modal-content">
                 <div class="portlet box green">

@@ -15,10 +15,13 @@ D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Debug\Web.csproj.CoreCompileI
 D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Debug\Web.csproj.Up2Date
 D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Debug\Web.dll
 D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Web\obj\Debug\Web.pdb
+<<<<<<< Updated upstream
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\obj\Debug\Web.csproj.AssemblyReference.cache
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\obj\Debug\Web.dll
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\obj\Debug\Web.pdb
+=======
+>>>>>>> Stashed changes
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\bin\Web.dll.config
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\bin\Web.dll
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Web\bin\Web.pdb

@@ -119,8 +119,6 @@ namespace Web.POS
         }
       }
     }
-
-
     public void complainyear()
     {
       if (Session["USER"] == null)
@@ -171,7 +169,6 @@ namespace Web.POS
         drpusers.Items.Insert(0, new ListItem("-- Select User--", "0"));
       }
     }
-
     public void BindData()
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -1208,7 +1205,6 @@ namespace Web.POS
     {
       clen();
     }
-
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
 
@@ -1772,7 +1768,6 @@ namespace Web.POS
       aspcomment.SelectedIndex = 0;
       drpinvestigation.SelectedIndex = 0;
     }
-
     protected void ltsRemainderNotes_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
       int ID = Convert.ToInt32(e.CommandArgument);
@@ -1802,18 +1797,19 @@ namespace Web.POS
           btnSubmit.Visible = true;
           LinkButton btnclick123 = (LinkButton)e.Item.FindControl("btnclick123");
           int linkID = Convert.ToInt32(e.CommandArgument);
-          Label tikitID = (Label)e.Item.FindControl("tikitID");
-          Label Label11 = (Label)e.Item.FindControl("Label11");
-          Label Label12 = (Label)e.Item.FindControl("Label12");
+          //Label tikitID = (Label)e.Item.FindControl("MasterCODE");
+          Label Label11 = (Label)e.Item.FindControl("MyID");
+          //Label Label12 = (Label)e.Item.FindControl("Label12");
+          int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+          Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID);
 
-          int alternetTENENT = Convert.ToInt32(Label12.Text);
-          int myidd = Convert.ToInt32(Label11.Text);
-          int Tikitno = Convert.ToInt32(tikitID.Text);
-          ViewState["TIkitNumber"] = Tikitno;
+          //int alternetTENENT = Convert.ToInt32(Label12.Text);
+          int myidd = objCRMMainActivities.MyID;
+          int Tikitno = ID; //Convert.ToInt32(tikitID.Text);
+          //ViewState["TIkitNumber"] = Tikitno;
           panChat.Visible = true;
 
           int admin = 0;
-          int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
           int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
           ltsRemainderNotes.DataSource = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == Tikitno);
           ltsRemainderNotes.DataBind();
@@ -1827,7 +1823,7 @@ namespace Web.POS
             ListHistoy.DataSource = DB.CRMActivities.Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UploadDate);
             ListHistoy.DataBind();
 
-            Database.CRMMainActivity infoObj = DB.CRMMainActivities.Single(p => p.TenentID == alternetTENENT && p.MyID == myidd && p.ACTIVITYE == "helpdesk" && p.MasterCODE == Tikitno);
+            Database.CRMMainActivity infoObj = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MyID == myidd && p.ACTIVITYE == "helpdesk" && p.MasterCODE == Tikitno);
             int did = Convert.ToInt32(infoObj.TickDepartmentID);
             int LOCid = Convert.ToInt32(infoObj.TickPhysicalLocation);
             int compid = Convert.ToInt32(infoObj.TickComplainType);
@@ -1846,14 +1842,13 @@ namespace Web.POS
             ListHistoy.DataBind();
             pnlinfo.Visible = false;
           }
-          Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == Tikitno);
+          //Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == Tikitno);
           //  Rating1.CurrentRating = Convert.ToInt32(objCRMMainActivities.Ratting);
           lblRatingStatus.Text = objCRMMainActivities.Ratting.ToString();
 
         }
 
       }
-
       else if (e.CommandName == "btneditticket")
       {
         int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -1951,8 +1946,6 @@ namespace Web.POS
         }
 
       }
-
-
       else if (e.CommandName == "btnticketes")
       {
         if (statu == "Closed") //3
@@ -1983,7 +1976,6 @@ namespace Web.POS
         }
 
       }
-
       else if (e.CommandName == "btnnames")
       {
 
@@ -2090,7 +2082,6 @@ namespace Web.POS
 
         //btnEdit.Visible = false;
       }
-
       else if (e.CommandName == "btnpendings")
       {
 
@@ -2139,7 +2130,6 @@ namespace Web.POS
         //   btnEdit.Visible = false;
       }
     }
-
     protected void btnTikitClose_Click(object sender, EventArgs e)
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2295,7 +2285,6 @@ namespace Web.POS
       //}
 
     }
-
     public string GetUName(int UID)
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2310,7 +2299,6 @@ namespace Web.POS
       }
 
     }
-
     public string GetEmplName(int UID)
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2325,8 +2313,6 @@ namespace Web.POS
       }
 
     }
-
-
     //public string getstatus(int UID)
     //{
     //    int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2340,7 +2326,6 @@ namespace Web.POS
     //        return "Not Found";
     //    }
     //}
-
     protected void lblattachments_Click(object sender, EventArgs e)
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2360,7 +2345,6 @@ namespace Web.POS
       //string URL = "AttachmentMst.aspx?AttachID=" + Contectid + "&DID=Contact&Mode=" + Mode + "&recodInsert=" + CompnyID;
       //Response.Redirect(URL);
     }
-
     protected void btnAttch_Click(object sender, EventArgs e)
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2373,14 +2357,11 @@ namespace Web.POS
         btnAttch.Text = Coun.ToString();
       }
     }
-
-
     protected void Timer1_Tick(object sender, EventArgs e)
     {
       getCommunicatinData();
       UpdatePanel1.Update();
     }
-
     protected void chklist_SelectedIndexChanged(object sender, EventArgs e)
     {
       if (chklist.Checked)
@@ -2393,7 +2374,6 @@ namespace Web.POS
       }
 
     }
-
     protected void drpSDepartment_SelectedIndexChanged(object sender, EventArgs e)
     {
       if (drpSDepartment.SelectedValue == "99999")
@@ -2406,7 +2386,6 @@ namespace Web.POS
       }
 
     }
-
     protected void aspcomment_SelectedIndexChanged(object sender, EventArgs e)
     {
       if (aspcomment.SelectedValue == "2101404")
@@ -2424,7 +2403,6 @@ namespace Web.POS
       }
 
     }
-
     protected void chklist_CheckedChanged(object sender, EventArgs e)
     {
       if (chklist.Checked == true)
@@ -2436,12 +2414,10 @@ namespace Web.POS
         txtstaffname.Visible = false;
       }
     }
-
     protected void drpinvestigation_SelectedIndexChanged1(object sender, EventArgs e)
     {
 
     }
-
     protected void DrpTCatSubCate_SelectedIndexChanged(object sender, EventArgs e)
     {
       int CID = Convert.ToInt32(DrpTCatSubCate.SelectedValue);
@@ -2463,41 +2439,32 @@ namespace Web.POS
 
 
     }
-
-
-
     protected void btnsub2_Click(object sender, EventArgs e)
     {
 
     }
-
     protected void btnsub3_Click(object sender, EventArgs e)
     {
 
     }
-
     protected void btnsub4_Click(object sender, EventArgs e)
     {
 
     }
-
     protected void btnsub5_Click(object sender, EventArgs e)
     {
 
     }
-
     protected void btn2015_Click(object sender, EventArgs e)
     {
       //DateTime s = Convert.ToDateTime("2015-01-01 11:28:41.077");
       //DateTime e = Convert.ToDateTime("2015-12-01 11:28:41.077");
       //getStatusAll();
     }
-
     protected void listChet_DataBound(object sender, EventArgs e)
     {
 
     }
-
     protected void listChet_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
       if (e.CommandName == "btnEdit")
@@ -2535,7 +2502,6 @@ namespace Web.POS
         ViewState["Edit"] = ID;
       }
     }
-
     protected void ltsRemainderNotes_ItemDataBound(object sender, ListViewItemEventArgs e)
     {
       string status = ViewState["StatusAll"].ToString();
@@ -2570,13 +2536,11 @@ namespace Web.POS
         lbllblattachments2.Visible = true;
       }
     }
-
     protected void ltsRemainderNotes_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
     {
       (ltsRemainderNotes.FindControl("DataPager1") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
       this.BindRemainderNote();
     }
-
     protected void linkreopen_Click(object sender, EventArgs e)
     {
       lblticket.Visible = true;
@@ -2585,7 +2549,6 @@ namespace Web.POS
       txtcomplain.Visible = true;
       btnsearch.Visible = true;
     }
-
     protected void btnsearch_Click(object sender, EventArgs e)
     {
       int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -2640,7 +2603,6 @@ namespace Web.POS
 
       }
     }
-
     protected void btncack_Click(object sender, EventArgs e)
     {
 
@@ -2656,7 +2618,6 @@ namespace Web.POS
       lblinfocomplaintype.Visible = false;
 
     }
-
     protected void btndelete_Click(object sender, EventArgs e)
     {
       if (ViewState["Edit"] != null)
@@ -2706,18 +2667,15 @@ namespace Web.POS
         ToalCoun();
       }
     }
-
     protected void drpyears_SelectedIndexChanged(object sender, EventArgs e)
     {
       ToalCoun();
       BindRemainderNote();
     }
-
     protected void btndash_Click(object sender, EventArgs e)
     {
       Response.Redirect("/Sales/POSIndex.aspx");
     }
-
     protected void txtdates_TextChanged(object sender, EventArgs e)
     {
       DateTime dt = DateTime.Now;

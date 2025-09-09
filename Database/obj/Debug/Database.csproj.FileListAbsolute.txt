@@ -14,3 +14,12 @@ D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.csproj.Co
 D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.csproj.Up2Date
 D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.dll
 D:\DigitalSol\DigitalRoyalHayat\RoyalHayat\Database\obj\Debug\Database.pdb
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\bin\Debug\Database.dll.config
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\bin\Debug\Database.dll
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\bin\Debug\Database.pdb
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\bin\Debug\HtmlAgilityPack.dll
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\obj\Debug\Database.csproj.AssemblyReference.cache
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\obj\Debug\Database.csproj.Up2Date
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\obj\Debug\Database.dll
+D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Database\obj\Debug\Database.pdb
