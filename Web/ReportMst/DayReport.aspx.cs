@@ -781,7 +781,13 @@ namespace Web.ReportMst
 
                 sendEmail(Tocontant, txtpmail.Text);
                 //sendEmail(Ourcontant, "dangijalpa@gmail.com");
-                ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "myscript", "alert('Successfully mail Send.');", true);
+                ScriptManager.RegisterClientScriptBlock(
+                  Page,
+                  this.GetType(),
+                  "myscript",
+                  $"alert('Email successfully sent to {txtpmail.Text}');",
+                  true
+                );
             }
             else
             {

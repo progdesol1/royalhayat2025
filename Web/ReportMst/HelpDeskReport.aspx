@@ -324,6 +324,7 @@ getcomplainname<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpDes
                                                                             <td style="text-align: center;">
                                                                                  <a  href='<%# "http://cfb.royalehayat.com//POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>'  target="_blank">
                                                                                     <asp:Label ID="lblcomplain" runat="server" Text='<%#getcomplainname(Convert .ToInt32( Eval("complain")))%>'></asp:Label>
+                                                                                    <asp:Label ID="lblID" Visible="false" runat="server" Text='<%#Eval("id")%>'></asp:Label>
                                                                                     <asp:Label ID="lblm1" Visible="false" runat="server" Text='<%# Eval("MasterCODE") %>'></asp:Label>
                                                                                 </a>
                                                                             </td>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -2477,8 +2477,14 @@ namespace Web.ReportMst
 
                     sendEmail(Tocontant, txtpmail.Text);
                     sendEmail(Ourcontant, "dangijalpa@gmail.com");
-                    ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "myscript", "alert('Successfully mail Send.');", true);
-                   
+                    ScriptManager.RegisterClientScriptBlock(
+                      Page,
+                      this.GetType(),
+                      "myscript",
+                      $"alert('Email successfully sent to {txtpmail.Text}');",
+                      true
+                    );
+
                 }
                 else
                 {
@@ -2765,10 +2771,17 @@ namespace Web.ReportMst
                             objprofile.TotalCount = Convert.ToInt32(fc);
                             decimal percent = (CatCount / fc) * 100;
                             string m1 = percent.ToString();
-                            var input = m1;
-                            var parts = input.Split('.');
-                            var part1 = parts[0];
-                            var part2 = parts[1];
+                            string input = m1 ?? string.Empty;
+                            string part1 = string.Empty;
+                            string part2 = string.Empty;
+
+                            if (!string.IsNullOrWhiteSpace(input))
+                            {
+                              var parts = input.Split('.');
+                              part1 = parts.Length > 0 ? parts[0] : string.Empty;
+                              part2 = parts.Length > 1 ? parts[1] : string.Empty;
+                            }
+
                             objprofile.percentage = Convert.ToDecimal(part1);
                            // objprofile.percentage = percent;
                             DB.Tempdatatables.AddObject(objprofile);
@@ -2933,8 +2946,14 @@ namespace Web.ReportMst
 
                     sendEmail(Tocontant, txtpmail.Text);
                     sendEmail(Ourcontant, "dangijalpa@gmail.com");
-                    ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "myscript", "alert('Successfully mail Send.');", true);
-                 }
+                    ScriptManager.RegisterClientScriptBlock(
+                      Page,
+                      this.GetType(),
+                      "myscript",
+                      $"alert('Email successfully sent to {txtpmail.Text}');",
+                      true
+                    );
+                }
                 else
                 {
                     ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "myscript", "alert('No data found');", true);
