@@ -2,7 +2,7 @@
 <!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
 <Project>
   <PropertyGroup>
-    <History>True|2025-09-08T06:52:18.2857488Z||;True|2025-08-30T17:12:53.2927849+05:30||;True|2025-08-27T17:35:24.9473874+05:30||;True|2025-08-23T23:07:21.1791247+05:30||;True|2025-08-23T18:46:04.6560399+05:30||;True|2025-08-21T22:51:18.4915312+05:30||;True|2025-08-21T18:17:55.4062742+05:30||;False|2025-08-20T18:08:40.6275184+05:30||;False|2025-08-20T18:03:15.0113071+05:30||;False|2025-08-20T11:27:05.8378502+05:30||;False|2025-08-20T11:24:29.2507515+05:30||;False|2025-08-20T11:18:49.5037362+05:30||;False|2025-08-20T11:16:33.5369636+05:30||;False|2025-08-19T14:21:48.2194139+05:30||;False|2025-08-18T18:17:35.1197002+05:30||;False|2025-08-16T17:41:13.3062727+05:30||;False|2025-07-30T21:22:39.8852926+05:30||;False|2025-07-30T21:21:02.6581170+05:30||;False|2025-07-30T21:20:07.7744136+05:30||;False|2025-07-30T21:18:58.5974969+05:30||;False|2025-07-30T21:05:20.4608097+05:30||;False|2025-07-30T21:04:24.5895918+05:30||;False|2025-07-30T21:03:18.6991061+05:30||;</History>
+    <History>True|2025-09-11T11:30:59.9008600Z||;True|2025-09-09T14:54:51.9717091+05:30||;True|2025-09-08T12:22:18.2857488+05:30||;True|2025-08-30T17:12:53.2927849+05:30||;True|2025-08-27T17:35:24.9473874+05:30||;True|2025-08-23T23:07:21.1791247+05:30||;True|2025-08-23T18:46:04.6560399+05:30||;True|2025-08-21T22:51:18.4915312+05:30||;True|2025-08-21T18:17:55.4062742+05:30||;False|2025-08-20T18:08:40.6275184+05:30||;False|2025-08-20T18:03:15.0113071+05:30||;False|2025-08-20T11:27:05.8378502+05:30||;False|2025-08-20T11:24:29.2507515+05:30||;False|2025-08-20T11:18:49.5037362+05:30||;False|2025-08-20T11:16:33.5369636+05:30||;False|2025-08-19T14:21:48.2194139+05:30||;False|2025-08-18T18:17:35.1197002+05:30||;False|2025-08-16T17:41:13.3062727+05:30||;False|2025-07-30T21:22:39.8852926+05:30||;False|2025-07-30T21:21:02.6581170+05:30||;False|2025-07-30T21:20:07.7744136+05:30||;False|2025-07-30T21:18:58.5974969+05:30||;False|2025-07-30T21:05:20.4608097+05:30||;False|2025-07-30T21:04:24.5895918+05:30||;False|2025-07-30T21:03:18.6991061+05:30||;</History>
     <LastFailureDetails />
     <_PublishTargetUrl>D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Publish</_PublishTargetUrl>
   </PropertyGroup>
@@ -71,7 +71,7 @@
       <publishTime>08/02/2025 19:16:05</publishTime>
     </File>
     <File Include="ACM/DemoPOS.aspx">
-      <publishTime>08/25/2025 12:21:39</publishTime>
+      <publishTime>09/09/2025 11:30:50</publishTime>
     </File>
     <File Include="ACM/DemoPrvilage.aspx">
       <publishTime>08/02/2025 19:16:05</publishTime>
@@ -15365,10 +15365,10 @@
       <publishTime>06/19/2024 11:56:29</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>09/08/2025 19:09:40</publishTime>
+      <publishTime>09/11/2025 17:00:10</publishTime>
     </File>
     <File Include="bin/Web.pdb">
-      <publishTime>09/08/2025 19:09:40</publishTime>
+      <publishTime>09/11/2025 17:00:10</publishTime>
     </File>
     <File Include="components_jqueryui_sliders.html">
       <publishTime>08/02/2025 19:16:17</publishTime>
@@ -16199,7 +16199,7 @@
       <publishTime>08/02/2025 19:16:06</publishTime>
     </File>
     <File Include="POS/ClientTiketR.aspx">
-      <publishTime>09/01/2025 15:35:47</publishTime>
+      <publishTime>09/09/2025 14:39:09</publishTime>
     </File>
     <File Include="POS/cloth4.aspx">
       <publishTime>08/02/2025 19:16:06</publishTime>
@@ -16436,7 +16436,7 @@
       <publishTime>08/02/2025 19:16:06</publishTime>
     </File>
     <File Include="POS/POSMaster.Master">
-      <publishTime>08/20/2025 17:31:06</publishTime>
+      <publishTime>09/09/2025 11:30:50</publishTime>
     </File>
     <File Include="POS/POSPrintRpt.aspx">
       <publishTime>08/02/2025 19:16:06</publishTime>
@@ -16553,10 +16553,10 @@
       <publishTime>08/02/2025 19:16:06</publishTime>
     </File>
     <File Include="POS/ViewofTickes.aspx">
-      <publishTime>08/25/2025 12:32:51</publishTime>
+      <publishTime>09/09/2025 11:30:50</publishTime>
     </File>
     <File Include="POS/ViewTicket.aspx">
-      <publishTime>08/25/2025 12:32:51</publishTime>
+      <publishTime>09/09/2025 11:30:50</publishTime>
     </File>
     <File Include="POS/Warehouses.aspx">
       <publishTime>08/02/2025 19:16:06</publishTime>
@@ -16949,7 +16949,7 @@
       <publishTime>08/02/2025 19:16:06</publishTime>
     </File>
     <File Include="ReportMst/DayReport.aspx">
-      <publishTime>08/19/2025 11:49:20</publishTime>
+      <publishTime>09/09/2025 13:53:26</publishTime>
     </File>
     <File Include="ReportMst/DeliveryCard.aspx">
       <publishTime>08/02/2025 19:16:06</publishTime>
@@ -16982,10 +16982,10 @@
       <publishTime>08/02/2025 19:16:07</publishTime>
     </File>
     <File Include="ReportMst/HelpDeskExcRep.aspx">
-      <publishTime>08/25/2025 12:32:51</publishTime>
+      <publishTime>09/09/2025 13:53:26</publishTime>
     </File>
     <File Include="ReportMst/HelpDeskReport.aspx">
-      <publishTime>08/27/2025 14:31:42</publishTime>
+      <publishTime>09/09/2025 14:39:10</publishTime>
     </File>
     <File Include="ReportMst/icons/1.png">
       <publishTime>08/02/2025 19:16:07</publishTime>
@@ -17063,7 +17063,7 @@
       <publishTime>08/02/2025 19:16:06</publishTime>
     </File>
     <File Include="ReportMst/ReportSmile.aspx">
-      <publishTime>08/25/2025 12:32:51</publishTime>
+      <publishTime>09/09/2025 13:53:26</publishTime>
     </File>
     <File Include="ReportMst/Sreport1.aspx">
       <publishTime>08/02/2025 19:16:06</publishTime>
@@ -17072,7 +17072,7 @@
       <publishTime>08/02/2025 19:16:06</publishTime>
     </File>
     <File Include="ReportMst/SummarymanagementReport.aspx">
-      <publishTime>08/27/2025 17:28:16</publishTime>
+      <publishTime>09/09/2025 14:39:11</publishTime>
     </File>
     <File Include="ReportMst/Summercops.aspx">
       <publishTime>08/02/2025 19:16:06</publishTime>

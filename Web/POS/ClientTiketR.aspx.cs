@@ -1806,7 +1806,7 @@ namespace Web.POS
           //int alternetTENENT = Convert.ToInt32(Label12.Text);
           int myidd = objCRMMainActivities.MyID;
           int Tikitno = ID; //Convert.ToInt32(tikitID.Text);
-          //ViewState["TIkitNumber"] = Tikitno;
+          ViewState["TIkitNumber"] = Tikitno;
           panChat.Visible = true;
 
           int admin = 0;
