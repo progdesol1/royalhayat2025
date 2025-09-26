@@ -88,6 +88,7 @@ namespace Web.POS
           txtrelevant.Enabled = false;
           txtreport.Enabled = false;
           lblattach.Enabled = true;
+          txtcomplaint.Enabled = false;
           txtdepartment.Text = name;
           txtreport.Text = username;
           //txtFeedbackype.Text = comname;
@@ -99,6 +100,7 @@ namespace Web.POS
           txtsubcat.Text = subcatname;
           txtreport.Text = username;
           txtmessage.Text = des;
+          txtcomplaint.Text = Convert.ToString(Master);
           //lblUser.Text = "" + objCRMMainActivities.FeedbackNumber + " & MRN No = "+objCRMMainActivities.MRN +" & Date = "+txtdates.Text+"";
         }
       }
