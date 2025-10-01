@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\react\\nodejs\\reactmohformgeneratorjune2025\\royalhayat2025\\web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\react\\nodejs\\reactmohformgeneratorjune2025\\royalhayat2025\\web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\web\\pos\\viewticket.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\viewticket.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\web\\pos\\viewticket.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\viewticket.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +62,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\ACM\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\ACM\\Login.aspx.cs",
+              "ToolTip": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\ACM\\Login.aspx.cs",
+              "RelativeToolTip": "Web\\ACM\\Login.aspx.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAgwDsAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T07:35:34.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ViewTicket.aspx.cs",
+              "DocumentMoniker": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ViewTicket.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\POS\\ViewTicket.aspx.cs",
+              "ToolTip": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ViewTicket.aspx.cs",
+              "RelativeToolTip": "Web\\POS\\ViewTicket.aspx.cs",
+              "ViewState": "AQIAAFEAAAAAtZmZmZkdwFkAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T15:33:36.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ViewTicket.aspx",
+              "DocumentMoniker": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ViewTicket.aspx",
+              "RelativeDocumentMoniker": "Web\\POS\\ViewTicket.aspx",
+              "ToolTip": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ViewTicket.aspx",
+              "RelativeToolTip": "Web\\POS\\ViewTicket.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-15T15:33:09.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ClientTiketR.aspx",
               "DocumentMoniker": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
               "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx",
@@ -62,26 +111,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ClientTiketR.aspx.cs",
               "DocumentMoniker": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
               "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx.cs",
               "ToolTip": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
               "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ViewState": "AQIAAJQAAAAAAAAAAAAowJoAAAAQAAAA",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAowIQAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-11T09:43:53.34Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "DayReport.aspx.cs",
               "DocumentMoniker": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
               "RelativeDocumentMoniker": "Web\\ReportMst\\DayReport.aspx.cs",
               "ToolTip": "D:\\React\\NodeJS\\ReactMohFormGeneratorJune2025\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
               "RelativeToolTip": "Web\\ReportMst\\DayReport.aspx.cs",
-              "ViewState": "AQIAAOoAAAAAAAAAAAAgwBkBAAAHAAAA",
+              "ViewState": "AQIAAPYAAAAAAAAAAIBZwBkBAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-09T09:11:05.464Z"
             }
