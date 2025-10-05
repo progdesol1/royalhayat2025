@@ -235,12 +235,14 @@ namespace Web.ReportMst
     }
     public void binddata()
     {
-      DateTime startdate = Convert.ToDateTime(txtdateFrom.Text);
-      DateTime Enddate = Convert.ToDateTime(txtdateTO.Text).AddDays(1).AddSeconds(-1);
+   
 
-      string stdate = startdate.ToString("yyyy-MM-dd hh:mm:ss ttt");
-      string etdate = Enddate.ToString("yyyy-MM-dd hh:mm:ss ttt");
-      DateTime end = Convert.ToDateTime(txtdateTO.Text);
+            DateTime startdate = Convert.ToDateTime(txtdateFrom.Text);
+            DateTime Enddate = Convert.ToDateTime(txtdateTO.Text).AddDays(1);
+
+            string stdate = startdate.ToString("yyyy-MM-dd");
+            string etdate = Enddate.ToString("yyyy-MM-dd");
+            DateTime end = Convert.ToDateTime(txtdateTO.Text);
       string paramStr = "";
       //validation
       string actionStr = "";
