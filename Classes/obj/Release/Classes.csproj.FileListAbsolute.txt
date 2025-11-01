@@ -24,16 +24,3 @@ D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Classes\obj\Release
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Classes\obj\Release\Classes.csproj.Up2Date
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Classes\obj\Release\Classes.dll
 D:\React\NodeJS\ReactMohFormGeneratorJune2025\royalhayat2025\Classes\obj\Release\Classes.pdb
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\Classes.dll
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\Classes.pdb
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\Database.dll
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\HtmlAgilityPack.dll
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\VisualStudio.SpellChecker.Definitions.dll
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\Database.pdb
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\Database.dll.config
-D:\React\NodeJS\royalhayat2025\Classes\bin\Release\VisualStudio.SpellChecker.Definitions.xml
-D:\React\NodeJS\royalhayat2025\Classes\obj\Release\Classes.csproj.AssemblyReference.cache
-D:\React\NodeJS\royalhayat2025\Classes\obj\Release\Classes.csproj.CoreCompileInputs.cache
-D:\React\NodeJS\royalhayat2025\Classes\obj\Release\Classes.csproj.Up2Date
-D:\React\NodeJS\royalhayat2025\Classes\obj\Release\Classes.dll
-D:\React\NodeJS\royalhayat2025\Classes\obj\Release\Classes.pdb

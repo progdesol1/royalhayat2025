@@ -45,13 +45,10 @@ namespace Web.POS
           txtdates.Text = objCRMMainActivities.UploadDate.ToString();
           int deptID = Convert.ToInt32(objCRMMainActivities.TickDepartmentID);
           string name = DB.DeptITSupers.Single(p => p.TenentID == TID && p.DeptID == deptID).DeptName;
-          int comptype = Convert.ToInt32(objCRMMainActivities.TickComplainType);
-          string comname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == comptype).REFNAME1;
-
+          //int comptype = Convert.ToInt32(objCRMMainActivities.TickFeedbackype);
+          //string comname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "Feedback" && p.REFID == comptype).REFNAME1;
           int phID = Convert.ToInt32(objCRMMainActivities.TickPhysicalLocation);
           string phname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.REFID == phID).REFNAME1;
-
-
           int catID = Convert.ToInt32(objCRMMainActivities.TickCatID);
           string catname = DB.ICCATEGORies.Single(p => p.TenentID == TID && p.CATID == catID).CATNAME;
           int subcatID = Convert.ToInt32(objCRMMainActivities.TickSubCatID);
@@ -92,8 +89,6 @@ namespace Web.POS
           txtreport.Enabled = false;
           lblattach.Enabled = true;
           txtcomplaint.Enabled = false;
-          txtcomplaintype.Enabled = false;
-          txtcomplaintype.Text = comname;
           txtdepartment.Text = name;
           txtreport.Text = username;
           //txtFeedbackype.Text = comname;
