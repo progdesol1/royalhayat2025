@@ -1906,10 +1906,16 @@ namespace Web.POS
                 {
                     txtSubject.Text = objICCATEGORY.subject;
                 }
-                Database.CRMActivity objact = DB.CRMActivities.FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == ID);
+                int mcode = ID;
+                Database.CRMActivity objact = DB.CRMActivities.FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == mcode);
+                if(objact !=null)
+                {
+
+              
                 if (objact.investigation != 0 && objact.investigation != null)
                 {
                     drpinvestresult.SelectedValue = objact.investigation.ToString();
+                }
                 }
 
                 pnlTicki.Visible = true;
