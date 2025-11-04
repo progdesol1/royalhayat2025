@@ -64,15 +64,24 @@ namespace Web.POS
 
           //  Database.CRMActivity crma = DB.CRMActivities.Where(p=>p.TenentID == TID && p.MasterCODE == Master).OrderBy(p => p.MyLineNo)
 
-          int cma = Convert.ToInt32(DB.CRMActivities.Single(p => p.TenentID == TID && p.MasterCODE == Master && p.Subject != null).investigation);
-          if (cma == 1)
+          var record = DB.CRMActivities.SingleOrDefault(p => p.TenentID == TID && p.MasterCODE == Master && p.Subject != null);
+
+          if (record != null)
           {
-            txtrelevant.Text = "Releveant";
+            int cma = Convert.ToInt32(record.investigation);
+
+            if (cma == 1)
+              txtrelevant.Text = "Relevant";
+            else if (cma == 2)
+              txtrelevant.Text = "Irrelevant";
+            else
+              txtrelevant.Text = "Unknown";
           }
-          else if (cma == 2)
+          else
           {
-            txtrelevant.Text = "Irrelevant";
+            txtrelevant.Text = "No matching record found";
           }
+
 
           txtdepartment.Enabled = false;
           txtlocation.Enabled = false;
@@ -89,6 +98,7 @@ namespace Web.POS
           txtreport.Enabled = false;
           lblattach.Enabled = true;
           txtcomplaint.Enabled = false;
+          txtcomplaintype.Enabled = false;
           txtdepartment.Text = name;
           txtreport.Text = username;
           //txtFeedbackype.Text = comname;
