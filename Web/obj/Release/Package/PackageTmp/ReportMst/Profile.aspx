@@ -452,12 +452,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </div>
                                                         </div>
                                                         <%-- Allergies End --%>
-                                                        <%-- Feedback --%>
+                                                        <%-- Complain --%>
                                                         <div class="portlet box blue">
                                                             <div class="portlet-title">
                                                                 <div class="caption">
                                                                     <i class="fa fa-gift"></i>
-                                                                    Feedback
+                                                                    Complain
                                                                 </div>
                                                                 <div class="tools">
                                                                     <a href="javascript:;" class="collapse"></a>
@@ -467,15 +467,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </div>
                                                             </div>
                                                             <div class="portlet-body">
-                                                                <asp:Panel ID="Panel6" runat="server" DefaultButton="btnFeedback">
+                                                                <asp:Panel ID="Panel6" runat="server" DefaultButton="btncomplain">
 
                                                                     <div class="row" style="margin-top: 10px;">
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
-                                                                                <asp:Label runat="server" ID="Label12" class="col-md-4 control-label" Text="Feedback"></asp:Label>
+                                                                                <asp:Label runat="server" ID="Label12" class="col-md-4 control-label" Text="Complain"></asp:Label>
                                                                                 <div class="col-md-8">
                                                                                     <asp:DropDownList ID="drpcomplinid" class="select2me table-group-action-input form-control input-medium" ForeColor="Blue" runat="server"></asp:DropDownList>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="drpcomplinid" ErrorMessage="Item of Product Required." CssClass="Validation" ValidationGroup="Feedback" InitialValue="0"></asp:RequiredFieldValidator>
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="drpcomplinid" ErrorMessage="Item of Product Required." CssClass="Validation" ValidationGroup="Complain" InitialValue="0"></asp:RequiredFieldValidator>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -483,11 +483,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
-                                                                                <asp:Label runat="server" ID="Label16" class="col-md-4 control-label" Text="Feedback Date"></asp:Label>
+                                                                                <asp:Label runat="server" ID="Label16" class="col-md-4 control-label" Text="Complain Date"></asp:Label>
                                                                                 <div class="col-md-8">
-                                                                                    <asp:TextBox ID="txtFeedbackDate" runat="server" CssClass="form-control" placeholder="Feedback Date"></asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtFeedbackDate" ErrorMessage="Date Required." CssClass="Validation" ValidationGroup="Feedback"></asp:RequiredFieldValidator>
-                                                                                    <cc1:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="txtFeedbackDate" Format="MM-dd-yyyy" Enabled="True">
+                                                                                    <asp:TextBox ID="txtComplainDate" runat="server" CssClass="form-control" placeholder="Complain Date"></asp:TextBox>
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtComplainDate" ErrorMessage="Date Required." CssClass="Validation" ValidationGroup="Complain"></asp:RequiredFieldValidator>
+                                                                                    <cc1:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="txtComplainDate" Format="MM-dd-yyyy" Enabled="True">
                                                                                     </cc1:CalendarExtender>
                                                                                 </div>
                                                                             </div>
@@ -501,14 +501,14 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                                                 <div class="col-md-8">
                                                                                     <asp:TextBox ID="txtrema" CssClass="form-control" placeholder="Remark" ForeColor="Blue" runat="server"></asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtrema" ErrorMessage="Remark Required." CssClass="Validation" ValidationGroup="Feedback"></asp:RequiredFieldValidator>
+                                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtrema" ErrorMessage="Remark Required." CssClass="Validation" ValidationGroup="Complain"></asp:RequiredFieldValidator>
                                                                                 </div>
 
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <asp:Button ID="btnFeedback" CssClass="btn blue-madison" runat="server" Text="Add Feedback" ValidationGroup="Feedback" OnClick="btnFeedback_Click" />
+                                                                            <asp:Button ID="btncomplain" CssClass="btn blue-madison" runat="server" Text="Add Complain" ValidationGroup="Complain" OnClick="btncomplain_Click" />
                                                                         </div>
 
 
@@ -525,7 +525,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 <th style="width: 25%;">
                                                                                     <asp:Label runat="server" ID="lblcomplinid" Text="complinid"></asp:Label></th>
                                                                                 <th style="width: 20%;">
-                                                                                    <asp:Label runat="server" ID="Label14" Text="Feedback Date"></asp:Label>
+                                                                                    <asp:Label runat="server" ID="Label14" Text="Complain Date"></asp:Label>
                                                                                 </th>
                                                                                 <th style="width: 30%;">
                                                                                     <asp:Label runat="server" ID="lblRemarks" Text="Remarks"></asp:Label></th>
@@ -533,7 +533,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <asp:ListView ID="CustomerFeedbackID" runat="server" OnItemCommand="CustomerFeedbackID_ItemCommand">
+                                                                            <asp:ListView ID="CustomerComplainID" runat="server" OnItemCommand="CustomerComplainID_ItemCommand">
 
                                                                                 <ItemTemplate>
                                                                                     <tr>
@@ -549,15 +549,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <td>
                                                                                             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                                                                                 <ContentTemplate>
-                                                                                                    <asp:LinkButton ID="btnEditFeedback" CommandName="btnEdit" CommandArgument='<%# Eval("customerID")+","+Eval("myID")%>' runat="server" class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-pencil"></i></asp:LinkButton>
+                                                                                                    <asp:LinkButton ID="btnEditComplain" CommandName="btnEdit" CommandArgument='<%# Eval("customerID")+","+Eval("myID")%>' runat="server" class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-pencil"></i></asp:LinkButton>
 
                                                                                                     &nbsp;
 
-                                                             <asp:LinkButton ID="btnDeleteFeedback" runat="server" class="btn btn-sm red filter-cancel" CommandArgument='<%#  Eval("customerID")+","+Eval("myID")%>' CommandName="btnDelete" OnClientClick="return ConfirmMsg();"><i class="fa fa-times"></i></asp:LinkButton>
+                                                             <asp:LinkButton ID="btnDeleteComplain" runat="server" class="btn btn-sm red filter-cancel" CommandArgument='<%#  Eval("customerID")+","+Eval("myID")%>' CommandName="btnDelete" OnClientClick="return ConfirmMsg();"><i class="fa fa-times"></i></asp:LinkButton>
                                                                                                 </ContentTemplate>
                                                                                                 <Triggers>
-                                                                                                    <asp:AsyncPostBackTrigger ControlID="btnEditFeedback" EventName="Click" />
-                                                                                                    <asp:AsyncPostBackTrigger ControlID="btnDeleteFeedback" EventName="Click" />
+                                                                                                    <asp:AsyncPostBackTrigger ControlID="btnEditComplain" EventName="Click" />
+                                                                                                    <asp:AsyncPostBackTrigger ControlID="btnDeleteComplain" EventName="Click" />
                                                                                                 </Triggers>
                                                                                             </asp:UpdatePanel>
                                                                                         </td>
@@ -570,7 +570,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <%-- Feedback End --%>
+                                                        <%-- Complain End --%>
                                                         <%-- Weight  --%>
                                                         <div class="row">
                                                             <div class="col-md-12">

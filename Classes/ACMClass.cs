@@ -762,7 +762,13 @@ namespace Classes
       //int report = Convert.ToInt32(DB.CRMMainActivities.Single(p => p.TenentID == TenentID && p.MasterCODE == MasterCODE).ReportedBy);
       //string contact = DB.CRMMainActivities.Single(p => p.TenentID == TenentID && p.MasterCODE == MasterCODE).Contact;
       objACM_CRMActivities.MasterCODE = MasterCODE;
-      objACM_CRMActivities.MyLineNo = DB.CRMActivities.Where(p => p.TenentID == TenentID).Count() > 0 ? Convert.ToInt32(DB.CRMActivities.Where(p => p.TenentID == TenentID && p.MasterCODE == MasterCODE).Max(p => p.MyLineNo) + 1) : 1;
+      objACM_CRMActivities.MyLineNo =
+      DB.CRMActivities.Any(p => p.TenentID == TenentID && p.MasterCODE == MasterCODE)
+      ? (DB.CRMActivities
+          .Where(p => p.TenentID == TenentID && p.MasterCODE == MasterCODE)
+          .Max(p => (int?)p.MyLineNo) ?? 0) + 1
+      : 1;
+
       objACM_CRMActivities.LinkMasterCODE = LinkMasterCODE;
       objACM_CRMActivities.LocationID = 1;
       objACM_CRMActivities.MenuID = MenuID;
