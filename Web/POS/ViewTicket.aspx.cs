@@ -62,6 +62,9 @@ namespace Web.POS
             lblattach.Text = ttachOBJ.Count().ToString();
           }
 
+          int comptype = Convert.ToInt32(objCRMMainActivities.TickComplainType);
+          string comname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == comptype).REFNAME1;
+
           //  Database.CRMActivity crma = DB.CRMActivities.Where(p=>p.TenentID == TID && p.MasterCODE == Master).OrderBy(p => p.MyLineNo)
 
           var record = DB.CRMActivities.SingleOrDefault(p => p.TenentID == TID && p.MasterCODE == Master && p.Subject != null);
@@ -99,6 +102,8 @@ namespace Web.POS
           lblattach.Enabled = true;
           txtcomplaint.Enabled = false;
           txtcomplaintype.Enabled = false;
+          txtcomplaintype.Text = comname;
+
           txtdepartment.Text = name;
           txtreport.Text = username;
           //txtFeedbackype.Text = comname;
