@@ -826,9 +826,21 @@ namespace Classes
 
       if (MyStatus == "Closed")
       {
-        Database.CRMActivity objact = DB.CRMActivities.Single(p => p.TenentID == TenentID && p.COMPID == COMPID && p.MasterCODE == MasterCODE && p.MyLineNo == 10);
-        objact.ExpEndDate = DateTime.Now;
-        DB.SaveChanges();
+        var objact = DB.CRMActivities.SingleOrDefault(p => p.TenentID == TenentID
+                       && p.COMPID == COMPID
+                       && p.MasterCODE == MasterCODE
+                       && p.MyLineNo == 10);
+
+        if (objact != null)
+        {
+          objact.ExpEndDate = DateTime.Now;
+          DB.SaveChanges();
+        }
+        else
+        {
+          Console.WriteLine("No matching CRMActivity found.");
+        }
+
       }
     }
 

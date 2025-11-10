@@ -1920,11 +1920,13 @@ namespace Web.POS
         {
           txtSubject.Text = objICCATEGORY.subject;
         }
-        Database.CRMActivity objact = DB.CRMActivities.FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == ID);
-        if (objact.investigation != 0 && objact.investigation != null)
+        var objact = DB.CRMActivities.FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == ID);
+
+        if (objact != null && objact.investigation != null && objact.investigation != 0)
         {
           drpinvestresult.SelectedValue = objact.investigation.ToString();
         }
+
 
         pnlTicki.Visible = true;
         //  PnlBindTick.Visible = false;
