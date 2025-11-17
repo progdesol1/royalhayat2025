@@ -1,15 +1,16 @@
+using Database;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Database;
-using System.IO;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Data;
 using System.Web.UI.DataVisualization.Charting;
+using System.Web.UI.WebControls;
 
 namespace Web.ReportMst
 {
@@ -835,13 +836,20 @@ namespace Web.ReportMst
             command.Dispose();
 
 
+            string from = txtstartdate.Text.Trim();
+            string to = txtenddate.Text.Trim();
 
-            DateTime startdate = Convert.ToDateTime(txtstartdate.Text);
-            DateTime Enddate = Convert.ToDateTime(txtenddate.Text);
+            from = new string(from.Where(c => char.IsDigit(c) || c == '/').ToArray());
+            to = new string(to.Where(c => char.IsDigit(c) || c == '/').ToArray());
+
+            DateTime startdate = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime enddate = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture).AddDays(1);
+
+
+            DateTime end = enddate;
 
             string stdate = startdate.ToString("yyyy-MM-dd");
-            string etdate = Enddate.ToString("yyyy-MM-dd");
-
+            string etdate = enddate.ToString("yyyy-MM-dd");
 
             string SQOCommad = " select TickDepartmentID , DeptITSuper.DeptName  , COUNT(*) as DeptCount  FROM  CRMMainActivities , DeptITSuper " +
 
@@ -857,8 +865,6 @@ namespace Web.ReportMst
             DataSet ds = new DataSet();
             ADB.Fill(ds);
             DataTable dt = ds.Tables[0];
-
-            //weeeeeeew
 
             decimal finalcount = 0;
 

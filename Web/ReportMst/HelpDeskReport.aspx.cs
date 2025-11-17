@@ -1,20 +1,21 @@
+using Classes;
+using Database;
 using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Configuration;
-using System.Web;
+using System.Configuration;
+using System.Data;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
+using System.Transactions;
+using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Transactions;
-using Database;
-using System.Collections.Generic;
-using Classes;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Data;
 
 namespace Web.ReportMst
 {
@@ -248,12 +249,20 @@ namespace Web.ReportMst
         }
         public void binddata()
         {
-            DateTime startdate = Convert.ToDateTime(txtdateFrom.Text);
-            DateTime Enddate = Convert.ToDateTime(txtdateTO.Text);
+            string from = txtdateFrom.Text.Trim();
+            string to = txtdateTO.Text.Trim();
+
+            from = new string(from.Where(c => char.IsDigit(c) || c == '/').ToArray());
+            to = new string(to.Where(c => char.IsDigit(c) || c == '/').ToArray());
+
+            DateTime startdate = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime enddate = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture).AddDays(1);
+
+
+            DateTime end = enddate;
 
             string stdate = startdate.ToString("yyyy-MM-dd");
-            string etdate = Enddate.ToString("yyyy-MM-dd");
-            DateTime end = Convert.ToDateTime(txtdateTO.Text);
+            string etdate = enddate.ToString("yyyy-MM-dd");
             string paramStr = "";
             //validation
 
