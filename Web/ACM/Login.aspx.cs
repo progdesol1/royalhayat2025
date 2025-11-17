@@ -11,6 +11,9 @@ using Database;
 using System.Web.UI.WebControls;
 using System.Web;
 using System.Web.UI;
+using System.Data.SqlClient;
+using System.Data.Entity;
+
 
 
 
@@ -285,6 +288,11 @@ namespace Web.ACM
             objLiggingAction.LoginActive = action;
             DB.SaveChanges();
           }
+
+          DB.ExecuteStoreCommand("EXEC dbo.usp_UpdateNullValuesInCRM");
+
+
+
           Session["USER"] = UserList;
           Session["LANGUAGE"] = "English";
           Session["Firstname"] = lFirstName.ToString();

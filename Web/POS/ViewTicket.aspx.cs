@@ -67,7 +67,8 @@ namespace Web.POS
 
           //  Database.CRMActivity crma = DB.CRMActivities.Where(p=>p.TenentID == TID && p.MasterCODE == Master).OrderBy(p => p.MyLineNo)
 
-          var record = DB.CRMActivities.SingleOrDefault(p => p.TenentID == TID && p.MasterCODE == Master && p.Subject != null);
+          var record = DB.CRMActivities.FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == Master && p.Subject != null);
+
 
           if (record != null)
           {

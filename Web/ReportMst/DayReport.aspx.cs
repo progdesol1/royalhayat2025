@@ -206,6 +206,7 @@ namespace Web.ReportMst
             drpreportto.Items.Insert(0, new ListItem("--All Reported by--", "0"));
         }
 
+<<<<<<< Updated upstream
         public void Locationfrom()
         {
             TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
@@ -253,6 +254,50 @@ namespace Web.ReportMst
             string paramStr = "";
             //validation
             string actionStr = "";
+=======
+    public void Locationfrom()
+    {
+      TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+      string sql = " select STR(REFID) + ' - ' + REFNAME1 as RM,REFID " +
+                              " from  REFTABLE " +
+                              " where TenentID =" + TID + " and REFTYPE = 'Ticket' and REFSUBTYPE = 'PhysicalLocation' " +
+                              " order by REFID  asc ";
+      DataTable dt = DataCon.GetDataTable(sql);
+      drplocationfrom.DataSource = dt;
+      drplocationfrom.DataTextField = "RM";
+      drplocationfrom.DataValueField = "REFID";
+      drplocationfrom.DataBind();
+      drplocationfrom.Items.Insert(0, new ListItem("--All Location--", "0"));
+    }
+    public void Locationto()
+    {
+      TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+      string sql = " select STR(REFID) + ' - ' + REFNAME1 as RM,REFID " +
+                              " from  REFTABLE " +
+                              " where TenentID =" + TID + " and REFTYPE = 'Ticket' and REFSUBTYPE = 'PhysicalLocation' " +
+                              " order by REFID  desc ";
+      DataTable dt = DataCon.GetDataTable(sql);
+      drplocationto.DataSource = dt;
+      drplocationto.DataTextField = "RM";
+      drplocationto.DataValueField = "REFID";
+      drplocationto.DataBind();
+      drplocationto.Items.Insert(0, new ListItem("--All Location--", "0"));
+    }
+    public void binddata()
+    {
+
+      var provider = System.Globalization.CultureInfo.InvariantCulture;
+      DateTime startdate = DateTime.ParseExact(txtdateFrom.Text.Trim(), "dd/MM/yyyy", provider);
+      DateTime Enddate = DateTime.ParseExact(txtdateTO.Text.Trim(), "dd/MM/yyyy", provider).AddDays(1);
+
+
+      string stdate = startdate.ToString("yyyy-MM-dd");
+            string etdate = Enddate.ToString("yyyy-MM-dd");
+            DateTime end = Convert.ToDateTime(txtdateTO.Text);
+      string paramStr = "";
+      //validation
+      string actionStr = "";
+>>>>>>> Stashed changes
 
             if (drpcategoryfrom.SelectedValue != "0" && drpcategoryto.SelectedValue != "0")
             {
