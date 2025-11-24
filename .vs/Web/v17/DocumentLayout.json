@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\React\\NodeJS\\royalhayat2025\\",
+  "WorkspaceRootPath": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\react\\nodejs\\royalhayat2025\\web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\royalhayat2025\\web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\royalhayat2025\\web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|c:\\users\\samsung\\source\\repos\\royalhayat2025\\web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,37 +46,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClientTiketR.aspx.cs",
-              "DocumentMoniker": "D:\\React\\NodeJS\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ToolTip": "D:\\React\\NodeJS\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
-              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ViewState": "AQIAAMoDAAAAAAAAAAAkwGEDAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T11:35:56.033Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ClientTiketR.aspx",
-              "DocumentMoniker": "D:\\React\\NodeJS\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
-              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx",
-              "ToolTip": "D:\\React\\NodeJS\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
-              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-01T11:35:54.987Z"
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\Web.config",
+              "RelativeDocumentMoniker": "Web\\Web.config",
+              "ToolTip": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\Web.config",
+              "RelativeToolTip": "Web\\Web.config",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBIAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-11-23T14:22:57.199Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DayReport.aspx.cs",
-              "DocumentMoniker": "D:\\React\\NodeJS\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
               "RelativeDocumentMoniker": "Web\\ReportMst\\DayReport.aspx.cs",
-              "ToolTip": "D:\\React\\NodeJS\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
+              "ToolTip": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
               "RelativeToolTip": "Web\\ReportMst\\DayReport.aspx.cs",
-              "ViewState": "AQIAAPcAAAAAAAAAAAAowPsAAAAAAAAA",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAcwMwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T05:37:38.452Z",
               "EditorCaption": ""

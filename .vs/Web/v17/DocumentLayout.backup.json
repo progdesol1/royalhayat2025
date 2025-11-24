@@ -1,73 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\",
+  "WorkspaceRootPath": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\crm\\images\\100051.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\crm\\images\\100051.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\reportmst\\dayreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\acm\\acm_setuphelpdesk.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\acm_setuphelpdesk.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\classes\\commonselectdelete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|solutionrelative:classes\\commonselectdelete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\classes\\sqlhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|solutionrelative:classes\\sqlhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\digitalsol\\digitalroyalhayat\\royalhayat\\web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\acm\\demopos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\demopos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\pos\\posmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\posmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\classes\\globleclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|solutionrelative:classes\\globleclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\sales\\posindex.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\sales\\posindex.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\sales\\posindex.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\sales\\posindex.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\acm\\demopos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\demopos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\acm\\web_user_mst.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\web_user_mst.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\acm\\web_user_mst.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\web_user_mst.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\classes\\acmclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|solutionrelative:classes\\acmclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|c:\\users\\samsung\\source\\repos\\royalhayat2025\\web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -78,220 +18,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "100051.png - PNG [484x61, 32 bit, PNG]",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\CRM\\images\\100051.png",
-              "RelativeDocumentMoniker": "Web\\CRM\\images\\100051.png",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\CRM\\images\\100051.png - PNG [484x61, 32 bit, PNG]",
-              "RelativeToolTip": "Web\\CRM\\images\\100051.png - PNG [484x61, 32 bit, PNG]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2025-07-30T15:51:56.9Z",
-              "EditorCaption": " - PNG [484x61, 32 bit, PNG]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "aCM_SetUPHelpDesk.aspx",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\aCM_SetUPHelpDesk.aspx",
-              "RelativeDocumentMoniker": "Web\\ACM\\aCM_SetUPHelpDesk.aspx",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\aCM_SetUPHelpDesk.aspx",
-              "RelativeToolTip": "Web\\ACM\\aCM_SetUPHelpDesk.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-07-30T15:51:45.912Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SQLHelper.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\SQLHelper.cs",
-              "RelativeDocumentMoniker": "Classes\\SQLHelper.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\SQLHelper.cs",
-              "RelativeToolTip": "Classes\\SQLHelper.cs",
-              "ViewState": "AgIAAM4BAAAAAAAAAAAgwNUBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T15:44:07.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommonSelectDelete.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\CommonSelectDelete.cs",
-              "RelativeDocumentMoniker": "Classes\\CommonSelectDelete.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\CommonSelectDelete.cs",
-              "RelativeToolTip": "Classes\\CommonSelectDelete.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAgwBoAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T15:33:28.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "POSIndex.aspx.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\Sales\\POSIndex.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\Sales\\POSIndex.aspx.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\Sales\\POSIndex.aspx.cs*",
-              "RelativeToolTip": "Web\\Sales\\POSIndex.aspx.cs*",
-              "ViewState": "AgIAAB0CAAAAAAAAAAArwCQCAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T08:32:26.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "POSIndex.aspx",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\Sales\\POSIndex.aspx",
-              "RelativeDocumentMoniker": "Web\\Sales\\POSIndex.aspx",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\Sales\\POSIndex.aspx",
-              "RelativeToolTip": "Web\\Sales\\POSIndex.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-07-13T08:31:55.805Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DemoPOS.aspx",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\DemoPOS.aspx",
-              "RelativeDocumentMoniker": "Web\\ACM\\DemoPOS.aspx",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\DemoPOS.aspx",
-              "RelativeToolTip": "Web\\ACM\\DemoPOS.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-07-13T08:31:12.275Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GlobleClass.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\GlobleClass.cs",
-              "RelativeDocumentMoniker": "Classes\\GlobleClass.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\GlobleClass.cs",
-              "RelativeToolTip": "Classes\\GlobleClass.cs",
-              "ViewState": "AgIAANgAAAAAAAAAAAArwOUAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T08:24:45.992Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ACMClass.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\ACMClass.cs",
-              "RelativeDocumentMoniker": "Classes\\ACMClass.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Classes\\ACMClass.cs",
-              "RelativeToolTip": "Classes\\ACMClass.cs",
-              "ViewState": "AgIAAFMDAAAAAAAAAAAAAF0DAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:51:28.95Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClientTiketR.aspx",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\POS\\ClientTiketR.aspx",
-              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\POS\\ClientTiketR.aspx",
-              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-07-08T13:37:21.362Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DemoPOS.aspx.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\DemoPOS.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\ACM\\DemoPOS.aspx.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\DemoPOS.aspx.cs",
-              "RelativeToolTip": "Web\\ACM\\DemoPOS.aspx.cs",
-              "ViewState": "AgIAAP0AAAAAAAAAAAArwAoBAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T11:37:01.581Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ClientTiketR.aspx.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\POS\\ClientTiketR.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\POS\\ClientTiketR.aspx.cs",
-              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAIwDoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T11:19:27.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "POSMaster.Master",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\POS\\POSMaster.Master",
-              "RelativeDocumentMoniker": "Web\\POS\\POSMaster.Master",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\POS\\POSMaster.Master",
-              "RelativeToolTip": "Web\\POS\\POSMaster.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-07-14T17:40:12.795Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Login.aspx.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Login.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\ACM\\Login.aspx.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Login.aspx.cs",
-              "RelativeToolTip": "Web\\ACM\\Login.aspx.cs",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAkwMMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T11:19:27.188Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Web_User_Mst.aspx.cs",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Web_User_Mst.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\ACM\\Web_User_Mst.aspx.cs",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Web_User_Mst.aspx.cs",
-              "RelativeToolTip": "Web\\ACM\\Web_User_Mst.aspx.cs",
-              "ViewState": "AgIAALQBAAAAAAAAAAArwMQBAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T11:20:54.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Web_User_Mst.aspx",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Web_User_Mst.aspx",
-              "RelativeDocumentMoniker": "Web\\ACM\\Web_User_Mst.aspx",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\ACM\\Web_User_Mst.aspx",
-              "RelativeToolTip": "Web\\ACM\\Web_User_Mst.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-07-08T13:38:06.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
               "Title": "Web.config",
-              "DocumentMoniker": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\Web.config",
+              "DocumentMoniker": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\Web.config",
               "RelativeDocumentMoniker": "Web\\Web.config",
-              "ToolTip": "D:\\DigitalSol\\DigitalRoyalHayat\\RoyalHayat\\Web\\Web.config",
+              "ToolTip": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\Web.config",
               "RelativeToolTip": "Web\\Web.config",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBgAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBIAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-07-08T14:12:00.188Z",
+              "WhenOpened": "2025-11-23T14:22:57.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DayReport.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\ReportMst\\DayReport.aspx.cs",
+              "ToolTip": "C:\\Users\\Samsung\\source\\repos\\royalhayat2025\\Web\\ReportMst\\DayReport.aspx.cs",
+              "RelativeToolTip": "Web\\ReportMst\\DayReport.aspx.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAcwMwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T05:37:38.452Z",
               "EditorCaption": ""
             }
           ]

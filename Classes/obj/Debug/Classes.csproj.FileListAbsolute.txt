@@ -45,3 +45,16 @@ D:\React\NodeJS\royalhayat2025\Classes\obj\Debug\Classes.csproj.CoreCompileInput
 D:\React\NodeJS\royalhayat2025\Classes\obj\Debug\Classes.csproj.Up2Date
 D:\React\NodeJS\royalhayat2025\Classes\obj\Debug\Classes.dll
 D:\React\NodeJS\royalhayat2025\Classes\obj\Debug\Classes.pdb
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\Classes.dll
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\Classes.pdb
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\Database.dll
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\VisualStudio.SpellChecker.Definitions.dll
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\Database.pdb
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\Database.dll.config
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\bin\Debug\VisualStudio.SpellChecker.Definitions.xml
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\obj\Debug\Classes.csproj.AssemblyReference.cache
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\obj\Debug\Classes.csproj.Up2Date
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\obj\Debug\Classes.dll
+C:\Users\Samsung\Source\Repos\royalhayat2025\Classes\obj\Debug\Classes.pdb
