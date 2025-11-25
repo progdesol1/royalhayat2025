@@ -842,12 +842,16 @@ namespace Web.POS
         string maxid = "select ISNull(max(MyID),0)+1 AS NEWComplaintNumber from CRMMainActivities where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
         DataTable dt = DataCon.GetDataTable(maxid);
         DateTime startdate = DateTime.Now;
-        string stdate = startdate.ToString("yyyyMM");
+        int year = startdate.Year % 100; 
+        int month = startdate.Month;
         string num = dt.Rows[0].ItemArray[0].ToString();
+        int sequence = Convert.ToInt32(num);
         TimeSpan onlytime = DateTime.Now.TimeOfDay;
-        int master = Convert.ToInt32(stdate + num);
+        
+        int master = (year * 1000000) + (month * 10000) + sequence;
         objCRMMainActivities.MasterCODE = master;
         objCRMMainActivities.LinkMasterCODE = master;
+
         objCRMMainActivities.LocationID = 1;
         objCRMMainActivities.MyID = Convert.ToInt32(num);
         objCRMMainActivities.RouteID = 1;

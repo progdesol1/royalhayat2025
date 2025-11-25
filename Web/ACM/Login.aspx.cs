@@ -289,7 +289,7 @@ namespace Web.ACM
             DB.SaveChanges();
           }
 
-          DB.ExecuteStoreCommand("EXEC dbo.usp_UpdateNullValuesInCRM");
+          //DB.ExecuteStoreCommand("EXEC dbo.usp_UpdateNullValuesInCRM");
 
 
 
