@@ -41,3 +41,12 @@ C:\Users\Samsung\Source\Repos\royalhayat2025\Database\obj\Debug\Database.csproj.
 C:\Users\Samsung\Source\Repos\royalhayat2025\Database\obj\Debug\Database.csproj.Up2Date
 C:\Users\Samsung\Source\Repos\royalhayat2025\Database\obj\Debug\Database.dll
 C:\Users\Samsung\Source\Repos\royalhayat2025\Database\obj\Debug\Database.pdb
+D:\React\NodeJS\New\royalhayat2025\Database\bin\Debug\Database.dll.config
+D:\React\NodeJS\New\royalhayat2025\Database\bin\Debug\Database.dll
+D:\React\NodeJS\New\royalhayat2025\Database\bin\Debug\Database.pdb
+D:\React\NodeJS\New\royalhayat2025\Database\bin\Debug\HtmlAgilityPack.dll
+D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.csproj.AssemblyReference.cache
+D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.csproj.Up2Date
+D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.dll
+D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.pdb
