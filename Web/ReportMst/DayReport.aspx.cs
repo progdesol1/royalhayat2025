@@ -20,11 +20,15 @@ using System.Web.UI.WebControls.WebParts;
 namespace Web.ReportMst
 {
     public partial class DayReport : System.Web.UI.Page
-    {
+    {  
+
+
+
+
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMNewEntitiesNew"].ConnectionString);
         SqlCommand command2 = new SqlCommand();
         CallEntities DB = new CallEntities();
-        int TID = 0;
+            int TID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);

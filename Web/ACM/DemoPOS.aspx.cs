@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Data.Objects.SqlClient;
 using System.Configuration;
 using System.Transactions;
+using System.Text;
 
 
 namespace Web.ACM
@@ -41,189 +42,180 @@ namespace Web.ACM
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-
-         
-            int comp = (((TBLCOMPANYSETUP)Session["CustomerUser"]).COMPID);
-            Database.TBLCOMPANYSETUP OBJupdate = DB.TBLCOMPANYSETUPs.Single(p => p.TenentID == TID && p.COMPID == comp);
-
-            imgprofile.ImageUrl = "~/ReportMst/assets/global/img/" + OBJupdate.Avtar; 
-            if (Session["USER"] != null && string.IsNullOrEmpty(Session["USER"].ToString()))//error
+            // ------- SESSION CHECK -------
+            if (Session["USER"] == null)
             {
                 Response.Redirect("Login.aspx");
+                return;
             }
-           
+
+            USER_MST currentUser = (USER_MST)Session["USER"];
+            TID = currentUser.TenentID;
+            userID = currentUser.USER_ID;
+            LocationID = currentUser.LOCATION_ID;
+
+            // ✅ CACHE COMPANY DATA IN SESSION
+            int compID = ((TBLCOMPANYSETUP)Session["CustomerUser"]).COMPID;
+
+            if (Session["CompanyAvtar"] == null)
+            {
+                var company = DB.TBLCOMPANYSETUPs
+                    .Where(p => p.TenentID == TID && p.COMPID == compID)
+                    .Select(p => p.Avtar)  // ✅ Only select needed column
+                    .FirstOrDefault();
+
+                Session["CompanyAvtar"] = company;
+            }
+
+            imgprofile.ImageUrl = "~/ReportMst/assets/global/img/" + Session["CompanyAvtar"];
+
+            // ------- FIRST LOAD ONLY -------
             if (!IsPostBack)
             {
-              //  TicketBind();
+                // Independent operations
                 BindRemainderNote();
                 getCommunicatinData();
                 bindLog();
                 binduserlog();
 
-                Literal1.Text = "<a href=\'../ReportMst/Profile.aspx?CID=" + comp + "' onclick=\"return loadIframe('ifrm', this.href)\">My Profile</a>";
+                // Profile link
+                Literal1.Text = $"<a href='../ReportMst/Profile.aspx?CID={compID}' " +
+                               "onclick=\"return loadIframe('ifrm', this.href)\">My Profile</a>";
+
                 CheckMaitanance();
-                this.ifrm.Attributes.Add("onload", "setIframeHeight(document.getElementById('" + ifrm.ClientID + "'));");
-                if (HeadOffieName() == "")
+
+                ifrm.Attributes.Add("onload",
+                    $"setIframeHeight(document.getElementById('{ifrm.ClientID}'));");
+
+                // ------- COOKIE & USER DATA -------
+                HttpCookie cookie = Request.Cookies["tgadmin"];
+                if (cookie != null)
                 {
-                    if (Session["SAFirstname"] == null)
-                        Session.Abandon();
-                    //Response.Redirect("Login.aspx");
-                }
-                else
-                {
-                    HttpCookie aCookie = Request.Cookies["tgadmin"];
-                    //int UID = Convert.ToInt32(aCookie.Values["UserName"]);
-                    int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
-                    string Lang = aCookie.Values["CLANGUAGE"];
-                    //int Modulid = DB.MODULE_MAP.Single(p =>p.TenentID==TID && p.UserID == UID && p.SP1Name == "DefaultSet").MODULE_ID;
-                    USER_MST UserList = DB.USER_MST.Single(p => p.USER_ID == UID && p.TenentID == TID);
-                    Session["USER"] = UserList;
-                    Session["Firstname"] = UserList.FIRST_NAME.ToString();
-                    Usernamee.Text = UserList.FIRST_NAME.ToString();
-                    lbluser.Text = UserList.FIRST_NAME.ToString();
-                    useremail.Text = UserList.EmailAddress.ToString();
-                    if (Session["SiteModuleID"] != null)
+                    string lang = cookie.Values["CLANGUAGE"];
+                    Session["LANGUAGE"] = lang;
+
+                    // ✅ Only reload user if session data is old or missing
+                    DateTime lastLoaded = Session["USER_LAST_LOADED"] != null
+                        ? (DateTime)Session["USER_LAST_LOADED"]
+                        : DateTime.MinValue;
+
+                    if ((DateTime.Now - lastLoaded).TotalMinutes > 5)
                     {
-                        int Modulid = Convert.ToInt32(Session["SiteModuleID"]);
-                        Session["SiteModuleID"] = Modulid;
+                        // ✅ Select only needed columns
+                        var userInfo = DB.USER_MST
+                            .Where(p => p.USER_ID == currentUser.USER_ID && p.TenentID == TID)
+                            .Select(p => new {
+                                p.USER_ID,
+                                p.FIRST_NAME,
+                                p.EmailAddress,
+                                p.LOCATION_ID,
+                                p.TenentID
+                                // Add other needed fields
+                            })
+                            .FirstOrDefault();
+
+                        if (userInfo != null)
+                        {
+                            // Update only if changed
+                            if (Session["Firstname"]?.ToString() != userInfo.FIRST_NAME)
+                            {
+                                Session["Firstname"] = userInfo.FIRST_NAME;
+                            }
+                            Session["USER_LAST_LOADED"] = DateTime.Now;
+                        }
                     }
-                    Session["LANGUAGE"] = Lang;
-                }
-                if (Session["USER"] == null || Session["USER"] == "0")
-                {
-                    Session.Abandon();
-                    Response.Redirect("Login.aspx");
-
                 }
 
+                // ✅ Use Session data (already in memory)
+                string firstName = Session["Firstname"]?.ToString() ?? currentUser.FIRST_NAME;
+                Usernamee.Text = firstName;
+                lbluser.Text = firstName;
+                useremail.Text = currentUser.EmailAddress;
 
-                userID = ((USER_MST)Session["USER"]).USER_ID;
-                LocationID = Convert.ToInt32(((USER_MST)Session["USER"]).LOCATION_ID);
-                if (Session["SAFirstname"] != null)
-                {
-                    string Username = Session["SAFirstname"].ToString();
-                    //lblFirstName.Text = Username;
-                }
-                else
-                {
-                    string UserName = ((USER_MST)Session["USER"]).FIRST_NAME;
-                    // lblFirstName.Text = UserName.ToString();
-                }
-                Session["Previous"] = Session["Current"];
-                Session["Current"] = Request.RawUrl;
+                // ------- MODULE BIND -------
                 if (Session["SiteModuleID"] != null)
                 {
                     int MID = Convert.ToInt32(Session["SiteModuleID"]);
                     menubind(MID);
-                    if (DB.MODULE_MST.Where(p => p.Module_Id == MID).Count() > 0)
-                    {
-                        //lblmodule.Text = "Module:" + DB.MODULE_MST.Single(p => p.Module_Id == MID).Module_Name;
-                    }
                 }
 
-                int UTID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_TYPE);
-                string UNAME = ((USER_MST)Session["USER"]).FIRST_NAME;
-                int LID = ((USER_MST)Session["USER"]).LOCATION_ID;
-                //Hawally
-                if (DB.TBLLOCATIONs.Where(p => p.TenentID == TID && p.LOCATIONID == LID).Count() > 0)
+                // ------- LOCATION LOAD WITH CACHING -------
+                if (ViewState["Location"] == null || string.IsNullOrEmpty(ViewState["Location"].ToString()))
                 {
-                    string Location1 = DB.TBLLOCATIONs.Single(p => p.TenentID == TID && p.LOCATIONID == LID).LOCNAME1;
-                    ViewState["Location"] = Location1;
+                    // ✅ Select only needed column
+                    string locationName = DB.TBLLOCATIONs
+                        .Where(p => p.TenentID == TID && p.LOCATIONID == currentUser.LOCATION_ID)
+                        .Select(p => p.LOCNAME1)
+                        .FirstOrDefault() ?? "Hawally";
+
+                    ViewState["Location"] = locationName;
                 }
-                else
-                {
-                    string Location1 = "Hawally";
-                    ViewState["Location"] = Location1;
-                }
-                //string Location = ViewState["Location"].ToString();
-                //lbltentid.Text = "TID:" + TID.ToString() + " : " + Location + "\n";
 
-                //if (TID == 0)
-                //{
-                //    lbltentid.Visible = false;
-                //    lblusername.Visible = true;
-                //}
-                //lblusername.Text = "User:" + UNAME.ToString();
-
-                // For Attandance
-                //int UserID = GetLogginID();
-                //DateTime TodayDate = DateTime.Now.Date;
-                //List<Attandance> ObjList = (from item in DB.Attandances where item.UserID == UserID && item.InTime.Value.Year == TodayDate.Year && item.InTime.Value.Month == TodayDate.Month && item.InTime.Value.Day == TodayDate.Day select item).ToList();
-                //if (ObjList.Where(p => p.OutTime == null).Count() > 0)
-                //{
-                //    linkCheckIn.Visible = false;
-                //    if (TID == 7)
-                //        linkCheckOut.Visible = false;
-                //    else
-                //        linkCheckOut.Visible = true;
-                //}
-                //else
-                //{
-                //    //if (ObjList.Count() == 0)
-                //    //{
-                //    //    Attandance Obj = new Attandance();
-                //    //    Obj.UserID = GetLogginID();
-                //    //    Obj.InTime = DateTime.Now;
-                //    //    Obj.isAbsent = false;
-                //    //    Obj.Deleted = true;
-                //    //    Obj.Active = true;
-                //    //    DB.Attandances.AddObject(Obj);
-                //    //    DB.SaveChanges();
-                //    //    //linkCheckIn.Visible = false;
-                //    //    //linkCheckOut.Visible = true;
-                //    //}
-                //    //else
-                //    //{
-                //    //    //linkCheckIn.Visible = true;
-                //    //    //btnSignin.CssClass = "stdbtn btn_red";
-                //    //    //btnSignOut.CssClass = "stdbtn";
-                //    //    //linkCheckIn.BackColor = Color.Red;
-                //    //    //btnSignOut.ForeColor = Color.Black;
-                //    //    //linkCheckOut.Visible = false;
-                //    //}
-                //}
-                //string Loggo = Classes.EcommAdminClass.Logo(TID);
-                //LOGOTODISPLAY.ImageUrl = "../assets/" + Loggo;
-
-
+                // ------- PAGE HISTORY -------
+                Session["Previous"] = Session["Current"];
+                Session["Current"] = Request.RawUrl;
+            }
+            // ✅ If PostBack, use cached ViewState location
+            else
+            {
+                imgprofile.ImageUrl = "~/ReportMst/assets/global/img/" + Session["CompanyAvtar"];
             }
         }
+
 
 
 
         public void CheckMaitanance()
         {
+            string filePath = Server.MapPath("test.txt");
+
             try
             {
-                if (!File.Exists(Server.MapPath("test.txt")))
+                // If file does not exist, create it
+                if (!File.Exists(filePath))
                 {
-                    File.WriteAllText(Server.MapPath("test.txt"), "welcome" + DateTime.Now.ToString());
-                }
-                else
-                {
-                    if (File.GetLastWriteTime(Server.MapPath("test.txt")).Day != DateTime.Now.Day)
-                    {
-                        string qry = "";
-                        con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMNewEntitiesNew"].ConnectionString);
-                        List<Database.TBLMaintanance> listTBLMaintanances = DB.TBLMaintanances.Where(p => p.Active == true && p.SwichType == 1).ToList();
-                        foreach (Database.TBLMaintanance item in listTBLMaintanances)
-                            qry += item.Query;
-                        command2 = new SqlCommand(qry, con);
-                        con.Open();
-                        command2.ExecuteReader();
-                        con.Close();
-                        File.WriteAllText(Server.MapPath("test.txt"), "welcome" + DateTime.Now.ToString());
-                    }
+                    File.WriteAllText(filePath, "welcome " + DateTime.Now);
+                    return;
                 }
 
+                // Maintenance should run if last update was on a different day
+                DateTime lastWrite = File.GetLastWriteTime(filePath);
+
+                if (lastWrite.Date != DateTime.Now.Date)
+                {
+                    // Build SQL Query
+                    var queries = DB.TBLMaintanances
+                                    .Where(p => p.Active == true && p.SwichType == 1)
+                                    .Select(p => p.Query)
+                                    .ToList();
+
+                    string finalQuery = string.Join(" ", queries);
+
+                    using (SqlConnection con = new SqlConnection(
+                        ConfigurationManager.ConnectionStrings["CRMNewEntitiesNew"].ConnectionString))
+                    {
+                        using (SqlCommand cmd = new SqlCommand(finalQuery, con))
+                        {
+                            con.Open();
+                            cmd.ExecuteNonQuery();         // Correct method
+                            con.Close();
+                        }
+                    }
+
+                    // Update last write time after maintenance
+                    File.WriteAllText(filePath, "welcome " + DateTime.Now);
+                }
             }
             catch (Exception ex)
             {
+                // Log file with error
+                File.WriteAllText(filePath,
+                    "welcome " + DateTime.Now + " ERROR : " + ex.Message);
+
                 Response.Write(ex.Message);
-                File.WriteAllText(Server.MapPath("test.txt"), "welcome" + DateTime.Now.ToString() + "Erorr : " + ex.Message);
             }
         }
+
         public string HeadOffieName()
         {
             try
@@ -245,167 +237,185 @@ namespace Web.ACM
 
         public void bindLog()
         {
-          
-            List<Database.tblAudit> list1 = DB.tblAudits.Where(p => p.TENANT_ID == TID).OrderByDescending(p=>p.CRUP_ID).Take(10).ToList();
-            ListOrderTop10.DataSource = list1;
-            ListOrderTop10.DataBind();
+            try
+            {
+                var logs = DB.tblAudits
+                             .Where(x => x.TENANT_ID == TID)
+                             .OrderByDescending(x => x.CRUP_ID)
+                             .Take(10)
+                             .ToList();
+
+                ListOrderTop10.DataSource = logs;
+                ListOrderTop10.DataBind();
+            }
+            catch (Exception ex)
+            {
+                // Optional logging
+                // Response.Write(ex.Message);
+            }
         }
+
 
         public void binduserlog()
         {
-            List<Database.tblAudit> list1 = DB.tblAudits.Where(p => p.TENANT_ID == TID).OrderByDescending(p=>p.CRUP_ID).Take(10).ToList();
-            listuserlog.DataSource = list1;
-            listuserlog.DataBind();
-            
+            try
+            {
+                var logs = DB.tblAudits
+                             .Where(x => x.TENANT_ID == TID)
+                             .OrderByDescending(x => x.CRUP_ID)
+                             .Take(10)
+                             .ToList();
+
+                listuserlog.DataSource = logs;
+                listuserlog.DataBind();
+            }
+            catch (Exception)
+            {
+                // error handle if needed
+            }
         }
+
 
 
         public void menubind(int ModuleID)
         {
             int LID = Convert.ToInt32(((USER_MST)Session["USER"]).LOCATION_ID);
-            int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-            int ROLLID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_TYPE);
+            long TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
             int uid = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
-            if (DB.MODULE_MST.Where(p => p.Module_Id == ModuleID).Count() > 0)
+            DateTime today = DateTime.Now;
+
+            // MODULE CHECK
+            var module = DB.MODULE_MST.FirstOrDefault(p => p.Module_Id == ModuleID);
+            if (module == null) return;
+
+            // ✅ SINGLE DB CALL - Get all tempUser1 data at once
+            var fullList = DB.tempUser1
+                .Where(p => p.TenentID == TID &&
+                            p.UserID == uid &&
+                            p.ACTIVEUSER == true)
+                .ToList(); // Load once in memory
+
+            if (!fullList.Any()) return;
+
+            // Filter for current module
+            var moduleList = fullList
+                .Where(p => p.MODULE_ID == ModuleID &&
+                            p.LocationID == LID &&
+                            p.ACTIVEMODULE == true &&
+                            p.ACTIVEROLE == true &&
+                            p.ACTIVEMENU == true)
+                .OrderBy(p => p.MENU_ORDER)
+                .ToList();
+
+            if (!moduleList.Any()) return;
+
+            // DASHBOARD
+            var dashList = moduleList
+                .Where(p => p.MENU_LOCATION == "Separator")
+                .OrderBy(p => p.MENU_ORDER)
+                .ToList();
+
+            var firstDash = dashList.FirstOrDefault();
+            if (firstDash != null)
             {
-                ViewState["MTID"] = TID;
-                List<Database.tempUser1> List = DB.tempUser1.Where(p => p.MODULE_ID == ModuleID && p.TenentID == TID && p.LocationID == LID && p.ACTIVEUSER == true && p.ACTIVEMODULE == true && p.ACTIVEROLE == true && p.UserID == uid && p.ACTIVEMENU == true).OrderBy(p => p.MENU_ORDER).ToList();
+                string dashName = firstDash.MENU_NAME1;
+                lblDashboard.Text =
+                    $"<a href=\"{firstDash.LINK}\" onclick=\"return loadIframe('ifrm', this.href)\" class='m-menu__link'>" +
+                    $"<span class='m-menu__item-here'></span>" +
+                    $"<span class='m-menu__link-text'>{firstDash.MENU_NAME1.Replace(dashName, "Dashboard")}</span></a>";
 
-                if (List.Count() > 0)
+                ifrm.Attributes.Add("src", firstDash.LINK);
+            }
+
+            // MENU SEPARATOR ITEMS VALID TILL DATE
+            var activeMenu = dashList
+                .Where(p => p.ACTIVETILLDATE >= today)
+                .ToList();
+
+            if (activeMenu.Any())
+            {
+                // ✅ NO DB CALLS in loop - use in-memory data
+                var activeMenuIds = activeMenu.Select(m => m.MENUID).ToList();
+
+                var childMenus = fullList
+    .Where(p => p.MASTER_ID.HasValue &&
+                activeMenuIds.Contains(p.MASTER_ID.Value) &&
+                p.MENU_LOCATION == "Left Menu" &&
+                p.SP5 == 1)
+    .ToList();
+
+
+
+                var uniqueMenu = activeMenu
+                    .Where(m => childMenus.Any(c => c.MASTER_ID == m.MENUID))
+                    .ToList();
+
+                // SET LEFT MENU
+                ltsMenu.DataSource = uniqueMenu.OrderBy(p => p.MENU_ORDER);
+                ltsMenu.DataBind();
+
+                var master = uniqueMenu.FirstOrDefault(p => p.MENU_LOCATION == "Separator");
+                if (master != null)
                 {
-                    List<Database.tempUser1> ListDash = List.Where(p => p.MENU_LOCATION == "Separator").OrderBy(p => p.MENU_ORDER).ToList();
-                    string Dashname = ListDash[0].MENU_NAME1;
-                    //lblDashboard.Text = " <a href=\"" + List[0].LINK + "\" onclick=\"return loadIframe('ifrm', this.href)\">" + List[0].MENU_NAME1.Replace(Dashname, "Dashboard") + "</span> </a>";
-                    lblDashboard.Text = "<a href=\"" + ListDash[0].LINK + "\" onclick=\"return loadIframe('ifrm', this.href)\" class='m-menu__link'> <span class='m-menu__item-here'></span><span class='m-menu__link-text'>" + ListDash[0].MENU_NAME1.Replace(Dashname, "Dashboard") + "</span></a>";//" + List[0].MENU_NAME1.Replace(Dashname, "Dashboard") + "
-                    ifrm.Attributes.Add("src", ListDash[0].LINK);
-
-                    if (List.Where(p => p.ACTIVETILLDATE >= DateTime.Now && p.MENU_LOCATION == "Separator" && p.TenentID == TID).Count() > 0)// && p.ACTIVEMENU == true                        
-                    {
-                        //
-                        List<Database.tempUser1> MenuMain = List.Where(p => p.ACTIVETILLDATE >= DateTime.Now && p.MENU_LOCATION == "Separator" && p.TenentID == TID).ToList();
-                        List<Database.tempUser1> Temp = new List<Database.tempUser1>();
-                        foreach (Database.tempUser1 mitem in MenuMain)
-                        {
-                            if (DB.tempUser1.Where(p => p.TenentID == TID && p.MASTER_ID == mitem.MENUID && p.MENU_LOCATION == "Left Menu" && p.SP5 == 1).Count() > 0)
-                            {
-                                Database.tempUser1 mobj = DB.tempUser1.Single(p => p.TenentID == TID && p.MENUID == mitem.MENUID && p.UserID == uid);
-                                Temp.Add(mobj);
-                            }
-                        }
-                        //
-                        List = Temp;
-                        ltsMenu.DataSource = List.Where(p => p.ACTIVETILLDATE >= DateTime.Now && p.MENU_LOCATION == "Separator" && p.TenentID == TID).OrderBy(a => a.MENU_ORDER);// && p.ACTIVEMENU == true
-                        ltsMenu.DataBind();
-
-                        int MasterID = Convert.ToInt32(List.First(p => p.ACTIVETILLDATE >= DateTime.Now && p.MENU_LOCATION == "Separator").MASTER_ID);// && p.ACTIVEMENU == true
-                        lstMaster.DataSource = List.Where(p => p.MASTER_ID == MasterID && p.MENU_LOCATION == "Left Menu" && p.MENU_NAME1 != "Dashboard" && p.TenentID == TID);// && p.ACTIVEMENU == true
-                        lstMaster.DataBind();
-
-                        //Admin Setup 
-                        string uidd = uid.ToString();
-                        if (DB.MYCOMPANYSETUPs.Where(p => p.TenentID == TID && p.USERID == uidd).Count() > 0)
-                        {
-
-                        }
-                        else
-                        {
-                            foreach (Database.tempUser1 Adminitem in List)
-                            {
-                                if (Adminitem.URLREWRITE == "/ACM/ACM_NewUsewSetupScreen.aspx")
-                                {
-                                    int MIDD = Convert.ToInt32(Adminitem.MASTER_ID);
-                                    List = List.Where(p => p.MENUID != MIDD && p.ACTIVETILLDATE >= DateTime.Now && p.MENU_LOCATION == "Separator" && p.TenentID == TID).OrderBy(a => a.MENU_ORDER).ToList();// && p.ACTIVEMENU == true
-                                    ltsMenu.DataSource = List;
-                                    ltsMenu.DataBind();
-
-                                    int MasterIDd = Convert.ToInt32(List.First(p => p.ACTIVETILLDATE >= DateTime.Now && p.MENU_LOCATION == "Separator").MASTER_ID);// && p.ACTIVEMENU == true
-                                    lstMaster.DataSource = List.Where(p => p.MASTER_ID == MasterIDd && p.MENU_LOCATION == "Left Menu" && p.MENU_NAME1 != "Dashboard" && p.TenentID == TID);// && p.ACTIVEMENU == true
-                                    lstMaster.DataBind();
-                                }
-                            }
-
-                        }//Admin Setup ///////////////
-                    }
-                    else
-                    {
-                        //lbldiscription.Text = "This " + ModielName + "You has No Any Menu";
-                        //ModalPopupExtender1.Show();
-                    }
-                    if(DB.tempUser1.Where(p => p.TenentID == TID && p.UserID == uid).Count() > 0)
-                    {
-                        string dt = Convert.ToDateTime(DB.tempUser1.Where(p => p.TenentID == TID && p.UserID == uid).Select(p => p.ACTIVETILLDATE).First()).ToShortDateString();
-                        if (!String.IsNullOrEmpty(dt))
-                        {
-                            DateTime Expdt = Convert.ToDateTime(dt).Date;
-                            DateTime TDT = DateTime.Now.Date;
-                            int Diff = Convert.ToInt32((Expdt - TDT).TotalDays);
-                            if (Diff <= 7)
-                            {
-                                lbldiscription.Text = "Your Login / password is Expired after " + Diff + " Day On " + Expdt.ToString("dd-MMM-yyyy") + ", please contact to Administrator...";
-                                ModalPopupExtender1.Show();
-                            }
-
-                        }
-                    }
-                    List = List.Where(p => p.AMIGLOBALE == 1 && p.TenentID == TID && p.MODULE_ID == ModuleID).ToList();// && p.ACTIVEMENU == true
-                    lstisGloble.DataSource = List;//List.Where(p => p.AMIGLOBALE == 1 && p.TenentID == TID && p.MODULE_ID == ModuleID && p.ACTIVEMENU == true);//Classes.Globle.EncryptionHelpers.getMenuGloble(TID, userID);
-                    lstisGloble.DataBind();
-
-                    
-                }
-                else
-                {
-                    //lbldiscription.Text = "Your Login / password is Expired , please contact to Administrator...";
-                    //ModalPopupExtender1.Show();
+                    lstMaster.DataSource = fullList.Where(p =>
+                        p.MASTER_ID == master.MASTER_ID &&
+                        p.MENU_LOCATION == "Left Menu" &&
+                        p.MENU_NAME1 != "Dashboard");
+                    lstMaster.DataBind();
                 }
             }
 
+            // PASSWORD EXPIRY CHECK - Already have data
+            var expiryDate = fullList
+                .Select(p => p.ACTIVETILLDATE)
+                .FirstOrDefault();
 
-            List<Database.tempUser1> ModulList = DB.tempUser1.Where(p => p.TenentID == TID && p.UserID == uid).ToList();
-            List<Database.MODULE_MST> ListMST = new List<MODULE_MST>();
-            if (ModulList.Where(p => p.TenentID == TID).Count() > 0)
+            if (expiryDate != null)
             {
-                var List1 = ModulList.GroupBy(p => p.MODULE_ID).Select(p => p.FirstOrDefault()).ToList();
-
-                foreach (Database.tempUser1 items in List1)
+                int diff = (expiryDate.Value.Date - today.Date).Days;
+                if (diff <= 7)
                 {
-                    if (TID == 0)
-                    {
-                        if (DB.MODULE_MST.Where(p => p.Module_Id == items.MODULE_ID).Count() > 0)
-                        {
-                            int perent = Convert.ToInt32(DB.MODULE_MST.Single(p => p.Module_Id == items.MODULE_ID).Parent_Module_id);
-                            if (DB.MODULE_MST.Where(p => p.Module_Id == items.MODULE_ID && items.ACTIVEMODULE == true).Count() > 0)//items.ACTIVEMODULE == true
-                            {
-                                Database.MODULE_MST objMST = DB.MODULE_MST.Single(p => p.ACTIVE_FLAG == "Y" && p.Module_Id == perent);
-                                ListMST.Add(objMST);
-                            }
-
-                        }
-                    }
-                    else
-                    {
-                        if (DB.MODULE_MST.Where(p => p.Module_Id == items.MODULE_ID).Count() > 0)
-                        {
-                            int perent = Convert.ToInt32(DB.MODULE_MST.Single(p => p.Module_Id == items.MODULE_ID).Parent_Module_id);
-                            if (perent != 12)
-                            {
-                                if (DB.MODULE_MST.Where(p => p.ACTIVE_FLAG == "Y" && p.Module_Id == perent).Count() > 0)
-                                {
-                                    if (DB.MODULE_MST.Where(p => p.Module_Id == items.MODULE_ID && items.ACTIVEMODULE == true).Count() > 0)//items.ACTIVEMODULE == true
-                                    {
-                                        Database.MODULE_MST objMST = DB.MODULE_MST.Single(p => p.ACTIVE_FLAG == "Y" && p.Module_Id == perent);
-                                        ListMST.Add(objMST);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    lbldiscription.Text = $"Your Login / password is Expired after {diff} Day On {expiryDate.Value:dd-MMM-yyyy}, please contact to Administrator...";
+                    ModalPopupExtender1.Show();
                 }
-                //lstmodule.DataSource = ListMST.GroupBy(p => p.Module_Id).Select(p => p.FirstOrDefault()).ToList();// DB.MODULE_MST.Where(p => p.ACTIVE_FLAG == "Y" && p.Parent_Module_id == 0 && p.TenentID == TID && p.Module_Id != 12);
-                //lstmodule.DataBind();
             }
 
+            // GLOBAL MENU
+            var globalMenus = moduleList
+                .Where(p => p.AMIGLOBALE == 1)
+                .ToList();
+
+            lstisGloble.DataSource = globalMenus;
+            lstisGloble.DataBind();
+
+            // ✅ MODULE LIST - Single query with join
+            var moduleIds = fullList
+                .Select(p => p.MODULE_ID)
+                .Distinct()
+                .ToList();
+
+            var allModules = DB.MODULE_MST
+                .Where(p => moduleIds.Contains(p.Module_Id) ||
+                            moduleIds.Contains((int)p.Parent_Module_id))
+                .ToList();
+
+            var parentModules = fullList
+                .Select(m => m.MODULE_ID)
+                .Distinct()
+                .Select(modId => allModules.FirstOrDefault(p => p.Module_Id == modId))
+                .Where(mod => mod != null && Convert.ToInt32(mod.Parent_Module_id) != 12)
+                .Select(mod => allModules.FirstOrDefault(p =>
+                    p.Module_Id == Convert.ToInt32(mod.Parent_Module_id) &&
+                    p.ACTIVE_FLAG == "Y"))
+                .Where(parent => parent != null)
+                .GroupBy(p => p.Module_Id)
+                .Select(g => g.First())
+                .ToList();
+
+            // lstmodule.DataSource = parentModules;
+            // lstmodule.DataBind();
         }
+
 
         //protected void lstmodule_ItemDataBound(object sender, ListViewItemEventArgs e)
         //{
@@ -441,7 +451,7 @@ namespace Web.ACM
                 if (obj.MENU_LOCATION == "Separator")
                 {
                     MNAME = obj.MENU_NAME1.ToString();
-                    if(TID == 2 && obj.MENU_NAME1.ToString() == "POS")
+                    if (TID == 2 && obj.MENU_NAME1.ToString() == "POS")
                     {
                         MNAME = "Feedback";
                     }
@@ -458,7 +468,7 @@ namespace Web.ACM
             {
 
                 var obj = DB.FUNCTION_MST.SingleOrDefault(p => p.MENU_ID == menuID); // && p.TenentID == MTID && p.ACTIVE_FLAG == 1
-                //OnOff = obj.ACTIVE_FLAG == 1 ? "-success'>&nbsp;" : "-danger'>&nbsp";
+                                                                                     //OnOff = obj.ACTIVE_FLAG == 1 ? "-success'>&nbsp;" : "-danger'>&nbsp";
                 string MID1 = obj.MASTER_ID.ToString();
                 string MenuID1 = obj.MENU_ID.ToString();
                 string ENCMID1 = Classes.GlobleClass.EncryptionHelpers.Encrypt(MID1 + "~" + MenuID1).ToString();
@@ -470,8 +480,8 @@ namespace Web.ACM
                     menustr += "<div class='m-menu__submenu m-menu__submenu--classic m-menu__submenu--left'><span class='m-menu__arrow m-menu__arrow--adjust'></span>";
                     menustr += " <ul class='m-menu__subnav'>";
                     List<Database.FUNCTION_MST> itemList = DB.FUNCTION_MST.Where(p => p.MASTER_ID == menuID).OrderBy(a => a.MENU_ORDER).ToList(); // && p.TenentID == MTID && p.ACTIVE_FLAG == 1
-                    //if (OnOff == "-success'>&nbsp;")
-                    //{
+                                                                                                                                                  //if (OnOff == "-success'>&nbsp;")
+                                                                                                                                                  //{
                     if (itemList.Count() > 0)
                     {
                         foreach (Database.FUNCTION_MST item in itemList)
@@ -530,7 +540,16 @@ namespace Web.ACM
                                     }
                                     else
                                     {
-                                        menustr += "<li class='m-menu__item' data-redirect='true' aria-haspopup='true'><a href='" + itemstr + "' onclick=\"return loadIframe('ifrm', this.href)\" class='m-menu__link'><i class='m-menu__link-icon flaticon-users'></i><span class='m-menu__link-text' >" + item.MENU_NAME1 + "</span><span class='badge badge" + OnOff + "'>&nbsp; </span></a></li>";
+                                        if (itemstr.Contains("POS/ClientTiketR.aspx"))
+                                        {
+                                            Session["complaint"] = itemstr;
+                                            menustr += "<li class='m-menu__item' data-redirect='true' aria-haspopup='true'><a id='lnkcmplnt' href='" + itemstr + "' onclick=\"return loadIframe('ifrm', this.href)\" class='m-menu__link'><i class='m-menu__link-icon flaticon-users'></i><span class='m-menu__link-text' >" + item.MENU_NAME1 + "</span><span class='badge badge" + OnOff + "'>&nbsp; </span></a></li>";
+                                        }
+                                        else 
+                                        {
+                                            
+                                            menustr += "<li class='m-menu__item' data-redirect='true' aria-haspopup='true'><a  href='" + itemstr + "' onclick=\"return loadIframe('ifrm', this.href)\" class='m-menu__link'><i class='m-menu__link-icon flaticon-users'></i><span class='m-menu__link-text' >" + item.MENU_NAME1 + "</span><span class='badge badge" + OnOff + "'>&nbsp; </span></a></li>";
+                                        }
                                     }
                                 }
                             }
@@ -548,6 +567,14 @@ namespace Web.ACM
 
             return menustr;
         }
+
+
+
+        private string BuildUrl(string baseUrl, string encMID)
+        {
+            return baseUrl.Contains("?") ? $"{baseUrl}&MID={encMID}" : $"{baseUrl}?MID={encMID}";
+        }
+
 
         public string Displaysubmenu1(int menuID)
         {
@@ -592,12 +619,12 @@ namespace Web.ACM
         protected void LinkButton1_Click1(object sender, EventArgs e)
         {
 
-          //  Classes.POSSynchronization.Synchonizes();
+            //  Classes.POSSynchronization.Synchonizes();
             Response.Redirect("../POS/ClientTiketR.aspx");
         }
 
-     
-       
+
+
 
         public string GetUName(int UID)
         {
@@ -613,7 +640,7 @@ namespace Web.ACM
             }
 
         }
-       
+
         public string GetCat(string Catid)
         {
             int Cid = Convert.ToInt32(Catid);
@@ -632,18 +659,27 @@ namespace Web.ACM
         {
             int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
             int UIN = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
-            if (DB.CRMMainActivities.Where(p => p.TenentID == TID && p.USERCODE == UIN && p.ACTIVITYE == "Ticket").Count() > 0)
-            {
-                var result = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.USERCODE == UIN && p.ACTIVITYE == "Ticket").OrderByDescending(p => p.MasterCODE);
-                var resu1 = result.FirstOrDefault();
-                int TickID = resu1.MasterCODE;
-                ViewState["TickID"] = TickID;
 
-                //ltsRemainderNotes.DataSource = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.USERCODE == UIN && p.ACTIVITYE == "Ticket").OrderByDescending(p => p.UPDTTIME);
-                //ltsRemainderNotes.DataBind();
-                //UpdatePanel3.Update();
+            var lastTicket = DB.CRMMainActivities
+                              .Where(p => p.TenentID == TID
+                                       && p.USERCODE == UIN
+                                       && p.ACTIVITYE == "Ticket")
+                              .OrderByDescending(p => p.MasterCODE)
+                              .FirstOrDefault();
+
+            if (lastTicket != null)
+            {
+                ViewState["TickID"] = lastTicket.MasterCODE;
+
+                // Agar future me bind karna ho
+                // ltsRemainderNotes.DataSource = DB.CRMMainActivities
+                //       .Where(p => p.TenentID == TID && p.USERCODE == UIN && p.ACTIVITYE == "Ticket")
+                //       .OrderByDescending(p => p.UPDTTIME);
+                // ltsRemainderNotes.DataBind();
+                // UpdatePanel3.Update();
             }
         }
+
         protected void ltsRemainderNotes_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             if (e.CommandName == "TicketNO")
@@ -772,24 +808,6 @@ namespace Web.ACM
                 return "m-messenger__message m-messenger__message--in";
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
