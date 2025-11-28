@@ -50,3 +50,12 @@ D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.csproj.CoreCompil
 D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.csproj.Up2Date
 D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.dll
 D:\React\NodeJS\New\royalhayat2025\Database\obj\Debug\Database.pdb
+C:\Work\DigitalEdge\royalhayat2025\Database\bin\Debug\Database.dll.config
+C:\Work\DigitalEdge\royalhayat2025\Database\bin\Debug\Database.dll
+C:\Work\DigitalEdge\royalhayat2025\Database\bin\Debug\Database.pdb
+C:\Work\DigitalEdge\royalhayat2025\Database\bin\Debug\HtmlAgilityPack.dll
+C:\Work\DigitalEdge\royalhayat2025\Database\obj\Debug\Database.csproj.AssemblyReference.cache
+C:\Work\DigitalEdge\royalhayat2025\Database\obj\Debug\Database.csproj.CoreCompileInputs.cache
+C:\Work\DigitalEdge\royalhayat2025\Database\obj\Debug\Database.csproj.Up2Date
+C:\Work\DigitalEdge\royalhayat2025\Database\obj\Debug\Database.dll
+C:\Work\DigitalEdge\royalhayat2025\Database\obj\Debug\Database.pdb

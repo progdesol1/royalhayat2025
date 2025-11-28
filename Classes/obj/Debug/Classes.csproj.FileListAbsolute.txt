@@ -71,3 +71,16 @@ D:\React\NodeJS\New\royalhayat2025\Classes\obj\Debug\Classes.csproj.CoreCompileI
 D:\React\NodeJS\New\royalhayat2025\Classes\obj\Debug\Classes.csproj.Up2Date
 D:\React\NodeJS\New\royalhayat2025\Classes\obj\Debug\Classes.dll
 D:\React\NodeJS\New\royalhayat2025\Classes\obj\Debug\Classes.pdb
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\Classes.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\Classes.pdb
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\Database.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\HtmlAgilityPack.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\VisualStudio.SpellChecker.Definitions.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\Database.pdb
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\Database.dll.config
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Debug\VisualStudio.SpellChecker.Definitions.xml
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Debug\Classes.csproj.AssemblyReference.cache
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Debug\Classes.csproj.Up2Date
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Debug\Classes.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Debug\Classes.pdb

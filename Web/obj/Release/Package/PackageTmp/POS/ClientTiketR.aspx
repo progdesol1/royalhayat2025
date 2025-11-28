@@ -223,12 +223,20 @@
         }
     </style>
     <script type="text/javascript">
-       
+
+      
+        function loadIframeFromLocalStorage() {
+            document.getElementById("ContentPlaceHolder1_linkAllPending").click();
+        }
+
+
         function openModalsmall2() {
+            debugger;
             $('#small2').modal('show');
 
         }
         function validate() {
+            debugger;
             if (document.getElementById("txtSubject").value.length != 50) {
                 alert("text lenghth must be fifty");
                 document.getElementById("txtSubject").select();
@@ -240,6 +248,7 @@
             }
         }
         function validate1() {
+            debugger;
             if (document.getElementById("txtComent").value.length != 1000) {
                 alert("text lenghth must be thousand
                 document.getElementById("txtComent").select();
@@ -252,6 +261,7 @@
 
         }
         function validate2() {
+            debugger;
             if (document.getElementById("txtMessage").value.length != 1000) {
                 alert("text lenghth must be thousand");
                 document.getElementById("txtMessage").select();
@@ -264,14 +274,36 @@
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+
+
+        // SAVE active tab before postback
+        document.addEventListener("DOMContentLoaded", function () {
+            var hf = document.getElementById("<%= hfActiveTab.ClientID %>");
+
+        // When user clicks any tab
+        document.querySelectorAll('#profileTabs button').forEach(function (tabBtn) {
+            tabBtn.addEventListener('shown.bs.tab', function (e) {
+                hf.value = e.target.getAttribute("data-bs-target");
+            });
+        });
+
+        // RESTORE tab after postback
+        if (hf.value) {
+            var targetTab = document.querySelector('#profileTabs button[data-bs-target="' + hf.value + '"]');
+            if (targetTab) {
+                new bootstrap.Tab(targetTab).show();
+            }
+        }
+    });
+
+  document.addEventListener('DOMContentLoaded', function () {
             // Get actual ASP.NET rendered ID (ContentPlaceHolder1_btnSave)
             var btnSave = document.getElementById('<%= btnSave.ClientID %>');
 
             if (btnSave) {
                 // Attach click event
                 btnSave.addEventListener('click', function (e) {
-                   //alert('btnSave clicked'); // 🟢 This will run ONLY when you click the button
+                    //alert('btnSave clicked'); // 🟢 This will run ONLY when you click the button
 
                     // Run ASP.NET client-side validation for this ValidationGroup
                     if (typeof (Page_ClientValidate) === 'function') {
@@ -449,41 +481,46 @@
                                                             </GroupTemplate>
 
                                                             <ItemTemplate>
-                                                                <div class="ticket-card">
-                                                                    <div class="ticket-header">
-                                                                        <img src="../CRM/images/No_image.png" class="ticket-avatar" alt="User" />
-                                                                        <div class="ticket-title">
-                                                                            <asp:LinkButton ID="btnnames" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnnames" runat="server" CssClass="ticket-user">
-                                                                                <%# GetUName(Convert.ToInt32(Eval("ReportedBy"))) %>
-                                                                            </asp:LinkButton>
-                                                                        </div>
-                                                                        <div class="ticket-actions">
-                                                                            <asp:LinkButton ID="btnclick123" CssClass="btn btn-sm btn-outline-primary" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnclick123" runat="server">Reply</asp:LinkButton>
-                                                                            <asp:LinkButton ID="btneditticket" CssClass="btn btn-sm btn-outline-secondary" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btneditticket" runat="server">Edit</asp:LinkButton>
-                                                                            <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>' class="btn btn-sm btn-danger" target="_blank">View</a>
-                                                                        </div>
-                                                                    </div>
+    <div class="ticket-card">
+        <div class="ticket-header">
+            <img src="../CRM/images/No_image.png" class="ticket-avatar" alt="User" />
+            <div class="ticket-title">
+                <asp:LinkButton ID="btnnames" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnnames" runat="server" CssClass="ticket-user">
+                    <%# GetUName(Convert.ToInt32(Eval("ReportedBy"))) %>
+                </asp:LinkButton>
+            </div>
+            <div class="ticket-actions">
+                <asp:LinkButton ID="btnclick123" CssClass="btn btn-sm btn-outline-primary" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnclick123" runat="server">Reply</asp:LinkButton>
+                <asp:LinkButton ID="btneditticket" CssClass="btn btn-sm btn-outline-secondary" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btneditticket" runat="server">Edit</asp:LinkButton>
+                <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>' class="btn btn-sm btn-danger" target="_blank">View</a>
+            </div>
+        </div>
 
-                                                                    <div class="ticket-meta">
-                                                                        <small>Follow Up By: <%#GetEmplName(Convert.ToInt32(Eval("FoloEmp")))%></small>
-                                                                    </div>
+        <div class="ticket-meta">
+            <small>Follow Up By: <%#GetEmplName(Convert.ToInt32(Eval("FoloEmp")))%></small>
+        </div>
 
-                                                                    <asp:LinkButton ID="btnremarks" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnremarks" runat="server" CssClass="ticket-remarks">
-                                                                        <%#Eval("Remarks")%>
-                                                                    </asp:LinkButton>
+        <asp:LinkButton ID="btnremarks" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnremarks" runat="server" CssClass="ticket-remarks">
+            <%#Eval("Remarks")%>
+        </asp:LinkButton>
 
-                                                                    <div class="ticket-footer">
-                                                                        <asp:LinkButton ID="btndates" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btndates" runat="server" CssClass="ticket-date">
-                                                                            <i class="fa fa-calendar"></i> <%# Convert.ToDateTime(Eval("UploadDate")).ToString("dd-MMM-yyyy hh:mm tt")%>
-                                                                        </asp:LinkButton>
-                                                                        <div class="ticket-status">
-                                                                            <asp:LinkButton ID="btnpendings" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnpendings" runat="server" CssClass="badge bg-warning text-dark" Visible='<%# (string)Eval("MyStatus") == "Pending"%>'>Pending</asp:LinkButton>
-                                                                            <asp:LinkButton ID="btninprogress" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btninprogress" runat="server" CssClass="badge bg-info text-dark" Visible='<%# (string)Eval("MyStatus") == "InProgress"%>'>In Progress</asp:LinkButton>
-                                                                            <asp:LinkButton ID="btnclosed" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnclosed" runat="server" CssClass="badge bg-success" Visible='<%# (string)Eval("MyStatus") == "Closed"%>'>Closed</asp:LinkButton>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </ItemTemplate>
+        <div class="ticket-footer">
+            <asp:LinkButton ID="btndates" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btndates" runat="server" CssClass="ticket-date">
+                <i class="fa fa-calendar"></i> <%# Convert.ToDateTime(Eval("UploadDate")).ToString("dd-MMM-yyyy hh:mm tt")%>
+            </asp:LinkButton>
+            <div class="ticket-status">
+                <asp:LinkButton ID="btnpendings" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnpendings" runat="server" CssClass="badge bg-warning text-dark" Visible='<%# (string)Eval("MyStatus") == "Pending"%>'>Pending</asp:LinkButton>
+                <asp:LinkButton ID="btninprogress" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btninprogress" runat="server" CssClass="badge bg-info text-dark" Visible='<%# (string)Eval("MyStatus") == "InProgress"%>'>In Progress</asp:LinkButton>
+                <asp:LinkButton ID="btnclosed" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnclosed" runat="server" CssClass="badge bg-success" Visible='<%# (string)Eval("MyStatus") == "Closed"%>'>Closed</asp:LinkButton>
+            </div>
+        </div>
+
+        <!-- 🔥 Hidden Label Added Here -->
+        <asp:Label ID="tikitID" runat="server" Text='<%# Eval("MasterCODE") %>' Visible="false"></asp:Label>
+
+    </div>
+</ItemTemplate>
+
 
                                                         </asp:ListView>
                                                     </ContentTemplate>
@@ -811,6 +848,7 @@
 </div>
                                                   </div>
                                                   <!-- Hidden Field to store tab -->
+                                                    <asp:HiddenField ID="hfLinkValue" runat="server" />
                                                   <asp:HiddenField ID="hfActiveTab" runat="server" />
                                                     <div class="d-flex flex-wrap gap-2 justify-content-end mt-3">
                                                         <asp:Button ID="btnattache" runat="server" CssClass="btn btn-outline-primary btn-sm" OnClick="btnattache_Click" Text="Attachments" />
@@ -819,7 +857,7 @@
     
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-secondary btn-sm" OnClick="btnCancel_Click" Text="Cancel" />
     
-                                                        <asp:Button ID="btncack" runat="server" CssClass="btn btn-outline-secondary btn-sm" OnClick="btncack_Click" Text="Back" Visible="false" />
+                                                        <asp:Button ID="btncack" runat="server" CssClass="btn btn-outline-secondary btn-sm" OnClick="linkAllPending_Click"  Text="Back" Visible="false" />
     
                                                         <asp:Button ID="btndelete" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="btndelete_Click" Text="Delete" Visible="false" />
     

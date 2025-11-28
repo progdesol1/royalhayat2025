@@ -63,3 +63,16 @@ D:\React\NodeJS\New\royalhayat2025\Classes\obj\Release\Classes.csproj.CoreCompil
 D:\React\NodeJS\New\royalhayat2025\Classes\obj\Release\Classes.csproj.Up2Date
 D:\React\NodeJS\New\royalhayat2025\Classes\obj\Release\Classes.dll
 D:\React\NodeJS\New\royalhayat2025\Classes\obj\Release\Classes.pdb
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\Classes.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\Classes.pdb
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\Database.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\HtmlAgilityPack.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\VisualStudio.SpellChecker.Definitions.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\Database.pdb
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\Database.dll.config
+C:\Work\DigitalEdge\royalhayat2025\Classes\bin\Release\VisualStudio.SpellChecker.Definitions.xml
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Release\Classes.csproj.AssemblyReference.cache
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Release\Classes.csproj.CoreCompileInputs.cache
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Release\Classes.csproj.Up2Date
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Release\Classes.dll
+C:\Work\DigitalEdge\royalhayat2025\Classes\obj\Release\Classes.pdb

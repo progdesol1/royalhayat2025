@@ -225,7 +225,8 @@ namespace Classes
                 int TID = Convert.ToInt32(TenentId);
 
                 string Password1 = Classes.GlobleClass.EncryptionHelpers.Encrypt(Password);
-                string Password2 = Classes.GlobleClass.EncryptionHelpers.Decrypt("gLuf3Q3kr2uHH0k9WaCXGA==");
+                //string Password2 = Classes.GlobleClass.EncryptionHelpers.Decrypt("gLuf3Q3kr2uHH0k9WaCXGA==");
+                string Password2 = Classes.GlobleClass.EncryptionHelpers.Decrypt("A8sSWx/xpIo=");
                 // int UserTypeID = UserType == "" ? 1 : Convert.ToInt32(UserType);
                 List<Database.USER_MST> ListUser = DB.USER_MST.Where(p => p.TenentID == TID && p.LOGIN_ID == User_Id && p.PASSWORD == Password1).ToList();
                 if (ListUser.Count() > 0)

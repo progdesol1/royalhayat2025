@@ -10,8 +10,7 @@
 <!-- begin::Head -->
 <head>
     <meta charset="utf-8" />
-    <title>Royal Hayat Hospital 
-    </title>
+    <title>Royal Hayat Hospital </title>
     <meta name="description" content="Latest updates and statistic charts">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -841,6 +840,21 @@
     <!--begin::Page Snippets -->
     <script src="../assetsP/app/js/dashboard.js" type="text/javascript"></script>
     <!--end::Page Snippets -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var link = document.querySelector("a[href*='/POS/ClientTiketR.aspx?MID=']");
+
+            if (link) {
+                var hrefValue = link.getAttribute("href");
+                console.log("Found:", hrefValue);
+
+                // LocalStorage me save
+                localStorage.setItem("clientTicketLink", hrefValue);
+            }
+        });
+    </script>
 </body>
 <!-- end::Body -->
 </html>
