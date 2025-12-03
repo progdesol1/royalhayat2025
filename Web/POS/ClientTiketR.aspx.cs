@@ -1789,7 +1789,6 @@ namespace Web.POS
 
         if (e.Item.ItemType == ListViewItemType.DataItem)
         {
-
           listChet.Visible = true;
           txtComent.Enabled = true;
           aspcomment.Enabled = true;
@@ -1799,58 +1798,104 @@ namespace Web.POS
           lblinfocomplaintype.Visible = true;
 
           btnSubmit.Visible = true;
-          LinkButton btnclick123 = (LinkButton)e.Item.FindControl("btnclick123");
-          int linkID = Convert.ToInt32(e.CommandArgument);
-          //Label tikitID = (Label)e.Item.FindControl("MasterCODE");
-          Label Label11 = (Label)e.Item.FindControl("MyID");
-          //Label Label12 = (Label)e.Item.FindControl("Label12");
-          int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
-          Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID);
 
-          //int alternetTENENT = Convert.ToInt32(Label12.Text);
+          int linkID = Convert.ToInt32(e.CommandArgument);
+          Label Label11 = (Label)e.Item.FindControl("MyID");
+
+          int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+          int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
+
+          var objCRMMainActivities = DB.CRMMainActivities
+              .FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == ID);
+
+          if (objCRMMainActivities == null)
+          {
+            return;
+          }
+
           int myidd = objCRMMainActivities.MyID;
-          int Tikitno = ID; //Convert.ToInt32(tikitID.Text);
+          int Tikitno = ID;
+
           ViewState["TIkitNumber"] = Tikitno;
           panChat.Visible = true;
 
-          int admin = 0;
-          int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
-          ltsRemainderNotes.DataSource = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == Tikitno);
+          ltsRemainderNotes.DataSource =
+              DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == Tikitno);
           ltsRemainderNotes.DataBind();
-          if (DB.MYCOMPANYSETUPs.Where(p => p.TenentID == TID && p.USERID != null && p.USERID != "").Count() > 0)
-            admin = Convert.ToInt32(DB.MYCOMPANYSETUPs.Single(p => p.TenentID == TID).USERID);
+
+          int admin = 0;
+          var adminRow = DB.MYCOMPANYSETUPs.FirstOrDefault(p => p.TenentID == TID);
+          if (adminRow != null && !string.IsNullOrEmpty(adminRow.USERID))
+            admin = Convert.ToInt32(adminRow.USERID);
           if (admin == UID)
           {
-            listChet.DataSource = DB.CRMActivities.Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UploadDate);
+            var chatList = DB.CRMActivities
+                .Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno)
+                .OrderBy(p => p.UploadDate)
+                .ToList();
+
+            listChet.DataSource = chatList;
             listChet.DataBind();
 
-            ListHistoy.DataSource = DB.CRMActivities.Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UploadDate);
+            ListHistoy.DataSource = chatList;
             ListHistoy.DataBind();
 
-            Database.CRMMainActivity infoObj = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MyID == myidd && p.ACTIVITYE == "helpdesk" && p.MasterCODE == Tikitno);
-            int did = Convert.ToInt32(infoObj.TickDepartmentID);
-            int LOCid = Convert.ToInt32(infoObj.TickPhysicalLocation);
-            int compid = Convert.ToInt32(infoObj.TickComplainType);
-            lblinfoDepartment.Text = DB.DeptITSupers.Where(p => p.TenentID == TID && p.DeptID == did).Count() == 1 ? DB.DeptITSupers.Single(p => p.TenentID == TID && p.DeptID == did).DeptName : "Not Found";
-            lblinfoLocation.Text = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.REFID == LOCid).Count() == 1 ? DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Ticket" && p.REFSUBTYPE == "PhysicalLocation" && p.REFID == LOCid).REFNAME1 : "Not Found";
-            lblinfocomplaintype.Text = DB.REFTABLEs.Where(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == compid).Count() == 1 ? DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "helpdesk" && p.REFSUBTYPE == "complain" && p.REFID == compid).REFNAME1 : "Not Found";
-            pnlinfo.Visible = true;
+            var infoObj = DB.CRMMainActivities
+                .FirstOrDefault(p =>
+                    p.TenentID == TID &&
+                    p.MyID == myidd &&
+                    p.ACTIVITYE == "helpdesk" &&
+                    p.MasterCODE == Tikitno);
+
+            if (infoObj != null)
+            {
+              // Department
+              var dept = DB.DeptITSupers
+                  .FirstOrDefault(p => p.TenentID == TID && p.DeptID == infoObj.TickDepartmentID);
+              lblinfoDepartment.Text = dept?.DeptName ?? "Not Found";
+
+              // Location
+              var loc = DB.REFTABLEs.FirstOrDefault(p =>
+                  p.TenentID == TID &&
+                  p.REFTYPE == "Ticket" &&
+                  p.REFSUBTYPE == "PhysicalLocation" &&
+                  p.REFID == infoObj.TickPhysicalLocation);
+              lblinfoLocation.Text = loc?.REFNAME1 ?? "Not Found";
+
+              // Complaint Type
+              var comp = DB.REFTABLEs.FirstOrDefault(p =>
+                  p.TenentID == TID &&
+                  p.REFTYPE == "helpdesk" &&
+                  p.REFSUBTYPE == "complain" &&
+                  p.REFID == infoObj.TickComplainType);
+              lblinfocomplaintype.Text = comp?.REFNAME1 ?? "Not Found";
+
+              pnlinfo.Visible = true;
+            }
           }
           else
           {
-            List<Database.CRMActivity> CRMACTList1 = DB.CRMActivities.Where(p => (p.TenentID == TID || p.TenentID == 0) && p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UPDTTIME).ToList();
+            var CRMACTList1 = DB.CRMActivities
+                .Where(p =>
+                    (p.TenentID == TID || p.TenentID == 0) &&
+                    p.GroupBy == "helpdesk" &&
+                    p.MasterCODE == Tikitno)
+                .OrderBy(p => p.UPDTTIME)
+                .ToList();
+
             listChet.DataSource = CRMACTList1;
             listChet.DataBind();
 
             ListHistoy.DataSource = CRMACTList1;
             ListHistoy.DataBind();
+
             pnlinfo.Visible = false;
           }
-          //Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == Tikitno);
-          //  Rating1.CurrentRating = Convert.ToInt32(objCRMMainActivities.Ratting);
-          lblRatingStatus.Text = objCRMMainActivities.Ratting.ToString();
 
+          // Rating
+          lblRatingStatus.Text = objCRMMainActivities.Ratting?.ToString() ?? "0";
         }
+
 
       }
       else if (e.CommandName == "btneditticket")
