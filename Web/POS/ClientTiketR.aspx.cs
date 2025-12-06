@@ -961,6 +961,7 @@ namespace Web.POS
 
         protected void linkAllNew_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             // Database.CRMMainActivity objCRMMainActivities = new Database.CRMMainActivity();
             clen();
             maxComplainID();
@@ -978,6 +979,204 @@ namespace Web.POS
             btncloseandupdate.Text = "Close Tkt & Save";
         }
         protected void linkAllPending_Click(object sender, EventArgs e)
+=======
+
+        }
+      }
+    }
+    protected void Rating1_Changed(object sender, AjaxControlToolkit.RatingEventArgs e)
+    {
+      int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+      int tiki = Convert.ToInt32(ViewState["TIkitNumber"]);
+      if (DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == tiki).Count() == 1)
+      {
+        Database.CRMMainActivity objCRMMainActivities = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == tiki);
+        objCRMMainActivities.Ratting = Convert.ToInt32(e.Value);
+        DB.SaveChanges();
+
+        String url = "insert new record in CRMMainActivity with " + "TenentID = " + TID + "MASTERCODE = " + objCRMMainActivities.MasterCODE + "LinkMasterCODE = " + objCRMMainActivities.MasterCODE + "LocationID = 1" + "MyID = " + objCRMMainActivities.MyID + "Prefix = ONL ";
+        String evantname = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFNAME1;
+        String tablename = "CRMMainActivity";
+        string loginUserId = (((USER_MST)HttpContext.Current.Session["USER"]).USER_ID).ToString();
+        int auditno = DB.REFTABLEs.Single(p => p.TenentID == TID && p.REFTYPE == "Audit" && p.REFSUBTYPE == "Complain").REFID;
+        objCRMMainActivities.CRUP_ID = Classes.GlobleClass.EncryptionHelpers.WriteLog(url, evantname, tablename, loginUserId.ToString(), 0, auditno);
+
+
+      }
+      lblRatingStatus.Text = "5";
+    }
+    public void getCommunicatinData()
+    {
+      int admin = 0;
+      int Tikitno = Convert.ToInt32(ViewState["TIkitNumber"]);
+      int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+      int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
+      if (DB.MYCOMPANYSETUPs.Where(p => p.TenentID == TID && p.USERID != null && p.USERID != "").Count() > 0)
+        admin = Convert.ToInt32(DB.MYCOMPANYSETUPs.Single(p => p.TenentID == TID).USERID);
+
+      if (admin == UID)
+      {
+        listChet.DataSource = DB.CRMActivities.Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UPDTTIME);
+        listChet.DataBind();
+        ListHistoy.DataSource = DB.CRMActivities.Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UPDTTIME);
+        ListHistoy.DataBind();
+      }
+      else
+      {
+        List<Database.CRMActivity> CRMACTList = DB.CRMActivities.Where(p => (p.TenentID == TID || p.TenentID == 0) && p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno).OrderBy(p => p.UPDTTIME).ToList();
+        listChet.DataSource = CRMACTList;
+        listChet.DataBind();
+        ListHistoy.DataSource = CRMACTList;
+        ListHistoy.DataBind();
+
+      }
+    }
+    public void ClenCat()
+    {
+      txtComent.Text = "";
+      aspcomment.SelectedIndex = 0;
+      drpinvestigation.SelectedIndex = 0;
+    }
+    protected void ltsRemainderNotes_ItemCommand(object sender, ListViewCommandEventArgs e)
+    {
+      int ID = Convert.ToInt32(e.CommandArgument);
+
+
+      Label lblremidernotes = (Label)e.Item.FindControl("lblremidernotes");
+      Label lblstatus = (Label)e.Item.FindControl("lblstatus");
+
+      string remin = lblremidernotes != null ? lblremidernotes.Text : "N/A";  
+      string statu = lblstatus != null ? lblstatus.Text : "Pending";       
+
+
+      if (e.CommandName == "btnclick123")
+      {
+
+        if (e.Item.ItemType == ListViewItemType.DataItem)
+        {
+          listChet.Visible = true;
+          txtComent.Enabled = true;
+          aspcomment.Enabled = true;
+          drpStatus.Enabled = true;
+          lblinfoDepartment.Visible = true;
+          lblinfoLocation.Visible = true;
+          lblinfocomplaintype.Visible = true;
+
+          btnSubmit.Visible = true;
+
+          int linkID = Convert.ToInt32(e.CommandArgument);
+          Label Label11 = (Label)e.Item.FindControl("MyID");
+
+          int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+          int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
+
+          var objCRMMainActivities = DB.CRMMainActivities
+              .FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == ID);
+
+          if (objCRMMainActivities == null)
+          {
+            return;
+          }
+
+          int myidd = objCRMMainActivities.MyID;
+          int Tikitno = ID;
+
+          ViewState["TIkitNumber"] = Tikitno;
+          panChat.Visible = true;
+
+          ltsRemainderNotes.DataSource =
+              DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == Tikitno);
+          ltsRemainderNotes.DataBind();
+
+          int admin = 0;
+          var adminRow = DB.MYCOMPANYSETUPs.FirstOrDefault(p => p.TenentID == TID);
+          if (adminRow != null && !string.IsNullOrEmpty(adminRow.USERID))
+            admin = Convert.ToInt32(adminRow.USERID);
+          if (admin == UID)
+          {
+            var chatList = DB.CRMActivities
+                .Where(p => p.GroupBy == "helpdesk" && p.MasterCODE == Tikitno)
+                .OrderBy(p => p.UploadDate)
+                .ToList();
+
+            listChet.DataSource = chatList;
+            listChet.DataBind();
+
+            ListHistoy.DataSource = chatList;
+            ListHistoy.DataBind();
+
+            var infoObj = DB.CRMMainActivities
+                .FirstOrDefault(p =>
+                    p.TenentID == TID &&
+                    p.MyID == myidd &&
+                    p.ACTIVITYE == "helpdesk" &&
+                    p.MasterCODE == Tikitno);
+
+            if (infoObj != null)
+            {
+              // Department
+              var dept = DB.DeptITSupers
+                  .FirstOrDefault(p => p.TenentID == TID && p.DeptID == infoObj.TickDepartmentID);
+              lblinfoDepartment.Text = dept?.DeptName ?? "Not Found";
+
+              // Location
+              var loc = DB.REFTABLEs.FirstOrDefault(p =>
+                  p.TenentID == TID &&
+                  p.REFTYPE == "Ticket" &&
+                  p.REFSUBTYPE == "PhysicalLocation" &&
+                  p.REFID == infoObj.TickPhysicalLocation);
+              lblinfoLocation.Text = loc?.REFNAME1 ?? "Not Found";
+
+              // Complaint Type
+              var comp = DB.REFTABLEs.FirstOrDefault(p =>
+                  p.TenentID == TID &&
+                  p.REFTYPE == "helpdesk" &&
+                  p.REFSUBTYPE == "complain" &&
+                  p.REFID == infoObj.TickComplainType);
+              lblinfocomplaintype.Text = comp?.REFNAME1 ?? "Not Found";
+
+              pnlinfo.Visible = true;
+            }
+          }
+          else
+          {
+            var CRMACTList1 = DB.CRMActivities
+                .Where(p =>
+                    (p.TenentID == TID || p.TenentID == 0) &&
+                    p.GroupBy == "helpdesk" &&
+                    p.MasterCODE == Tikitno)
+                .OrderBy(p => p.UPDTTIME)
+                .ToList();
+
+            listChet.DataSource = CRMACTList1;
+            listChet.DataBind();
+
+            ListHistoy.DataSource = CRMACTList1;
+            ListHistoy.DataBind();
+
+            pnlinfo.Visible = false;
+          }
+
+          // Rating
+          lblRatingStatus.Text = objCRMMainActivities.Ratting?.ToString() ?? "0";
+        }
+
+
+      }
+      else if (e.CommandName == "btneditticket")
+      {
+        int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
+        ltsRemainderNotes.DataSource = DB.CRMMainActivities.Where(p => p.TenentID == TID && p.MasterCODE == ID);
+        ltsRemainderNotes.DataBind();
+        btncloseandupdate.Visible = true;
+        btncloseandupdate.Text = "Update Tkt & Close";
+        //DrpSubCat.SelectedIndex = 0;
+
+        Database.CRMMainActivity objICCATEGORY = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID);
+        if (objICCATEGORY.ComplaintNumber != "" && objICCATEGORY.ComplaintNumber != null)
+          lblcomplainno.Text = objICCATEGORY.ComplaintNumber;
+        if (objICCATEGORY.TickComplainType != 0 && objICCATEGORY.TickComplainType != null)
+>>>>>>> 2a601d0d59aa3de03d297f41756beef23f3bdddb
         {
             getStatusAll("Pending");
             panChat.Visible = true;

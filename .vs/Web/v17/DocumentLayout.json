@@ -1,30 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Work\\DigitalEdge\\royalhayat2025\\",
+  "WorkspaceRootPath": "D:\\React\\NodeJS\\New\\royalhayat2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|C:\\Work\\DigitalEdge\\royalhayat2025\\web\\acm\\demopos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\demopos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|c:\\work\\digitaledge\\royalhayat2025\\web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|C:\\Work\\DigitalEdge\\royalhayat2025\\web\\acm\\demopos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\demopos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|C:\\Work\\DigitalEdge\\royalhayat2025\\web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|D:\\React\\NodeJS\\New\\royalhayat2025\\web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|C:\\Work\\DigitalEdge\\royalhayat2025\\classes\\globleclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{325BF418-9AF9-4172-82C4-DB367B9C9C65}|Classes\\Classes.csproj|solutionrelative:classes\\globleclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|C:\\Work\\DigitalEdge\\royalhayat2025\\web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\acm\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|d:\\react\\nodejs\\new\\royalhayat2025\\web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{592A5A10-4248-463F-A434-D62A629063F1}|Web\\Web.csproj|solutionrelative:web\\pos\\clienttiketr.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,76 +46,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClientTiketR.aspx.cs",
-              "DocumentMoniker": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ToolTip": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
-              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAcwC4AAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T06:56:04.424Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DemoPOS.aspx.cs",
-              "DocumentMoniker": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\ACM\\DemoPOS.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\ACM\\DemoPOS.aspx.cs",
-              "ToolTip": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\ACM\\DemoPOS.aspx.cs",
-              "RelativeToolTip": "Web\\ACM\\DemoPOS.aspx.cs",
-              "ViewState": "AgIAAE0BAAAAAAAAAAAmwFQBAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T12:03:55.116Z",
+              "DocumentIndex": 1,
+              "Title": "ClientTiketR.aspx",
+              "DocumentMoniker": "D:\\React\\NodeJS\\New\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
+              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx",
+              "ToolTip": "D:\\React\\NodeJS\\New\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
+              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-12-03T12:58:01.353Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GlobleClass.cs",
-              "DocumentMoniker": "C:\\Work\\DigitalEdge\\royalhayat2025\\Classes\\GlobleClass.cs",
-              "RelativeDocumentMoniker": "Classes\\GlobleClass.cs",
-              "ToolTip": "C:\\Work\\DigitalEdge\\royalhayat2025\\Classes\\GlobleClass.cs",
-              "RelativeToolTip": "Classes\\GlobleClass.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAuwN4AAAANAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ClientTiketR.aspx.cs",
+              "DocumentMoniker": "D:\\React\\NodeJS\\New\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
+              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx.cs",
+              "ToolTip": "D:\\React\\NodeJS\\New\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx.cs",
+              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx.cs",
+              "ViewState": "AQIAAPgGAAAAAAAAAAAQwP0GAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T17:56:55.822Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.aspx.cs",
-              "DocumentMoniker": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\ACM\\Login.aspx.cs",
-              "RelativeDocumentMoniker": "Web\\ACM\\Login.aspx.cs",
-              "ToolTip": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\ACM\\Login.aspx.cs",
-              "RelativeToolTip": "Web\\ACM\\Login.aspx.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAcwD4AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T17:48:11.715Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DemoPOS.aspx",
-              "DocumentMoniker": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\ACM\\DemoPOS.aspx",
-              "RelativeDocumentMoniker": "Web\\ACM\\DemoPOS.aspx",
-              "ToolTip": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\ACM\\DemoPOS.aspx",
-              "RelativeToolTip": "Web\\ACM\\DemoPOS.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-26T12:03:53.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClientTiketR.aspx",
-              "DocumentMoniker": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
-              "RelativeDocumentMoniker": "Web\\POS\\ClientTiketR.aspx",
-              "ToolTip": "C:\\Work\\DigitalEdge\\royalhayat2025\\Web\\POS\\ClientTiketR.aspx",
-              "RelativeToolTip": "Web\\POS\\ClientTiketR.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-26T10:35:20.063Z",
+              "WhenOpened": "2025-11-21T06:30:37.631Z",
               "EditorCaption": ""
             }
           ]
