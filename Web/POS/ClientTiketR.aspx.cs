@@ -1266,6 +1266,15 @@ namespace Web.POS
 
             if (btnSave.Text == "Submit")
             {
+                if (string.IsNullOrWhiteSpace(txtMRN.Text))
+                {
+                    string mesg = "Please enter MRN number.";
+                    string script = "alert('" + mesg + "');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "MRNValidation", script, true);
+                    return; // STOP further execution
+                }
+
+
                 string strUName = ((USER_MST)Session["USER"]).LOGIN_ID;
                 int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
                 int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);

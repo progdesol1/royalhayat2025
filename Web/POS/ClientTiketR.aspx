@@ -749,6 +749,7 @@
                                                                   <asp:Label ID="Label14" runat="server" Text="MRN" />
                                                               </label>
                                                               <asp:TextBox ID="txtMRN" runat="server" CssClass="form-control shadow-sm" placeholder="Enter MRN"></asp:TextBox>
+                                                             <asp:RequiredFieldValidator ID="required4" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtMRN" ErrorMessage="Please add MRN Number"></asp:RequiredFieldValidator>
                                                           </div>
 
                                                           <!-- Subject -->
