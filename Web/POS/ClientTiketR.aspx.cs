@@ -1293,6 +1293,7 @@ namespace Web.POS
 
                 DataTable dt = DataCon.GetDataTable(sql);
 
+
                 DateTime now = DateTime.Now;
                 string stdate = now.ToString("yyMM");
                 string num = dt.Rows[0].ItemArray[0].ToString();
@@ -3159,10 +3160,17 @@ namespace Web.POS
                 string maxid = "select ISNull(max(MyID),0)+1 AS NEWComplaintNumber from CRMMainActivities where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
                 DataTable dt = DataCon.GetDataTable(maxid);
                 DateTime startdate = DateTime.Now;
-                string stdate = startdate.ToString("yyyyMM");
+                string stdate = startdate.ToString("yyMM");
                 string num = dt.Rows[0].ItemArray[0].ToString();
                 TimeSpan onlytime = DateTime.Now.TimeOfDay;
                 int master = Convert.ToInt32(stdate + num);
+
+                while (DB.CRMMainActivities.Any(p => p.TenentID == TID && p.MasterCODE == master))
+                {
+                    int newMyID = Convert.ToInt32(num) + 1;
+                    num = newMyID.ToString();
+                    master = Convert.ToInt32(stdate + num);
+                }
 
                 objCRMMainActivities.MasterCODE = master;
                 objCRMMainActivities.LinkMasterCODE = master;
