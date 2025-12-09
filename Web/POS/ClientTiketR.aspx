@@ -515,7 +515,9 @@
         </div>
 
         <asp:LinkButton ID="btnremarks" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnremarks" runat="server" CssClass="ticket-remarks">
+          <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>' target="_blank">
             <%#Eval("Remarks")%>
+          </a>
         </asp:LinkButton>
 
         <div class="ticket-footer">
@@ -1068,7 +1070,7 @@
             </div>
         </div>
     </div>
-<div class="modal fade bs-modal-sm" id="small2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade bs-modal-sm" id="small2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm" style="margin-bottom: 0px; margin-top: 0px;">
             <div class="modal-content">
                 <div class="portlet box green">
