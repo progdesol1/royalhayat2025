@@ -1131,21 +1131,95 @@ namespace Web.POS
         ltsRemainderNotes.DataBind();
         btncloseandupdate.Visible = true;
         btncloseandupdate.Text = "Update Tkt & Close";
+        //DrpSubCat.SelectedIndex = 0;
 
         Database.CRMMainActivity objICCATEGORY = DB.CRMMainActivities.Single(p => p.TenentID == TID && p.MasterCODE == ID);
         if (objICCATEGORY.ComplaintNumber != "" && objICCATEGORY.ComplaintNumber != null)
           lblcomplainno.Text = objICCATEGORY.ComplaintNumber;
         if (objICCATEGORY.TickComplainType != 0 && objICCATEGORY.TickComplainType != null)
         {
-          getStatusAll("Pending");
-          panChat.Visible = true;
-          PnlBindTick.Visible = true;
-          pnlTicki.Visible = false;
-          linkreopen.Visible = false;
-          lblUser.Text = "Pending Issues";
-          listChet.Visible = true;
-          pnlSuccessMsg.Visible = false;
+          drpComplainType.SelectedValue = objICCATEGORY.TickComplainType.ToString();
         }
+        if (objICCATEGORY.TickDepartmentID != 0 && objICCATEGORY.TickDepartmentID != null)
+        {
+          drpSDepartment.SelectedValue = objICCATEGORY.TickDepartmentID.ToString();
+        }
+        if (objICCATEGORY.TickPhysicalLocation != 0 && objICCATEGORY.TickPhysicalLocation != null)
+        {
+          DrpPhysicalLocation.SelectedValue = objICCATEGORY.TickPhysicalLocation.ToString();
+        }
+        if (objICCATEGORY.Patient_Name != "" && objICCATEGORY.Patient_Name != null)
+        {
+          txtpatientname.Text = objICCATEGORY.Patient_Name.ToString();
+        }
+        if (objICCATEGORY.MRN != "" && objICCATEGORY.MRN != null)
+        {
+
+          txtMRN.Text = objICCATEGORY.MRN.ToString();
+        }
+        if (objICCATEGORY.UseReciepeID == 1)
+        {
+          chklog.Checked = true;
+        }
+        if (objICCATEGORY.Contact != "" && objICCATEGORY.Contact != null)
+        {
+          txtcontact.Text = objICCATEGORY.Contact.ToString();
+        }
+        if (objICCATEGORY.TickCatID != 0 && objICCATEGORY.TickCatID != null)
+        {
+          DrpTCatSubCate.SelectedValue = objICCATEGORY.TickCatID.ToString();
+        }
+        if (objICCATEGORY.TickSubCatID != 0 && objICCATEGORY.TickSubCatID != null)
+        {
+          DrpSubCat.SelectedValue = objICCATEGORY.TickSubCatID.ToString();
+          // drpCountryType.SelectedValue = objtblCOUNTRY.CountryType.ToString();
+        }
+
+        if (objICCATEGORY.Version != "" && objICCATEGORY.Version != null)
+        {
+          txtMessage.Text = objICCATEGORY.Version.ToString();
+        }
+        if (objICCATEGORY.Remarks != "" && objICCATEGORY.Remarks != null)
+        {
+          txtMessage.Text = objICCATEGORY.Remarks.ToString();
+        }
+        if (objICCATEGORY.ReportedBy != 0 && objICCATEGORY.ReportedBy != null)
+        {
+          drpusermt.SelectedValue = objICCATEGORY.ReportedBy.ToString();
+        }
+        if (objICCATEGORY.FoloEmp != 0 && objICCATEGORY.FoloEmp != null)
+        {
+          drpfoloemp.SelectedValue = objICCATEGORY.FoloEmp.ToString();
+        }
+        if (objICCATEGORY.subject != null && objICCATEGORY.subject != "")
+        {
+          txtSubject.Text = objICCATEGORY.subject;
+        }
+        Database.CRMActivity objact = DB.CRMActivities.FirstOrDefault(p => p.TenentID == TID && p.MasterCODE == ID);
+        if (objact.investigation != 0 && objact.investigation != null)
+        {
+          drpinvestresult.SelectedValue = objact.investigation.ToString();
+        }
+
+        pnlTicki.Visible = true;
+        //  PnlBindTick.Visible = false;
+        panChat.Visible = false;
+        btnSave.Text = "Update";
+        ViewState["remind"] = remin;
+        ViewState["Edit"] = ID;
+        ViewState["stats"] = statu;
+        btncack.Visible = true;
+        btnCancel.Visible = false;
+        int UIR = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
+        if (UIR == 11525)
+        {
+          btndelete.Visible = true;
+        }
+        else
+        {
+          btndelete.Visible = false;
+        }
+
       }
     }
     protected void linkallComplet_Click(object sender, EventArgs e)
@@ -1225,9 +1299,6 @@ namespace Web.POS
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
-      //using (TransactionScope scope = new TransactionScope())
-      //{
-
       if (btnSave.Text == "Submit")
       {
         if (string.IsNullOrWhiteSpace(txtMRN.Text))
@@ -1238,20 +1309,29 @@ namespace Web.POS
           return; // STOP further execution
         }
 
-
         string strUName = ((USER_MST)Session["USER"]).LOGIN_ID;
         int TID = Convert.ToInt32(((USER_MST)Session["USER"]).TenentID);
         int UID = Convert.ToInt32(((USER_MST)Session["USER"]).USER_ID);
         int CID = Convert.ToInt32(((USER_MST)Session["USER"]).CompId);
+
+        // =================== STRING LENGTH VALIDATION ===================
+
+        if (!ValidateLength(txtSubject.Text, 50, "Subject")) return;
+        if (!ValidateLength(txtcontact.Text, 50, "Contact")) return;
+        if (!ValidateLength(txtpatientname.Text, 500, "Patient Name")) return;
+        if (!ValidateLength(txtMRN.Text, 500, "MRN")) return;
+
+        if (!ValidateLength(txtMessage.Text, 1000, "Activity Description")) return;
+
+        // If used
+        if (!ValidateLength(strUName, 50, "User Name")) return;
+
 
         Database.CRMMainActivity objCRMMainActivities = new Database.CRMMainActivity();
         objCRMMainActivities.TenentID = TID;
         objCRMMainActivities.COMPID = 1;
         objCRMMainActivities.Prefix = "ONL";
 
-        //===========================================
-        // GENERATE UNIQUE MASTER CODE + MYID
-        //===========================================
         string sql = "select ISNull(max(MyID),0)+1 AS NEWComplaintNumber from CRMMainActivities " +
                      "where tenentid=" + TID + " and year(uploaddate)=year(GETDATE()) and month(uploaddate)=month(GETDATE())";
 
@@ -1263,9 +1343,6 @@ namespace Web.POS
 
         int master = Convert.ToInt32(stdate + num);
 
-        //===========================================
-        // DUPLICATE CHECK + AUTO REGENERATE
-        //===========================================
         while (DB.CRMMainActivities.Any(p => p.TenentID == TID && p.MasterCODE == master))
         {
           int newMyID = Convert.ToInt32(num) + 1;
@@ -1276,7 +1353,6 @@ namespace Web.POS
         objCRMMainActivities.MasterCODE = master;
         objCRMMainActivities.MyID = Convert.ToInt32(num);
         objCRMMainActivities.LinkMasterCODE = master;
-        //===========================================
 
         objCRMMainActivities.LocationID = 1;
         objCRMMainActivities.RouteID = 1;
@@ -1296,7 +1372,7 @@ namespace Web.POS
         objCRMMainActivities.UPDTTIME = now;
         objCRMMainActivities.USERNAME = strUName;
         objCRMMainActivities.Remarks = txtMessage.Text;
-        objCRMMainActivities.Version = txtMessage.Text;
+        objCRMMainActivities.Version = "1.0";
         objCRMMainActivities.Type = drpinvestresult.SelectedValue != "0" ? Convert.ToInt32(drpinvestresult.SelectedValue) : 1;
         objCRMMainActivities.MyStatus = "Pending";
         objCRMMainActivities.UploadDate = now;
@@ -1429,8 +1505,6 @@ namespace Web.POS
         BindRemainderNote();
         maxComplainID();
       }
-
-
       else if (btnSave.Text == "Update")
       {
 
@@ -1586,6 +1660,23 @@ namespace Web.POS
         }
       }
     }
+
+    private bool ValidateLength(string value, int maxLength, string fieldName)
+    {
+      if (!string.IsNullOrEmpty(value) && value.Length > maxLength)
+      {
+        string msg = $"{fieldName} cannot exceed {maxLength} characters.";
+        ClientScript.RegisterStartupScript(
+            this.GetType(),
+            "LengthError",
+            $"alert('{msg}');",
+            true
+        );
+        return false;
+      }
+      return true;
+    }
+
     protected void btnCancel_Click(object sender, EventArgs e)
     {
       clen();

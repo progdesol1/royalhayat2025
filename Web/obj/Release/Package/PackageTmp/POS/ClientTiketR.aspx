@@ -229,6 +229,8 @@
             document.getElementById("ContentPlaceHolder1_linkAllPending").click();
         }
 
+      
+
 
         function openModalsmall2() {
             debugger;
@@ -274,7 +276,19 @@
         }
     </script>
     <script>
+        function clickComplaintLink() {
 
+            var linkElement = document.getElementById('lnkcmplnt');
+
+
+            if (linkElement) {
+
+                linkElement.click();
+            } else {
+
+                console.error("Error: Link with ID 'lnkcmplnt' not found.");
+            }
+        }
 
         // SAVE active tab before postback
         document.addEventListener("DOMContentLoaded", function () {
@@ -501,7 +515,9 @@
         </div>
 
         <asp:LinkButton ID="btnremarks" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnremarks" runat="server" CssClass="ticket-remarks">
+          <a href='<%# "/POS/ViewTicket.aspx?Mastercode="+ Eval("MasterCODE")%>' target="_blank">
             <%#Eval("Remarks")%>
+          </a>
         </asp:LinkButton>
 
         <div class="ticket-footer">
@@ -509,7 +525,7 @@
                 <i class="fa fa-calendar"></i> <%# Convert.ToDateTime(Eval("UploadDate")).ToString("dd-MMM-yyyy hh:mm tt")%>
             </asp:LinkButton>
             <div class="ticket-status">
-                <asp:LinkButton ID="btnpendings" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnpendings" runat="server" CssClass="badge bg-warning text-dark" Visible='<%# (string)Eval("MyStatus") == "Pending"%>'>Pending</asp:LinkButton>
+                <asp:LinkButton ID="btnpendings" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnpendings" runat="server" CssClass="badge bg-warning text-dark" Visible='false'>Pending</asp:LinkButton>
                 <asp:LinkButton ID="btninprogress" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btninprogress" runat="server" CssClass="badge bg-info text-dark" Visible='<%# (string)Eval("MyStatus") == "InProgress"%>'>In Progress</asp:LinkButton>
                 <asp:LinkButton ID="btnclosed" CommandArgument='<%#Eval("MasterCODE")%>' CommandName="btnclosed" runat="server" CssClass="badge bg-success" Visible='<%# (string)Eval("MyStatus") == "Closed"%>'>Closed</asp:LinkButton>
             </div>
@@ -735,6 +751,7 @@
                                                                   <asp:Label ID="Label14" runat="server" Text="MRN" />
                                                               </label>
                                                               <asp:TextBox ID="txtMRN" runat="server" CssClass="form-control shadow-sm" placeholder="Enter MRN"></asp:TextBox>
+                                                             <asp:RequiredFieldValidator ID="required4" runat="server" ValidationGroup="Ticks" Display="Dynamic" ForeColor="#a94442" ControlToValidate="txtMRN" ErrorMessage="Please add MRN Number"></asp:RequiredFieldValidator>
                                                           </div>
 
                                                           <!-- Subject -->
@@ -857,8 +874,12 @@
     
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-secondary btn-sm" OnClick="btnCancel_Click" Text="Cancel" />
     
-                                                        <asp:Button ID="btncack" runat="server" CssClass="btn btn-outline-secondary btn-sm" OnClick="linkAllPending_Click"  Text="Back" Visible="false" />
-    
+<asp:Button 
+    ID="btncack" 
+    runat="server" 
+    CssClass="btn btn-outline-secondary btn-sm" 
+    Text="Back" 
+    Visible="false" />   
                                                         <asp:Button ID="btndelete" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="btndelete_Click" Text="Delete" Visible="false" />
     
                                                         <asp:Button ID="btncloseandupdate" runat="server" CssClass="btn btn-danger btn-sm" OnClick="btncloseandupdate_Click" Text="Close Tkt & Save" />
@@ -1049,7 +1070,7 @@
             </div>
         </div>
     </div>
-<div class="modal fade bs-modal-sm" id="small2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade bs-modal-sm" id="small2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm" style="margin-bottom: 0px; margin-top: 0px;">
             <div class="modal-content">
                 <div class="portlet box green">
